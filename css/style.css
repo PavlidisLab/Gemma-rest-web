@@ -59,8 +59,30 @@ footer {
   vertical-align: middle;
   line-height: normal;
 }
-.welcome {
-  padding-bottom: 20px;
+.endpoint .header {
+  cursor: pointer;
+}
+.endpoint .header h3 {
+  display: inline-block;
+}
+.endpoint .header .description {
+  display: inline-flex;
+  margin-left: 20px;
+}
+.endpoint .header .glyphicon,
+.endpointsGroupTitle .glyphicon {
+  display: inline-block;
+  font-size: 150%;
+  color: #737373;
+}
+.endpointsGroupTitle {
+  cursor: pointer;
+}
+.endpointsGroupTitle .glyphicon {
+  font-size: 180%;
+}
+.endpointsGroupTitle h2 {
+  display: inline-block;
 }
 .rowPad {
   padding-bottom: 20px;

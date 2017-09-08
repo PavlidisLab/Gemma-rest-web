@@ -4,6 +4,7 @@
  */
 
 @baseFg: black;
+@darkFg: #737373;
 @invertFg: white;
 @headFg: rgba(255, 255, 255, 0.93);
 @footBg: darkgray;
@@ -90,8 +91,39 @@ footer {
     line-height: normal;
 }
 
+.endpoint .header {
+    cursor: pointer;
+}
+
+.endpoint .header h3 {
+    display: inline-block;
+}
+
+.endpoint .header .description {
+    display: inline-flex;
+    margin-left: @dim-big;
+}
+
+.endpoint .header .glyphicon, .endpointsGroupTitle .glyphicon{
+    display: inline-block;
+    font-size: 150%;
+    color: @darkFg;
+}
+
+.endpointsGroupTitle{
+    cursor: pointer;
+}
+
+.endpointsGroupTitle .glyphicon{
+    font-size: 180%;
+}
+
+.endpointsGroupTitle h2 {
+    display: inline-block;
+}
+
 .welcome {
-    padding-bottom: @dim-big;
+    //padding-bottom: @dim-med;
 }
 
 .rowPad {
@@ -153,7 +185,7 @@ pre.response {
 }
 
 .badge.invisible {
-    background-color: rgba(255,255,255,0);
+    background-color: rgba(255, 255, 255, 0);
 }
 
 .apiError {

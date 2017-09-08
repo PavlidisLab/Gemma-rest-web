@@ -109,6 +109,13 @@ Vue.component('api-param', {
 // noinspection JSUnusedGlobalSymbols // Used in html templates
 var datasetApi = new Vue({
     el: '#mainContent',
+    data:{
+        showDatasets: false,
+        showPlatforms: false,
+        showOther: false,
+        showGenes: false,
+        showTaxa: false
+    },
     methods: {
         // Parameter bundles getters
 
@@ -136,9 +143,25 @@ var datasetApi = new Vue({
         getPlatformsElementPathParams: function () {
             return [this.getPlatformParam(), this.getProbeParam()];
         },
+        getEvidenceQueryParams: function () {
+            return [
+                {name: "database", value: "", required: true, description: "The name of external database to match"},
+                this.getOffsetParam(),
+                {name: "limit", value: "10000", required: false, description: "Limit the number of results to this amount"}
+            ];
+        },
+        getGeneCoexpQueryParams: function(){
+            return [
+                {name: "with", value: "", required: true, description: "The gene to calculate the coexpression with. Same formatting rules as with the 'gene' arg. apply."},
+                {name: "limit", value: "100", required: false, description: "Limit the number of results to this amount"},
+                {name: "stringency", value: "1", required: false, description: "Optional parameter controlling the stringency of coexpression search. Defaults to 1"}
+            ];
+        },
 
         // Single parameter getters
-
+        getSearchParam: function () {
+            return {name: "query", value: "", required: true, description: "The search query"};
+        },
         getFilterParam: function () {
             return {name: "filter", value: "", required: false, description: filterDescription};
         },
@@ -173,6 +196,30 @@ var datasetApi = new Vue({
                 value: "AFFX_Rat_beta-actin_M_at",
                 required: true,
                 description: probeDescription
+            };
+        },
+        getTaxonSearchParam: function () {
+            return {
+                name: "taxon",
+                value: "human",
+                required: true,
+                description: taxonSearchDescription
+            };
+        },
+        getGeneParam: function () {
+            return {
+                name: "gene",
+                value: "DYRK1A",
+                required: true,
+                description: geneDescription
+            };
+        },
+        getTaxonParam: function () {
+            return {
+                name: "taxon",
+                value: "human",
+                required: true,
+                description: taxonDescription
             };
         }
     }

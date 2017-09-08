@@ -50,3 +50,9 @@ var platformDescription = "Can either be the ArrayDesign ID or its short name (e
     "                         is more efficient. Only platforms that user has access to will be available.";
 var probeDescription = "The name or ID of the platform element for which the genes should be retrieved. Note that names containing" +
     "                        a forward slash are not accepted. Should you need this restriction temporarily lifted, please contact us.";
+var taxonSearchDescription = "Only applies to genes in the result set. Can be either null (to search all taxons), or Taxon ID or one of its string identifiers:" +
+    "                      scientific name, common name, abbreviation. Using the ID is most efficient.";
+var taxonDescription = "can either be Taxon ID or one of its string identifiers:" +
+    "                      scientific name, common name, abbreviation. Using the ID is most efficient.";
+var geneDescription = "can either be the NCBI ID, Ensembl ID or official symbol. NCBI ID is the most efficient (and" +
+    "                     guaranteed to be unique) identifier. Official symbol returns a gene homologue for a random taxon.";
