@@ -1,3 +1,39 @@
-# Include your project-specific ignores in this file
-# Read about how to use .gitignore: https://help.github.com/articles/ignoring-files
-# Useful .gitignore templates: https://github.com/github/gitignore
+.idea
+*.iml
+.project
+.settings
+
+# CVS/git global ignores
+RCS
+SCCS
+CVS
+CVS.adm
+RCSLOG
+cvslog.*
+tags
+TAGS
+.make.state
+.nse_depinfo
+*~
+**/.DS_Store
+.DS_Store
+#*
+.#*
+,*
+_$*
+*$
+*.old
+*.bak
+*.BAK
+*.orig
+*.rej
+.del-*
+*.a
+*.olb
+*.o
+*.obj
+*.so
+*.exe
+*.Z
+*.elc
+*.ln
