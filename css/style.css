@@ -1,0 +1,163 @@
+/*
+ * Author: Stepan Tesar
+ * Using LESS CSS Compiler Plugin for the IntelliJ Platform: https://github.com/acdvorak/intellij-lessc-plugin
+ */
+/* Base layout settings */
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
+body {
+  display: flex;
+  flex-flow: column;
+}
+header {
+  flex: 0 1 auto;
+}
+#mainContent {
+  flex: 1 1 auto;
+}
+footer {
+  flex: 0 1 auto;
+}
+/* Styling settings */
+pre {
+  background-color: white;
+}
+footer {
+  margin-top: 20px;
+  padding-top: 20px;
+  padding-bottom: 10px;
+  color: #ffffff;
+  background-color: #a9a9a9;
+  box-shadow: inset 0 5px 5px -5px #000000;
+}
+.jumbotron {
+  background-size: auto 100px;
+  background: url("../img/gemmaLogo.gif") no-repeat 5% 60% #f5f5f5;
+}
+.jumbotron .container h1 {
+  text-shadow: 0 0 20px rgba(255, 255, 255, 0.93);
+  font-weight: bolder;
+  font-size: 350%;
+  background-color: #9b9b9b;
+  color: transparent;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  background-clip: text;
+}
+#mainContent .endpoint {
+  padding: 10px 0;
+}
+#mainContent .endpoint:nth-child(odd) {
+  background: whitesmoke;
+}
+.endpoint h4 {
+  height: 25px;
+  overflow: visible;
+  vertical-align: middle;
+  line-height: normal;
+}
+.welcome {
+  padding-bottom: 20px;
+}
+.rowPad {
+  padding-bottom: 20px;
+}
+.paramRow {
+  margin-bottom: 5px;
+}
+.preLike {
+  display: block;
+  padding: 9.5px;
+  margin: 0 0 20px;
+  font-size: 13px;
+  line-height: 1.42857143;
+  color: #333;
+  word-break: normal;
+  word-wrap: break-word;
+  background-color: #f5f5f5;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-family: monospace, monospace;
+}
+.preLike code {
+  padding: 0;
+  font-size: inherit;
+  color: mediumvioletred;
+  white-space: pre-wrap;
+  background-color: transparent;
+  border-radius: 0;
+}
+.responseCol {
+  max-width: 100%;
+}
+div.response {
+  width: 100%;
+  max-width: 100%;
+}
+pre.response {
+  height: 100%;
+  max-height: 300px;
+  width: 100%;
+  overflow: auto;
+}
+.badge {
+  border-radius: 5px;
+  padding: 5px;
+  color: #ffffff;
+  font-weight: 900;
+  font-size: 80%;
+}
+.badge.invisible {
+  background-color: rgba(255, 255, 255, 0);
+}
+.apiError {
+  background: red;
+}
+.apiOk {
+  background-color: limegreen;
+}
+.info {
+  color: royalblue;
+}
+/* Browser Upgrade Prompt */
+.browserUpgrade {
+  background: #ffd700;
+  color: #000000;
+}
+/* Bootstrap tweaks */
+.row.is-flex {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 100%;
+}
+.row.is-flex > [class*='col-'] {
+  display: flex;
+  flex-direction: column;
+  max-width: 100%;
+}
+/*
+* FIXME Use a preprocessor for auto-prefixing.
+*/
+.row.is-flex {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+.row.is-flex > [class*='col-'] {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
