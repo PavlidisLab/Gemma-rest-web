@@ -115,14 +115,16 @@
                           :description="'Retrieves the data for the given dataset'"
                           :query-params="getDatasetsDataQueryParams()"
                           :path-params="[getDatasetParam()]"
-                          :endpoint-url-base="'datasets/%1/data'">
+                          :endpoint-url-base="'datasets/%1/data'"
+                          :json-response="false">
                 </endpoint>
 
                 <endpoint :name="'Dataset design'"
                           :description="'Retrieves the design for the given dataset'"
                           :query-params="[]"
                           :path-params="[getDatasetParam()]"
-                          :endpoint-url-base="'datasets/%1/design'">
+                          :endpoint-url-base="'datasets/%1/design'"
+                          :json-response="false">
                 </endpoint>
 
                 <div class="rowPad"></div>
@@ -186,7 +188,8 @@
                           :description="'Retrieves the annotation file for the given platform'"
                           :query-params="[]"
                           :path-params="[getPlatformParam()]"
-                          :endpoint-url-base="'platforms/%1/annotations/'">
+                          :endpoint-url-base="'platforms/%1/annotations/'"
+                          :json-response="false">
                 </endpoint>
 
                 <div class="rowPad"></div>
@@ -271,17 +274,59 @@
 
             <div id="taxaEndpoints" v-show="showTaxa">
                 <endpoint :name="'All taxa'"
-                          :description="'Lists all available taxa. Does not offer any advanced filtering or sorting functionality. The reason for this is that Taxa are a relatively small set of objects that rarely change.'"
+                          :description="'Lists all available taxa.'"
                           :query-params="[]"
                           :path-params="[]"
-                          :endpoint-url-base="'taxa/'">
+                          :endpoint-url-base="'taxa/'">l
                 </endpoint>
 
                 <endpoint :name="'Specific taxon'"
                           :description="'Retrieves single taxon based on the given identifier.'"
                           :query-params="[]"
                           :path-params="[getTaxonParam()]"
-                          :endpoint-url-base="'taxa/'">
+                          :endpoint-url-base="'taxa/%1'">
+                </endpoint>
+
+                <endpoint :name="'Taxon datasets'"
+                          :description="'Retrieves datasets for the given taxon.'"
+                          :query-params="getDatasetsAllQueryParams()"
+                          :path-params="[getTaxonParam()]"
+                          :endpoint-url-base="'taxa/%1/datasets'">
+                </endpoint>
+
+                <endpoint :name="'Taxon phenotypes'"
+                          :description="'Loads all phenotypes for the given taxon.'"
+                          :query-params="[getEditableParam()]"
+                          :path-params="[getTaxonParam()]"
+                          :endpoint-url-base="'taxa/%1/phenotypes'">
+                </endpoint>
+
+                <endpoint :name="'Gene on specific taxon'"
+                          :description="'Retrieves genes matching the identifier on the given taxon.'"
+                          :query-params="[]"
+                          :path-params="[getTaxonParam(), getGeneParam()]"
+                          :endpoint-url-base="'taxa/%1/genes/%2'">
+                </endpoint>
+
+                <endpoint :name="'Gene evidence on specific taxon'"
+                          :description="'Retrieves gene evidence for the gene on the given taxon.'"
+                          :query-params="[]"
+                          :path-params="[getTaxonParam(), getGeneParam()]"
+                          :endpoint-url-base="'taxa/%1/genes/%2/evidence'">
+                </endpoint>
+
+                <endpoint :name="'Gene location on specific taxon'"
+                          :description="'Retrieves gene evidence for the gene on the given taxon.'"
+                          :query-params="[]"
+                          :path-params="[getTaxonParam(), getGeneParam()]"
+                          :endpoint-url-base="'taxa/%1/genes/%2/locations'">
+                </endpoint>
+
+                <endpoint :name="'Genes at location'"
+                          :description="'Finds genes overlapping a given region.'"
+                          :query-params="[getStrandParam(), getStartParam(), getSizeParam()]"
+                          :path-params="[getTaxonParam(), getChromosomeParam()]"
+                          :endpoint-url-base="'taxa/%1/chromosomes/%2/genes'">
                 </endpoint>
             </div>
 
@@ -354,11 +399,18 @@
 
                                 <div class="preLike">{{ completeUrl }}</div>
 
-                                <button class="btn btn-primary" v-on:click="getResponse">Call API</button>
+                                <button class="btn btn-primary" v-on:click="getResponse"
+                                        title="Executes the call and displays the response in the response panel.">Call
+                                    API
+                                </button>
+                                <a v-bind:href="completeUrl" class="btn" target="_blank"
+                                   title="Calls the query in a new tab and lets your browser handle the response.">
+                                    Open link <span class="glyphicon glyphicon-link"></span>
+                                </a>
                             </form>
                         </div>
                         <div class="col-sm-6 responseCol">
-                            <div class="response">
+                            <div class="responseHeader">
                                 <h4>Response:
                                     <span v-if="status!=null" v-bind:class="[isError ? 'apiError' : 'apiOk', 'badge']"
                                           title="Response status code">
@@ -367,15 +419,19 @@
                                               v-bind:class="[isError ? 'glyphicon-remove' : 'glyphicon-ok', 'glyphicon']">
                                         </span>
                                     </span>
-                                    <a v-if="rawResponse!=null" v-bind:href="completeUrl" target="_blank">
-                                        <span class="badge" title="Re-runs the call in a new panel.">
-                                            link <span class="glyphicon glyphicon-link"></span>
-                                        </span>
-                                    </a>
+                                    <span v-if="status!=null && jsonResponse" class="badge">
+                                        JSON <span class="glyphicon glyphicon-file"></span>
+                                    </span>
+                                    <span v-if="status!=null && !jsonResponse" class="badge">
+                                        TEXT FILE <span class="glyphicon glyphicon-file"></span>
+                                    </span>
                                     <span class="badge invisible"><span class="glyphicon">&#160;</span></span>
                                 </h4>
                             </div>
                             <pre v-if="loadingMsgFull != null" class="response">{{ loadingMsgFull }}</pre>
+                            <!--<pre v-else-if="jsonResponse" class="response">-->
+                                <tree-view v-else-if="jsonResponse" class="preLike response" :data="response" :options="{maxDepth: 10}"></tree-view>
+                            <!--</pre>-->
                             <pre v-else class="response">{{ response }}</pre>
                         </div>
                     </div>
@@ -413,6 +469,7 @@
         <script src="https://unpkg.com/vue"></script>
         <script src="https://cdn.jsdelivr.net/npm/axios@0.12.0/dist/axios.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/lodash@4.13.1/lodash.min.js"></script>
+        <script src="js/vendor/vue-json-tree-view.min.js"></script>
         <script src="js/vue/app.js"></script>
         <!-- Other scripts -->
         <script src="js/vendor/modernizr-3.5.0.min.js"></script>

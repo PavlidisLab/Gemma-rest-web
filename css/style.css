@@ -22,7 +22,8 @@ footer {
   flex: 0 1 auto;
 }
 /* Styling settings */
-pre {
+pre,
+.preLike.response {
   background-color: white;
 }
 footer {
@@ -115,11 +116,11 @@ footer {
 .responseCol {
   max-width: 100%;
 }
-div.response {
+.responseHeader {
   width: 100%;
   max-width: 100%;
 }
-pre.response {
+.response {
   height: 100%;
   max-height: 300px;
   width: 100%;

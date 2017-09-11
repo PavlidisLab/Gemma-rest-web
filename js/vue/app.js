@@ -1,3 +1,5 @@
+Vue.use(TreeView);
+
 // noinspection JSUnusedGlobalSymbols // Used in html templates
 Vue.component('endpoint', {
     template: '#endpoint-template',
@@ -8,7 +10,11 @@ Vue.component('endpoint', {
         pathParams: Array,
         queryParams: Array,
         endpointUrlBase: String,
-        extensions: Array
+        extensions: Array,
+        jsonResponse: {
+            default: true,
+            type: Boolean
+        }
     },
 
     data: function () {
@@ -16,7 +22,6 @@ Vue.component('endpoint', {
             apiUrlBase: "http://localhost:8080/Gemma/rest/v2/",
             // apiUrlBase: "http://www.chibi.ubc.ca/Gemma/rest/v2/", //TODO change for production
             response: "{}",
-            rawResponse: null,
             show: false,
             status: null,
             isError: false,
@@ -31,7 +36,6 @@ Vue.component('endpoint', {
     methods: {
         computeUrl: function () {
             var url = this.apiUrlBase + this.endpointUrlBase;
-            var num = 1;
             this.pathParams.forEach(function (pParam) {
                 url = url.replace(/%\d+/, pParam.value);
             });
@@ -54,14 +58,12 @@ Vue.component('endpoint', {
                 .then(function (response) {
                     vm.showLoading = false;
                     vm.response = response.data;
-                    vm.rawResponse = response;
                     vm.isError = false;
                     vm.status = response.status;
                 })
                 .catch(function (error) {
                     vm.showLoading = false;
                     vm.response = error.data;
-                    vm.rawResponse = error;
                     vm.isError = true;
                     vm.status = error.status;
                 });
@@ -209,7 +211,7 @@ var datasetApi = new Vue({
         getGeneParam: function () {
             return {
                 name: "gene",
-                value: "DYRK1A",
+                value: "ENSG00000157540",
                 required: true,
                 description: geneDescription
             };
@@ -220,6 +222,46 @@ var datasetApi = new Vue({
                 value: "human",
                 required: true,
                 description: taxonDescription
+            };
+        },
+        getChromosomeParam: function() {
+            return {
+                name: "chromosome",
+                value: "21",
+                required: true,
+                description: "eg: 3, 21, X"
+            };
+        },
+        getStrandParam: function() {
+            return {
+                name: "strand",
+                value: "+",
+                required: false,
+                description: "'+' or '-'. Defaults to '+'. (WIP, currently does not do anything)."
+            };
+        },
+        getStartParam: function() {
+            return {
+                name: "start",
+                value: "37365790",
+                required: true,
+                description: "start of the region (nucleotide position)"
+            };
+        },
+        getSizeParam: function() {
+            return {
+                name: "size",
+                value: "1",
+                required: true,
+                description: "size of the region (in nucleotides)"
+            };
+        },
+        getEditableParam: function () {
+            return {
+                name: "editableOnly",
+                value: "false",
+                required: false,
+                description: "whether to only list editable phenotypes."
             };
         }
     }
