@@ -13,6 +13,7 @@ body {
   flex-flow: column;
 }
 header {
+  background: linear-gradient(to right, #0e8dbc, #179abc);
   flex: 0 1 auto;
 }
 #mainContent {
@@ -21,38 +22,38 @@ header {
 footer {
   flex: 0 1 auto;
 }
-/* Styling settings */
+/*
+
+Styling settings
+
+*/
 pre,
 .preLike.response {
-  background-color: white;
+  background-color: #ffffff;
 }
 footer {
   margin-top: 20px;
   padding-top: 20px;
   padding-bottom: 10px;
   color: #ffffff;
-  background-color: #a9a9a9;
+  background-color: #9b9b9b;
   box-shadow: inset 0 5px 5px -5px #000000;
 }
 .jumbotron {
   background-size: auto 100px;
-  background: url("../img/gemmaLogo.gif") no-repeat 5% 60% #f5f5f5;
+  background: url("../img/gemmaLogo.gif") no-repeat 5% 60%, linear-gradient(to right, #0e8dbc, #179abc);
 }
 .jumbotron .container h1 {
-  text-shadow: 0 0 20px rgba(255, 255, 255, 0.93);
   font-weight: bolder;
   font-size: 350%;
-  background-color: #9b9b9b;
-  color: transparent;
-  -webkit-background-clip: text;
-  -moz-background-clip: text;
-  background-clip: text;
+  color: white;
+  text-shadow: 0 1px 0 #cccccc, 0 2px 0 #c9c9c9, 0 3px 0 #bbbbbb, 0 4px 0 #b9b9b9, 0 5px 0 #aaaaaa, 0 6px 1px rgba(0, 0, 0, 0.1), 0 0 5px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.3), 0 3px 5px rgba(0, 0, 0, 0.2), 0 5px 10px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.2), 0 20px 20px rgba(0, 0, 0, 0.15);
 }
 #mainContent .endpoint {
   padding: 10px 0;
 }
 #mainContent .endpoint:nth-child(odd) {
-  background: whitesmoke;
+  background: #f5f5f5;
 }
 .endpoint h4 {
   height: 25px;
@@ -63,7 +64,7 @@ footer {
 .endpoint .header {
   cursor: pointer;
 }
-.endpoint .header h3 {
+.endpoint .header h4 {
   display: inline-block;
 }
 .endpoint .header .description {
@@ -73,16 +74,16 @@ footer {
 .endpoint .header .glyphicon,
 .endpointsGroupTitle .glyphicon {
   display: inline-block;
-  font-size: 150%;
+  font-size: 130%;
   color: #737373;
 }
 .endpointsGroupTitle {
   cursor: pointer;
 }
 .endpointsGroupTitle .glyphicon {
-  font-size: 180%;
+  font-size: 150%;
 }
-.endpointsGroupTitle h2 {
+.endpointsGroupTitle h3 {
   display: inline-block;
 }
 .rowPad {
@@ -97,11 +98,11 @@ footer {
   margin: 0 0 20px;
   font-size: 13px;
   line-height: 1.42857143;
-  color: #333;
+  color: #333333;
   word-break: normal;
   word-wrap: break-word;
   background-color: #f5f5f5;
-  border: 1px solid #ccc;
+  border: 1px solid #9b9b9b;
   border-radius: 4px;
   font-family: monospace, monospace;
 }
@@ -112,6 +113,26 @@ footer {
   white-space: pre-wrap;
   background-color: transparent;
   border-radius: 0;
+}
+.codePanel {
+  background: #333333;
+  border: none;
+  box-shadow: 0 0 5px #737373;
+}
+.codePanel .panel-heading {
+  background: #f5f5f5;
+  border: none;
+  font-size: 120%;
+  font-weight: bolder;
+}
+.codePanel .panel-body {
+  max-height: 300px;
+  overflow: auto;
+}
+.codeSample {
+  background: #333333;
+  border: none;
+  overflow: visible;
 }
 .responseCol {
   max-width: 100%;

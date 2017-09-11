@@ -109,14 +109,16 @@ Vue.component('api-param', {
 });
 
 // noinspection JSUnusedGlobalSymbols // Used in html templates
-var datasetApi = new Vue({
+var apiApp = new Vue({
     el: '#mainContent',
     data:{
         showDatasets: false,
         showPlatforms: false,
         showOther: false,
         showGenes: false,
-        showTaxa: false
+        showTaxa: false,
+        pythonExample: pythonCode,
+        rExample: rCode
     },
     methods: {
         // Parameter bundles getters

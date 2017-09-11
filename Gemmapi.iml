@@ -7,5 +7,6 @@
     <orderEntry type="library" name="analytics" level="application" />
     <orderEntry type="library" name="axios" level="application" />
     <orderEntry type="library" name="lodash" level="application" />
+    <orderEntry type="library" name="run_prettify" level="application" />
   </component>
 </module>

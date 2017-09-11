@@ -3,14 +3,17 @@
  * Using LESS CSS Compiler Plugin for the IntelliJ Platform: https://github.com/acdvorak/intellij-lessc-plugin
  */
 
-@baseFg: black;
-@darkFg: #737373;
-@invertFg: white;
-@headFg: rgba(255, 255, 255, 0.93);
-@footBg: darkgray;
-@headBg: #9b9b9b;
-@headBgLight: #b3f1ff;
+@darkest: black;
+@dark: #737373;
+@darkMed: #9b9b9b;
+@light: #f5f5f5;
+@lightest: white;
+
 @warning: gold;
+@codeBg: #333;
+@headFg: rgba(255, 255, 255, 0.93);
+@headBg: #0e8dbc;
+@headBg2: #179abc;
 
 @dim-tiny: 2px;
 @dim-small: 5px;
@@ -30,6 +33,7 @@ body {
 }
 
 header {
+    background: linear-gradient(to right, @headBg, @headBg2);
     flex: 0 1 auto;
 }
 
@@ -41,39 +45,46 @@ footer {
     flex: 0 1 auto;
 }
 
-/* Styling settings */
+/*
+
+Styling settings
+
+*/
 
 pre, .preLike.response {
-    background-color: white;
+    background-color: @lightest;
 }
 
 footer {
     margin-top: @dim-big;
     padding-top: @dim-big;
     padding-bottom: @dim-med;
-    color: @invertFg;
-    background-color: @footBg;
+    color: @lightest;
+    background-color: @darkMed;
     box-shadow: inset 0 @dim-small @dim-small -@dim-small black;
 }
 
 .jumbotron {
     background-size: auto 100px;
-    background: url("../img/gemmaLogo.gif") no-repeat 5% 60% whitesmoke;
+    background: url("../img/gemmaLogo.gif") no-repeat 5% 60%, linear-gradient(to right, @headBg, @headBg2);
 }
 
 .jumbotron .container h1 {
-    text-shadow: 0 0 @dim-big @headFg;
     font-weight: bolder;
     font-size: 350%;
-
-    background-color: @headBg;
-    color: transparent;
-
-    -webkit-background-clip: text;
-    //noinspection CssInvalidPropertyValue
-    -moz-background-clip: text;
-    //noinspection CssInvalidPropertyValue
-    background-clip: text;
+    color: white;
+    text-shadow: 0 1px 0 #ccc,
+    0 2px 0 #c9c9c9,
+    0 3px 0 #bbb,
+    0 4px 0 #b9b9b9,
+    0 5px 0 #aaa,
+    0 6px 1px rgba(0,0,0,.1),
+    0 0 5px rgba(0,0,0,.1),
+    0 1px 3px rgba(0,0,0,.3),
+    0 3px 5px rgba(0,0,0,.2),
+    0 5px 10px rgba(0,0,0,.25),
+    0 10px 10px rgba(0,0,0,.2),
+    0 20px 20px rgba(0,0,0,.15);
 }
 
 #mainContent .endpoint {
@@ -81,7 +92,7 @@ footer {
 }
 
 #mainContent .endpoint:nth-child(odd) {
-    background: whitesmoke;
+    background: @light;
 }
 
 .endpoint h4 {
@@ -95,7 +106,7 @@ footer {
     cursor: pointer;
 }
 
-.endpoint .header h3 {
+.endpoint .header h4 {
     display: inline-block;
 }
 
@@ -106,8 +117,8 @@ footer {
 
 .endpoint .header .glyphicon, .endpointsGroupTitle .glyphicon{
     display: inline-block;
-    font-size: 150%;
-    color: @darkFg;
+    font-size: 130%;
+    color: @dark;
 }
 
 .endpointsGroupTitle{
@@ -115,10 +126,10 @@ footer {
 }
 
 .endpointsGroupTitle .glyphicon{
-    font-size: 180%;
+    font-size: 150%;
 }
 
-.endpointsGroupTitle h2 {
+.endpointsGroupTitle h3 {
     display: inline-block;
 }
 
@@ -141,11 +152,11 @@ footer {
     margin: 0 0 20px;
     font-size: 13px;
     line-height: 1.42857143;
-    color: #333;
+    color: @codeBg;
     word-break: normal;
     word-wrap: break-word;
-    background-color: #f5f5f5;
-    border: 1px solid #ccc;
+    background-color: @light;
+    border: 1px solid @darkMed;
     border-radius: 4px;
 
     font-family: monospace, monospace;
@@ -158,6 +169,30 @@ footer {
     white-space: pre-wrap;
     background-color: transparent;
     border-radius: 0;
+}
+
+.codePanel{
+    background: @codeBg;
+    border: none;
+    box-shadow: 0 0 @dim-small @dark;
+}
+
+.codePanel .panel-heading{
+    background: @light;
+    border: none;
+    font-size: 120%;
+    font-weight: bolder;
+}
+
+.codePanel .panel-body{
+    max-height:300px;
+    overflow: auto;
+}
+
+.codeSample{
+    background: @codeBg;
+    border: none;
+    overflow: visible;
 }
 
 .responseCol {
@@ -179,7 +214,7 @@ footer {
 .badge {
     border-radius: 5px;
     padding: 5px;
-    color: @invertFg;
+    color: @lightest;
     font-weight: 900;
     font-size: 80%;
 }
@@ -204,7 +239,7 @@ footer {
 
 .browserUpgrade {
     background: @warning;
-    color: @baseFg;
+    color: @darkest;
 }
 
 /* Bootstrap tweaks */
