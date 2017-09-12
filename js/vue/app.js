@@ -111,7 +111,7 @@ Vue.component('api-param', {
 // noinspection JSUnusedGlobalSymbols // Used in html templates
 var apiApp = new Vue({
     el: '#mainContent',
-    data:{
+    data: {
         showDatasets: false,
         showPlatforms: false,
         showOther: false,
@@ -151,14 +151,34 @@ var apiApp = new Vue({
             return [
                 {name: "database", value: "", required: true, description: "The name of external database to match"},
                 this.getOffsetParam(),
-                {name: "limit", value: "10000", required: false, description: "Limit the number of results to this amount"}
+                {
+                    name: "limit",
+                    value: "10000",
+                    required: false,
+                    description: "Limit the number of results to this amount"
+                }
             ];
         },
-        getGeneCoexpQueryParams: function(){
+        getGeneCoexpQueryParams: function () {
             return [
-                {name: "with", value: "", required: true, description: "The gene to calculate the coexpression with. Same formatting rules as with the 'gene' arg. apply."},
-                {name: "limit", value: "100", required: false, description: "Limit the number of results to this amount"},
-                {name: "stringency", value: "1", required: false, description: "Optional parameter controlling the stringency of coexpression search. Defaults to 1"}
+                {
+                    name: "with",
+                    value: "",
+                    required: true,
+                    description: "The gene to calculate the coexpression with. Same formatting rules as with the 'gene' arg. apply."
+                },
+                {
+                    name: "limit",
+                    value: "100",
+                    required: false,
+                    description: "Limit the number of results to this amount"
+                },
+                {
+                    name: "stringency",
+                    value: "1",
+                    required: false,
+                    description: "Optional parameter controlling the stringency of coexpression search. Defaults to 1"
+                }
             ];
         },
 
@@ -226,7 +246,7 @@ var apiApp = new Vue({
                 description: taxonDescription
             };
         },
-        getChromosomeParam: function() {
+        getChromosomeParam: function () {
             return {
                 name: "chromosome",
                 value: "21",
@@ -234,7 +254,7 @@ var apiApp = new Vue({
                 description: "eg: 3, 21, X"
             };
         },
-        getStrandParam: function() {
+        getStrandParam: function () {
             return {
                 name: "strand",
                 value: "+",
@@ -242,7 +262,7 @@ var apiApp = new Vue({
                 description: "'+' or '-'. Defaults to '+'. (WIP, currently does not do anything)."
             };
         },
-        getStartParam: function() {
+        getStartParam: function () {
             return {
                 name: "start",
                 value: "37365790",
@@ -250,7 +270,7 @@ var apiApp = new Vue({
                 description: "start of the region (nucleotide position)"
             };
         },
-        getSizeParam: function() {
+        getSizeParam: function () {
             return {
                 name: "size",
                 value: "1",
@@ -268,4 +288,3 @@ var apiApp = new Vue({
         }
     }
 });
-
