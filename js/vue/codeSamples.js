@@ -44,9 +44,8 @@ var pythonCode = "\n" +
 
 var rCode = "\n" +
     "# Example script demonstrating usage of Gemma REST API\n" +
-    "# This script call the 'Datasets' endpoint (see the 'Api parameters' section)\n" +
-    "# and writes the result to a file (RESULT_FILE).\n" +
-    "# Author: Stepan Tesar\n" +
+    "# This script calls the 'Datasets' endpoint (see the 'Api parameters' section)\n" +
+    "# and writes the response data to a file (RESULT_FILE).\n" +
     "\n" +
     "library(httr)\n" +
     "library(jsonlite)\n" +

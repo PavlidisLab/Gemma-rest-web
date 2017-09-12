@@ -32,6 +32,7 @@ pre,
   background-color: #ffffff;
 }
 header {
+  padding-top: 20px;
   box-shadow: inset 0 -5px 5px -5px #000000;
 }
 .welcome {
@@ -56,30 +57,59 @@ footer {
   background-color: #9b9b9b;
   box-shadow: inset 0 5px 5px -5px #000000;
 }
+footer ul {
+  padding-left: 1px;
+}
+footer ul li {
+  list-style-type: none;
+  vertical-align: middle;
+}
+footer h4 {
+  font-weight: 100;
+}
+footer a {
+  color: #ffffff;
+  font-weight: bold;
+}
+footer h4 a {
+  font-weight: 100;
+  text-decoration: none;
+}
+footer a:hover {
+  color: #434343;
+  text-decoration: none;
+}
+footer .row img {
+  filter: grayscale(100%) drop-shadow(0 0 5px #737373);
+}
+footer .row img:hover {
+  filter: grayscale(100%) invert(64%) drop-shadow(0 0 5px #9b9b9b);
+}
 footer footer {
   background-color: #737373;
   padding-bottom: 20px;
 }
-footer ul li {
-  list-style-type: disc;
-  vertical-align: middle;
-}
-footer ul li a {
-  vertical-align: middle;
-}
-footer a {
-  color: #f5f5f5;
-}
-footer a:hover {
+footer footer h4 {
   color: #ffffff;
+  font-weight: bolder;
+}
+footer footer a {
   text-decoration: none;
 }
-footer .row img {
-  filter: grayscale(100%);
+footer footer a h4 {
+  color: #434343;
+  text-shadow: 0 0 10px #9b9b9b;
+}
+footer footer img {
+  filter: grayscale(100%) drop-shadow(0 0 5px #2b2b2b) invert(72%);
+}
+footer footer a:hover * {
+  color: #f5f5f5;
+  filter: grayscale(100%) drop-shadow(0 0 5px #2b2b2b);
 }
 .jumbotron {
   background-size: auto 100px;
-  background: url("../img/gemmaLogo.png") no-repeat 5% 60%, linear-gradient(to right, #0e8dbc, #179abc);
+  background: url("../img/gemmaLogo.png") no-repeat 5% 60%;
 }
 .jumbotron .container h1 {
   font-weight: bolder;

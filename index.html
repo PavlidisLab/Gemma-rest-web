@@ -1,15 +1,21 @@
 <!doctype html>
+<!-- Author: Stepan Tesar, Pavlidis Lab - UBC -->
 <html class="no-js" lang="" xmlns:v-on="http://www.w3.org/1999/xhtml" xmlns:v-bind="http://www.w3.org/1999/xhtml">
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
         <title>Gemma REST API interactive documentation</title>
-        <meta name="description" content="">
+
+        <meta name="description"
+              content="This website documents the usage of the Gemma REST API.
+              Here you can find example script usage of the API, as well as graphical
+              interface for each endpoint, with description of its parameters and the endpoint URL"
+        >
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="copyright" content="University of British Columbia">
 
         <link rel="manifest" href="site.webmanifest">
-        <link rel="apple-touch-icon" href="icon.png">
-        <!-- Place favicon.ico in the root directory -->
+        <link rel="apple-touch-icon" href="favicon-96x96.png">
 
         <link rel="stylesheet" href="css/normalize.css">
         <link rel="stylesheet" href="css/main.css">
@@ -437,41 +443,54 @@
                 <div class="row">
                     <a id="footer"></a>
                     <div class="col-xs-3">
-                        <img src="img/gemmaLogo.png">
+                        <a href="http://www.chibi.ubc.ca/Gemma" target="_blank" title="Gemma website">
+                            <img class="whiten" src="img/gemmaLogo.png" height="96"></a>
+                        <a href="https://github.com/ppavlidis/Gemma" target="_blank" title="GitHub project">
+                            <img src="img/githubLogo.png" height="64"></a>
                     </div>
                     <div class="col-xs-5">
-                        <h4><span class="glyphicon glyphicon-cog"></span> Gemma</h4>
+                        <h4>Gemma</h4>
                         <ul>
-                            <li><a href="http://gemma-doc.chibi.ubc.ca/" target="_blank">
-                                Gemma user manual & blog </a></li>
                             <li><a href="http://www.chibi.ubc.ca/Gemma" target="_blank">
-                                Gemma website</a></li>
+                                Website</a></li>
+                            <li><a href="http://gemma-doc.chibi.ubc.ca/" target="_blank">
+                                User manual & blog </a></li>
                             <li><a href="http://www.chibi.ubc.ca/Gemma/resources/apidocs/" target="_blank">
                                 Code documentation</a></li>
                             <li><a href="https://github.com/ppavlidis/Gemma" target="_blank">
-                                Gemma on Github</a></li>
+                                GitHub project</a></li>
                             <li><a href="http://www.chibi.ubc.ca/Gemma/rest/v2/" target="_blank">
                                 REST API Root</a></li>
                         </ul>
                     </div>
                     <div class="col-xs-4">
-                        <h4><span class="glyphicon glyphicon-link"></span> Other links</h4>
+                        <h4>Other links</h4>
                         <ul>
-                            <li><a href="https://www.chibi.ubc.ca/faculty/paul-pavlidis/pavlidis-lab/" target="_blank">The
-                                lab</a></li>
-                            <li><a
-                                href="https://www.chibi.ubc.ca/faculty/paul-pavlidis/pavlidis-lab/software-and-resources/"
-                                target="_blank">Other software</a></li>
+                            <li>
+                                <a href="https://www.chibi.ubc.ca/faculty/paul-pavlidis/pavlidis-lab/" target="_blank">
+                                    The lab
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://www.chibi.ubc.ca/faculty/paul-pavlidis/pavlidis-lab/software-and-resources/"
+                                   target="_blank">
+                                    Other software
+                                </a>
+                            </li>
                         </ul>
-                        <h4><a href="mailto:gemma@chibi.ubc.ca" target="_blank"><span
-                            class="glyphicon glyphicon-envelope"></span> Contact</a></h4>
+                        <h4>Contact</h4>
+                        <ul>
+                            <li><a href="mailto:gemma@chibi.ubc.ca" target="_blank">Email</a></li>
+                        </ul>
                     </div>
                 </div>
             </div>
             <footer>
                 <div class="container text-center">
-                    <h4>Copyright &copy; 2017 University of British Columbia</h4>
-                    <a href="http://www.ubc.ca/" target="_blank"><img src="img/ubcLogo.png" height="100px"></a>
+                    <a href="http://www.ubc.ca/" target="_blank" title="UBC home page">
+                        <h4>Copyright &copy; 2017 University of British Columbia</h4>
+                        <img src="img/ubcLogo.png" height="100px">
+                    </a>
                 </div>
             </footer>
         </footer>
@@ -483,7 +502,7 @@
                     <div class="header" v-on:click=" show= !show ">
                         <span
                             v-bind:class="[show ? 'glyphicon-collapse-up' : 'glyphicon-collapse-down', 'glyphicon']"></span>
-                        <h4> {{ name }}</h4>
+                        <h4>{{ name }}</h4>
                         <span class="description">{{ description }}</span>
                     </div>
                     <div class="row apiRow is-flex" v-if="show">
@@ -584,16 +603,16 @@
         <script src="js/vendor/modernizr-3.5.0.min.js"></script>
         <script src="js/plugins.js"></script>
         <script src="js/main.js"></script>
-        <!-- Google Analytics: change UA-XXXXX-Y to be your site's ID. -->
-        <script>
-            window.ga = function () {
-                ga.q.push(arguments)
-            };
-            ga.q = [];
-            ga.l = +new Date;
-            ga('create', 'UA-XXXXX-Y', 'auto');
-            ga('send', 'pageview')
-        </script>
-        <script src="https://www.google-analytics.com/analytics.js" async defer></script>
+
+        <!--<script>-->
+            <!--window.ga = function () {-->
+                <!--ga.q.push(arguments)-->
+            <!--};-->
+            <!--ga.q = [];-->
+            <!--ga.l = +new Date;-->
+            <!--ga('create', 'UA-XXXXX-Y', 'auto');-->
+            <!--ga('send', 'pageview')-->
+        <!--</script>-->
+        <!--<script src="https://www.google-analytics.com/analytics.js" async defer></script>-->
     </body>
 </html>
