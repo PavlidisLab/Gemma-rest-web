@@ -39,372 +39,394 @@
         </header>
 
         <div id="mainContent">
-            <div class="container welcome">
-                <h2>Welcome</h2>
-                <p>Here you can find example script usage of the API, as well as graphical interface for each endpoint,
-                    with description of its parameters and the endpoint URL.</p>
-                <p>The documentation of the underlying java code can be found <a
-                    href="http://www.chibi.ubc.ca/Gemma/resources/apidocs/ubic/gemma/web/services/rest/package-summary.html">here</a>.
-                </p>
 
-
-                <div class="alert alert-warning">
-                    The current release of the REST API does not have an authentication system implemented yet, which
-                    causes some of the endpoints to filter out results that require authorized access. Current
-                    work-around
-                    is to go to <a href="http://www.chibi.ubc.ca/Gemma/">the Gemma website</a> and log in. This will
-                    create
-                    an authorised session for your connection, that will be applied to the API calls as well.
+            <div class="welcome">
+                <div class="container">
+                    <h2>Welcome</h2>
+                    <p>This website documents the usage of the <a href="http://www.chibi.ubc.ca/Gemma/rest/v2/"
+                                                                  target="_blank">Gemma REST API</a>. Here
+                        you can find example script usage of the API, as well as graphical interface for each
+                        endpoint, with description of its parameters and the endpoint URL.</p>
+                    <p>The documentation of the underlying java code can be found <a
+                        href="http://www.chibi.ubc.ca/Gemma/resources/apidocs/ubic/gemma/web/services/rest/package-summary.html">here</a>.
+                        See the <a href="#footer">links section</a> in the footer of this page for other relevant links.
+                    </p>
+                    <div class="alert alert-warning">
+                        The current release of the REST API does not have an authentication system implemented yet,
+                        which
+                        causes some of the endpoints to filter out results that require authorized access. Current
+                        work-around
+                        is to go to <a href="http://www.chibi.ubc.ca/Gemma/">the Gemma website</a> and log in. This will
+                        create
+                        an authorised session for your connection, that will be applied to the API calls as well.
+                    </div>
                 </div>
             </div>
 
-            <div class="container">
-                <h2>Code samples</h2>
-                <p>Examples of the API usage in scripts.</p>
-            </div>
+            <div class="codeSamples">
+                <div class="container">
+                    <h2>Code samples</h2>
+                    <p>Examples of the API usage in scripts.</p>
+                </div>
 
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-sm-6">
-                        <div class="panel panel-default codePanel">
-                            <div class="panel-heading">
-                                Python
-                            </div>
-                            <div class="panel-body">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="panel panel-default codePanel">
+                                <div class="panel-heading">
+                                    Python
+                                </div>
+                                <div class="panel-body">
                                 <pre class="prettyprint codeSample">
                                     {{ pythonExample }}
                                 </pre>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-sm-6">
-                        <div class="panel panel-default codePanel">
-                            <div class="panel-heading">
-                                R.
-                            </div>
-                            <div class="panel-body">
+                        <div class="col-sm-6">
+                            <div class="panel panel-default codePanel">
+                                <div class="panel-heading">
+                                    R
+                                </div>
+                                <div class="panel-body">
                                 <pre class="prettyprint codeSample">
                                     {{ rExample }}
                                 </pre>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div class="container">
-                <h2>API Endpoints</h2>
-                <p>List of all API endpoints, with a GUI for test calls.</p>
-                <p>Click on the endpoint category to expand it, and then on each endpoint name to see its interface and
-                    parameters.</p>
-            </div>
-
-            <hr>
-
-            <div class="container endpointsGroupTitle" v-on:click=" showDatasets = !showDatasets">
-                <span
-                    v-bind:class="[showDatasets ? 'glyphicon-collapse-up' : 'glyphicon-collapse-down', 'glyphicon']"></span>
-                <h3>Dataset endpoints</h3>
-                <p>Endpoints accessing datasets (i.e. expression experiments), and their associated properties and
-                    files</p>
-            </div>
-
-            <div id="datasetEndpoints" v-show="showDatasets">
-
-                <endpoint :name="'All datasets'"
-                          :description="'Lists all datasets'"
-                          :query-params="getDatasetsAllQueryParams()"
-                          :path-params="[]"
-                          :endpoint-url-base="'datasets/'">
-                </endpoint>
-
-                <endpoint :name="'Specific dataset'"
-                          :description="'Retrieves single dataset based on the given dataset identifier'"
-                          :query-params="[]"
-                          :path-params="[getDatasetParam()]"
-                          :endpoint-url-base="'datasets/%1/'">
-                </endpoint>
-
-                <endpoint :name="'Dataset platforms'"
-                          :description="'Retrieves platforms for the given dataset'"
-                          :query-params="[]"
-                          :path-params="[getDatasetParam()]"
-                          :endpoint-url-base="'datasets/%1/platforms'">
-                </endpoint>
-
-                <endpoint :name="'Dataset samples'"
-                          :description="'Retrieves samples for the given dataset'"
-                          :query-params="[]"
-                          :path-params="[getDatasetParam()]"
-                          :endpoint-url-base="'datasets/%1/samples'">
-                </endpoint>
-
-                <endpoint :name="'Dataset differential analysis'"
-                          :description="'Retrieves the differential analysis results for the given dataset'"
-                          :query-params="getDatasetsDiffAnalQueryParams()"
-                          :path-params="[getDatasetParam()]"
-                          :endpoint-url-base="'datasets/%1/analyses/differential'">
-                </endpoint>
-
-                <endpoint :name="'Dataset annotations'"
-                          :description="'Retrieves the annotations for the given dataset'"
-                          :query-params="[]"
-                          :path-params="[getDatasetParam()]"
-                          :endpoint-url-base="'datasets/%1/annotations'">
-                </endpoint>
-
-                <endpoint :name="'Dataset data'"
-                          :description="'Retrieves the data for the given dataset'"
-                          :query-params="getDatasetsDataQueryParams()"
-                          :path-params="[getDatasetParam()]"
-                          :endpoint-url-base="'datasets/%1/data'"
-                          :json-response="false">
-                </endpoint>
-
-                <endpoint :name="'Dataset design'"
-                          :description="'Retrieves the design for the given dataset'"
-                          :query-params="[]"
-                          :path-params="[getDatasetParam()]"
-                          :endpoint-url-base="'datasets/%1/design'"
-                          :json-response="false">
-                </endpoint>
-
-                <div class="rowPad"></div>
-
-            </div>
-
-            <hr>
-
-            <div class="container endpointsGroupTitle" v-on:click=" showPlatforms = !showPlatforms">
-                <span
-                    v-bind:class="[showPlatforms ? 'glyphicon-collapse-up' : 'glyphicon-collapse-down', 'glyphicon']"></span>
-                <h3>Platform endpoints</h3>
-                <p>Endpoints accessing platforms, and their associated properties and files</p>
-            </div>
-
-            <div id="platformEndpoints" v-show="showPlatforms">
-
-                <endpoint :name="'All platforms'"
-                          :description="'List all platforms'"
-                          :query-params="getDatasetsAllQueryParams()"
-                          :path-params="[]"
-                          :endpoint-url-base="'platforms/'">
-                </endpoint>
-
-                <endpoint :name="'Specific platform'"
-                          :description="'Retrieves single platform based on the given dataset identifier'"
-                          :query-params="[]"
-                          :path-params="[getPlatformParam()]"
-                          :endpoint-url-base="'platforms/%1/'">
-                </endpoint>
-
-                <endpoint :name="'Platform datasets'"
-                          :description="'Retrieves experiments in the given platform'"
-                          :query-params="getOffsetLimitQueryParams()"
-                          :path-params="[getPlatformParam()]"
-                          :endpoint-url-base="'platforms/%1/datasets/'">
-                </endpoint>
-
-                <endpoint :name="'Platform elements'"
-                          :description="'Retrieves the composite sequences (elements) for the given platform'"
-                          :query-params="getOffsetLimitQueryParams()"
-                          :path-params="[getPlatformParam()]"
-                          :endpoint-url-base="'platforms/%1/elements/'">
-                </endpoint>
-
-                <endpoint :name="'Specific element on a platform'"
-                          :description="'Retrieves a specific composite sequence (element) for the given platform'"
-                          :query-params="[]"
-                          :path-params="getPlatformsElementPathParams()"
-                          :endpoint-url-base="'platforms/%1/elements/%2/'">
-                </endpoint>
-
-                <endpoint :name="'Platform element genes'"
-                          :description="'Retrieves the genes on the given platform element'"
-                          :query-params="getOffsetLimitQueryParams()"
-                          :path-params="getPlatformsElementPathParams()"
-                          :endpoint-url-base="'platforms/%1/elements/%2/genes/'">
-                </endpoint>
-
-                <endpoint :name="'Platform annotations'"
-                          :description="'Retrieves the annotation file for the given platform'"
-                          :query-params="[]"
-                          :path-params="[getPlatformParam()]"
-                          :endpoint-url-base="'platforms/%1/annotations/'"
-                          :json-response="false">
-                </endpoint>
-
-                <div class="rowPad"></div>
-
-            </div>
-
-            <hr>
-
-            <div class="container endpointsGroupTitle" v-on:click=" showGenes = !showGenes">
-                <span
-                    v-bind:class="[showGenes ? 'glyphicon-collapse-up' : 'glyphicon-collapse-down', 'glyphicon']"></span>
-                <h3>Gene endpoints</h3>
-                <p>Endpoints accessing genes (non taxon-specific). Most endpoints also have a
-                    taxon-specific counterpart in the 'Taxa endpoints'.</p>
-            </div>
-
-            <div id="geneEndpoints" v-show="showGenes">
+            <div class="endpoints">
 
                 <div class="container">
-                    <div class="alert alert-warning">
-                        Please be aware that the 'Official symbol' identifier of a gene refers to the set of homologues.
-                        Using the official symbol as a gene parameter for these endpoints will yield a random homologue.
-                        Use the methods from the 'Taxa endpoints' if you want to use the official symbol for a specific
-                        homologue.
-                    </div>
+                    <h2>API Endpoints</h2>
+                    <p>List of all API endpoints, with a GUI for test calls.</p>
+                    <p>Click on the endpoint category to expand it, and then on each endpoint name to see its interface
+                        and
+                        parameters.</p>
                 </div>
 
-                <endpoint :name="'Genes'"
-                          :description="'Retrieves all genes matching the identifier'"
+                <endpoint :name="'Root endpoint'"
+                          :description="'Displays a welcome message'"
                           :query-params="[]"
-                          :path-params="[getGeneParam()]"
-                          :endpoint-url-base="'genes/%1'">
+                          :path-params="[]"
+                          :endpoint-url-base="''">
                 </endpoint>
 
-                <endpoint :name="'Gene evidence'"
-                          :description="'Retrieves gene evidence for the given gene'"
-                          :query-params="[]"
-                          :path-params="[getGeneParam()]"
-                          :endpoint-url-base="'genes/%1/evidence'">
-                </endpoint>
+                <hr>
 
-                <endpoint :name="'Gene locations'"
-                          :description="'Retrieves the physical location of the given gene'"
-                          :query-params="[]"
-                          :path-params="[getGeneParam()]"
-                          :endpoint-url-base="'genes/%1/locations'">
-                </endpoint>
+                <div class="container endpointsGroupTitle" v-on:click=" showDatasets = !showDatasets">
+                <span
+                    v-bind:class="[showDatasets ? 'glyphicon-collapse-up' : 'glyphicon-collapse-down', 'glyphicon']"></span>
+                    <h3>Dataset endpoints</h3>
+                    <p>Endpoints accessing datasets (i.e. expression experiments), and their associated properties and
+                        files</p>
+                </div>
 
-                <endpoint :name="'Gene probes'"
-                          :description="'Retrieves the probes (composite sequences) with this gene'"
-                          :query-params="getOffsetLimitQueryParams()"
-                          :path-params="[getGeneParam()]"
-                          :endpoint-url-base="'genes/%1/probes'">
-                </endpoint>
+                <div id="datasetEndpoints" v-show="showDatasets">
 
-                <endpoint :name="'Gene goTerms'"
-                          :description="'Retrieves the GO terms of the given gene'"
-                          :query-params="[]"
-                          :path-params="[getGeneParam()]"
-                          :endpoint-url-base="'genes/%1/goTerms'">
-                </endpoint>
+                    <endpoint :name="'All datasets'"
+                              :description="'Lists all datasets'"
+                              :query-params="getDatasetsAllQueryParams()"
+                              :path-params="[]"
+                              :endpoint-url-base="'datasets/'">
+                    </endpoint>
 
-                <endpoint :name="'Gene coexpression'"
-                          :description="'Retrieves the coexpression of two given genes'"
-                          :query-params="getGeneCoexpQueryParams()"
-                          :path-params="[getGeneParam()]"
-                          :endpoint-url-base="'genes/%1/goTerms'">
-                </endpoint>
+                    <endpoint :name="'Specific dataset'"
+                              :description="'Retrieves single dataset based on the given dataset identifier'"
+                              :query-params="[]"
+                              :path-params="[getDatasetParam()]"
+                              :endpoint-url-base="'datasets/%1/'">
+                    </endpoint>
 
-                <div class="rowPad"></div>
+                    <endpoint :name="'Dataset platforms'"
+                              :description="'Retrieves platforms for the given dataset'"
+                              :query-params="[]"
+                              :path-params="[getDatasetParam()]"
+                              :endpoint-url-base="'datasets/%1/platforms'">
+                    </endpoint>
 
-            </div>
+                    <endpoint :name="'Dataset samples'"
+                              :description="'Retrieves samples for the given dataset'"
+                              :query-params="[]"
+                              :path-params="[getDatasetParam()]"
+                              :endpoint-url-base="'datasets/%1/samples'">
+                    </endpoint>
 
-            <hr>
+                    <endpoint :name="'Dataset differential analysis'"
+                              :description="'Retrieves the differential analysis results for the given dataset'"
+                              :query-params="getDatasetsDiffAnalQueryParams()"
+                              :path-params="[getDatasetParam()]"
+                              :endpoint-url-base="'datasets/%1/analyses/differential'">
+                    </endpoint>
 
-            <div class="container endpointsGroupTitle" v-on:click=" showTaxa = !showTaxa">
+                    <endpoint :name="'Dataset annotations'"
+                              :description="'Retrieves the annotations for the given dataset'"
+                              :query-params="[]"
+                              :path-params="[getDatasetParam()]"
+                              :endpoint-url-base="'datasets/%1/annotations'">
+                    </endpoint>
+
+                    <endpoint :name="'Dataset data'"
+                              :description="'Retrieves the data for the given dataset'"
+                              :query-params="getDatasetsDataQueryParams()"
+                              :path-params="[getDatasetParam()]"
+                              :endpoint-url-base="'datasets/%1/data'"
+                              :json-response="false">
+                    </endpoint>
+
+                    <endpoint :name="'Dataset design'"
+                              :description="'Retrieves the design for the given dataset'"
+                              :query-params="[]"
+                              :path-params="[getDatasetParam()]"
+                              :endpoint-url-base="'datasets/%1/design'"
+                              :json-response="false">
+                    </endpoint>
+
+                    <div class="rowPad"></div>
+
+                </div>
+
+                <hr>
+
+                <div class="container endpointsGroupTitle" v-on:click=" showPlatforms = !showPlatforms">
+                <span
+                    v-bind:class="[showPlatforms ? 'glyphicon-collapse-up' : 'glyphicon-collapse-down', 'glyphicon']"></span>
+                    <h3>Platform endpoints</h3>
+                    <p>Endpoints accessing platforms, and their associated properties and files</p>
+                </div>
+
+                <div id="platformEndpoints" v-show="showPlatforms">
+
+                    <endpoint :name="'All platforms'"
+                              :description="'List all platforms'"
+                              :query-params="getDatasetsAllQueryParams()"
+                              :path-params="[]"
+                              :endpoint-url-base="'platforms/'">
+                    </endpoint>
+
+                    <endpoint :name="'Specific platform'"
+                              :description="'Retrieves single platform based on the given dataset identifier'"
+                              :query-params="[]"
+                              :path-params="[getPlatformParam()]"
+                              :endpoint-url-base="'platforms/%1/'">
+                    </endpoint>
+
+                    <endpoint :name="'Platform datasets'"
+                              :description="'Retrieves experiments in the given platform'"
+                              :query-params="getOffsetLimitQueryParams()"
+                              :path-params="[getPlatformParam()]"
+                              :endpoint-url-base="'platforms/%1/datasets/'">
+                    </endpoint>
+
+                    <endpoint :name="'Platform elements'"
+                              :description="'Retrieves the composite sequences (elements) for the given platform'"
+                              :query-params="getOffsetLimitQueryParams()"
+                              :path-params="[getPlatformParam()]"
+                              :endpoint-url-base="'platforms/%1/elements/'">
+                    </endpoint>
+
+                    <endpoint :name="'Specific element on a platform'"
+                              :description="'Retrieves a specific composite sequence (element) for the given platform'"
+                              :query-params="[]"
+                              :path-params="getPlatformsElementPathParams()"
+                              :endpoint-url-base="'platforms/%1/elements/%2/'">
+                    </endpoint>
+
+                    <endpoint :name="'Platform element genes'"
+                              :description="'Retrieves the genes on the given platform element'"
+                              :query-params="getOffsetLimitQueryParams()"
+                              :path-params="getPlatformsElementPathParams()"
+                              :endpoint-url-base="'platforms/%1/elements/%2/genes/'">
+                    </endpoint>
+
+                    <endpoint :name="'Platform annotations'"
+                              :description="'Retrieves the annotation file for the given platform'"
+                              :query-params="[]"
+                              :path-params="[getPlatformParam()]"
+                              :endpoint-url-base="'platforms/%1/annotations/'"
+                              :json-response="false">
+                    </endpoint>
+
+                    <div class="rowPad"></div>
+
+                </div>
+
+                <hr>
+
+                <div class="container endpointsGroupTitle" v-on:click=" showGenes = !showGenes">
+                <span
+                    v-bind:class="[showGenes ? 'glyphicon-collapse-up' : 'glyphicon-collapse-down', 'glyphicon']"></span>
+                    <h3>Gene endpoints</h3>
+                    <p>Endpoints accessing genes (non taxon-specific). Most endpoints also have a
+                        taxon-specific counterpart in the 'Taxa endpoints'.</p>
+                </div>
+
+                <div id="geneEndpoints" v-show="showGenes">
+
+                    <div class="container">
+                        <div class="alert alert-warning">
+                            Please be aware that the 'Official symbol' identifier of a gene refers to the set of
+                            homologues.
+                            Using the official symbol as a gene parameter for these endpoints will yield a random
+                            homologue.
+                            Use the methods from the 'Taxa endpoints' if you want to use the official symbol for a
+                            specific
+                            homologue.
+                        </div>
+                    </div>
+
+                    <endpoint :name="'Genes'"
+                              :description="'Retrieves all genes matching the identifier'"
+                              :query-params="[]"
+                              :path-params="[getGeneParam()]"
+                              :endpoint-url-base="'genes/%1'">
+                    </endpoint>
+
+                    <endpoint :name="'Gene evidence'"
+                              :description="'Retrieves gene evidence for the given gene'"
+                              :query-params="[]"
+                              :path-params="[getGeneParam()]"
+                              :endpoint-url-base="'genes/%1/evidence'">
+                    </endpoint>
+
+                    <endpoint :name="'Gene locations'"
+                              :description="'Retrieves the physical location of the given gene'"
+                              :query-params="[]"
+                              :path-params="[getGeneParam()]"
+                              :endpoint-url-base="'genes/%1/locations'">
+                    </endpoint>
+
+                    <endpoint :name="'Gene probes'"
+                              :description="'Retrieves the probes (composite sequences) with this gene'"
+                              :query-params="getOffsetLimitQueryParams()"
+                              :path-params="[getGeneParam()]"
+                              :endpoint-url-base="'genes/%1/probes'">
+                    </endpoint>
+
+                    <endpoint :name="'Gene goTerms'"
+                              :description="'Retrieves the GO terms of the given gene'"
+                              :query-params="[]"
+                              :path-params="[getGeneParam()]"
+                              :endpoint-url-base="'genes/%1/goTerms'">
+                    </endpoint>
+
+                    <endpoint :name="'Gene coexpression'"
+                              :description="'Retrieves the coexpression of two given genes'"
+                              :query-params="getGeneCoexpQueryParams()"
+                              :path-params="[getGeneParam()]"
+                              :endpoint-url-base="'genes/%1/goTerms'">
+                    </endpoint>
+
+                    <div class="rowPad"></div>
+
+                </div>
+
+                <hr>
+
+                <div class="container endpointsGroupTitle" v-on:click=" showTaxa = !showTaxa">
                 <span
                     v-bind:class="[showTaxa ? 'glyphicon-collapse-up' : 'glyphicon-collapse-down', 'glyphicon']"></span>
-                <h3>Taxa endpoints</h3>
-                <p>Endpoints accessing data for specific taxa. E.g: Taxon-specific genes or datasets</p>
-            </div>
+                    <h3>Taxa endpoints</h3>
+                    <p>Endpoints accessing data for specific taxa. E.g: Taxon-specific genes or datasets</p>
+                </div>
 
-            <div id="taxaEndpoints" v-show="showTaxa">
-                <endpoint :name="'All taxa'"
-                          :description="'Lists all available taxa.'"
-                          :query-params="[]"
-                          :path-params="[]"
-                          :endpoint-url-base="'taxa/'">l
-                </endpoint>
+                <div id="taxaEndpoints" v-show="showTaxa">
+                    <endpoint :name="'All taxa'"
+                              :description="'Lists all available taxa.'"
+                              :query-params="[]"
+                              :path-params="[]"
+                              :endpoint-url-base="'taxa/'">l
+                    </endpoint>
 
-                <endpoint :name="'Specific taxon'"
-                          :description="'Retrieves single taxon based on the given identifier.'"
-                          :query-params="[]"
-                          :path-params="[getTaxonParam()]"
-                          :endpoint-url-base="'taxa/%1'">
-                </endpoint>
+                    <endpoint :name="'Specific taxon'"
+                              :description="'Retrieves single taxon based on the given identifier.'"
+                              :query-params="[]"
+                              :path-params="[getTaxonParam()]"
+                              :endpoint-url-base="'taxa/%1'">
+                    </endpoint>
 
-                <endpoint :name="'Taxon datasets'"
-                          :description="'Retrieves datasets for the given taxon.'"
-                          :query-params="getDatasetsAllQueryParams()"
-                          :path-params="[getTaxonParam()]"
-                          :endpoint-url-base="'taxa/%1/datasets'">
-                </endpoint>
+                    <endpoint :name="'Taxon datasets'"
+                              :description="'Retrieves datasets for the given taxon.'"
+                              :query-params="getDatasetsAllQueryParams()"
+                              :path-params="[getTaxonParam()]"
+                              :endpoint-url-base="'taxa/%1/datasets'">
+                    </endpoint>
 
-                <endpoint :name="'Taxon phenotypes'"
-                          :description="'Loads all phenotypes for the given taxon.'"
-                          :query-params="[getEditableParam()]"
-                          :path-params="[getTaxonParam()]"
-                          :endpoint-url-base="'taxa/%1/phenotypes'">
-                </endpoint>
+                    <endpoint :name="'Taxon phenotypes'"
+                              :description="'Loads all phenotypes for the given taxon.'"
+                              :query-params="[getEditableParam()]"
+                              :path-params="[getTaxonParam()]"
+                              :endpoint-url-base="'taxa/%1/phenotypes'">
+                    </endpoint>
 
-                <endpoint :name="'Gene on specific taxon'"
-                          :description="'Retrieves genes matching the identifier on the given taxon.'"
-                          :query-params="[]"
-                          :path-params="[getTaxonParam(), getGeneParam()]"
-                          :endpoint-url-base="'taxa/%1/genes/%2'">
-                </endpoint>
+                    <endpoint :name="'Gene on specific taxon'"
+                              :description="'Retrieves genes matching the identifier on the given taxon.'"
+                              :query-params="[]"
+                              :path-params="[getTaxonParam(), getGeneParam()]"
+                              :endpoint-url-base="'taxa/%1/genes/%2'">
+                    </endpoint>
 
-                <endpoint :name="'Gene evidence on specific taxon'"
-                          :description="'Retrieves gene evidence for the gene on the given taxon.'"
-                          :query-params="[]"
-                          :path-params="[getTaxonParam(), getGeneParam()]"
-                          :endpoint-url-base="'taxa/%1/genes/%2/evidence'">
-                </endpoint>
+                    <endpoint :name="'Gene evidence on specific taxon'"
+                              :description="'Retrieves gene evidence for the gene on the given taxon.'"
+                              :query-params="[]"
+                              :path-params="[getTaxonParam(), getGeneParam()]"
+                              :endpoint-url-base="'taxa/%1/genes/%2/evidence'">
+                    </endpoint>
 
-                <endpoint :name="'Gene location on specific taxon'"
-                          :description="'Retrieves gene evidence for the gene on the given taxon.'"
-                          :query-params="[]"
-                          :path-params="[getTaxonParam(), getGeneParam()]"
-                          :endpoint-url-base="'taxa/%1/genes/%2/locations'">
-                </endpoint>
+                    <endpoint :name="'Gene location on specific taxon'"
+                              :description="'Retrieves gene evidence for the gene on the given taxon.'"
+                              :query-params="[]"
+                              :path-params="[getTaxonParam(), getGeneParam()]"
+                              :endpoint-url-base="'taxa/%1/genes/%2/locations'">
+                    </endpoint>
 
-                <endpoint :name="'Genes at location'"
-                          :description="'Finds genes overlapping a given region.'"
-                          :query-params="[getStrandParam(), getStartParam(), getSizeParam()]"
-                          :path-params="[getTaxonParam(), getChromosomeParam()]"
-                          :endpoint-url-base="'taxa/%1/chromosomes/%2/genes'">
-                </endpoint>
-            </div>
+                    <endpoint :name="'Genes at location'"
+                              :description="'Finds genes overlapping a given region.'"
+                              :query-params="[getStrandParam(), getStartParam(), getSizeParam()]"
+                              :path-params="[getTaxonParam(), getChromosomeParam()]"
+                              :endpoint-url-base="'taxa/%1/chromosomes/%2/genes'">
+                    </endpoint>
+                </div>
 
-            <hr>
+                <hr>
 
-            <div class="container endpointsGroupTitle" v-on:click=" showOther = !showOther">
+                <div class="container endpointsGroupTitle" v-on:click=" showOther = !showOther">
                 <span
                     v-bind:class="[showOther ? 'glyphicon-collapse-up' : 'glyphicon-collapse-down', 'glyphicon']"></span>
-                <h3>Other endpoints</h3>
-                <p>Endpoints accessing more general information that would not fit in other categories.</p>
-            </div>
+                    <h3>Other endpoints</h3>
+                    <p>Endpoints accessing more general information that would not fit in other categories.</p>
+                </div>
 
-            <div id="otherEndpoints" v-show="showOther">
+                <div id="otherEndpoints" v-show="showOther">
 
-                <endpoint :name="'Annotation search'"
-                          :description="'Does a search for ontology terms based on the given string'"
-                          :query-params="[getTaxonSearchParam()]"
-                          :path-params="[getSearchParam()]"
-                          :endpoint-url-base="'annotations/search/%1'">
-                </endpoint>
+                    <endpoint :name="'Annotation search'"
+                              :description="'Does a search for ontology terms based on the given string'"
+                              :query-params="[getTaxonSearchParam()]"
+                              :path-params="[getSearchParam()]"
+                              :endpoint-url-base="'annotations/search/%1'">
+                    </endpoint>
 
-                <endpoint :name="'Evidence'"
-                          :description="'Finds all evidence with the given external database name'"
-                          :query-params="getEvidenceQueryParams()"
-                          :path-params="[]"
-                          :endpoint-url-base="'phenotypes/evidence/'">
-                </endpoint>
+                    <endpoint :name="'Evidence'"
+                              :description="'Finds all evidence with the given external database name'"
+                              :query-params="getEvidenceQueryParams()"
+                              :path-params="[]"
+                              :endpoint-url-base="'phenotypes/evidence/'">
+                    </endpoint>
 
-                <endpoint :name="'Dumps'"
-                          :description="'Retrieves information about external data sources from Phenocarta, including URLs and timestamps of the most recent update dates/times'"
-                          :query-params="[]"
-                          :path-params="[]"
-                          :endpoint-url-base="'phenotypes/dumps/'">
-                </endpoint>
+                    <endpoint :name="'Dumps'"
+                              :description="'Retrieves information about external data sources from Phenocarta, including URLs and timestamps of the most recent update dates/times'"
+                              :query-params="[]"
+                              :path-params="[]"
+                              :endpoint-url-base="'phenotypes/dumps/'">
+                    </endpoint>
 
-                <div class="rowPad"></div>
+                    <div class="rowPad"></div>
+
+                </div>
 
             </div>
 
@@ -412,8 +434,41 @@
 
         <footer>
             <div class="container">
-                <p>Copyright &copy; 2017 University of British Columbia</p>
+                <div class="row">
+                    <a id="footer"></a>
+                    <div class="col-xs-3">
+                        <img src="img/gemmaLogo.png">
+                    </div>
+                    <div class="col-xs-5">
+                        <h4><span class="glyphicon glyphicon-cog"></span> Gemma</h4>
+                        <ul>
+                            <li><a href="http://gemma-doc.chibi.ubc.ca/" target="_blank">
+                                Gemma user manual & blog </a></li>
+                            <li><a href="http://www.chibi.ubc.ca/Gemma" target="_blank">
+                                Gemma website</a></li>
+                            <li><a href="http://www.chibi.ubc.ca/Gemma/resources/apidocs/" target="_blank">
+                                Code documentation</a></li>
+                            <li><a href="https://github.com/ppavlidis/Gemma" target="_blank">
+                                Gemma on Github</a></li>
+                            <li><a href="http://www.chibi.ubc.ca/Gemma/rest/v2/" target="_blank">
+                                REST API Root</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-xs-4">
+                        <h4><span class="glyphicon glyphicon-link"></span> Other links</h4>
+                        <ul>
+                            <li><a href="https://www.chibi.ubc.ca/faculty/paul-pavlidis/pavlidis-lab/" target="_blank">The lab</a></li>
+                            <li><a href="https://www.chibi.ubc.ca/faculty/paul-pavlidis/pavlidis-lab/software-and-resources/" target="_blank">Other software</a></li>
+                        </ul>
+                    </div>
+                </div>
             </div>
+            <footer>
+                <div class="container text-center">
+                    <h4>Copyright &copy; 2017 University of British Columbia</h4>
+                    <a href="http://www.ubc.ca/" target="_blank"><img src="img/ubcLogo.png" height="100px"></a>
+                </div>
+            </footer>
         </footer>
 
         <!-- Vue templates -->
@@ -437,6 +492,10 @@
 
                                 <div v-for="param in queryParams" class="paramRow">
                                     <api-param :param="param"></api-param>
+                                </div>
+
+                                <div v-if="pathParams.length == 0 && queryParams.length == 0" class="paramRow">
+                                    <span class="preLike">No parameters</span>
                                 </div>
 
                                 <div class="preLike">{{ completeUrl }}</div>

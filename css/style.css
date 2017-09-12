@@ -31,23 +31,61 @@ pre,
 .preLike.response {
   background-color: #ffffff;
 }
+header {
+  box-shadow: inset 0 -5px 5px -5px #000000;
+}
+.welcome {
+  background: #f5f5f5;
+  padding: 20px 0;
+  box-shadow: inset 0 -5px 5px -5px #000000;
+}
+.codeSamples {
+  padding: 20px 0;
+  box-shadow: inset 0 -5px 5px -5px #000000;
+}
+.codeSamples .container-fluid {
+  padding: 20px 20px;
+}
+.endpoints {
+  padding: 20px 0;
+}
 footer {
   margin-top: 20px;
   padding-top: 20px;
-  padding-bottom: 10px;
   color: #ffffff;
   background-color: #9b9b9b;
   box-shadow: inset 0 5px 5px -5px #000000;
 }
+footer footer {
+  background-color: #737373;
+  padding-bottom: 20px;
+}
+footer ul li {
+  list-style-type: disc;
+  vertical-align: middle;
+}
+footer ul li a {
+  vertical-align: middle;
+}
+footer a {
+  color: #f5f5f5;
+}
+footer a:hover {
+  color: #ffffff;
+  text-decoration: none;
+}
+footer .row img {
+  filter: grayscale(100%);
+}
 .jumbotron {
   background-size: auto 100px;
-  background: url("../img/gemmaLogo.gif") no-repeat 5% 60%, linear-gradient(to right, #0e8dbc, #179abc);
+  background: url("../img/gemmaLogo.png") no-repeat 5% 60%, linear-gradient(to right, #0e8dbc, #179abc);
 }
 .jumbotron .container h1 {
   font-weight: bolder;
   font-size: 350%;
   color: white;
-  text-shadow: 0 1px 0 #cccccc, 0 2px 0 #c9c9c9, 0 3px 0 #bbbbbb, 0 4px 0 #b9b9b9, 0 5px 0 #aaaaaa, 0 6px 1px rgba(0, 0, 0, 0.1), 0 0 5px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.3), 0 3px 5px rgba(0, 0, 0, 0.2), 0 5px 10px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.2), 0 20px 20px rgba(0, 0, 0, 0.15);
+  text-shadow: 0 1px 0 #cccccc, 0 2px 0 #c9c9c9, 0 3px 0 #bbbbbb, 0 6px 1px rgba(0, 0, 0, 0.1), 0 0 5px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.3), 0 3px 5px rgba(0, 0, 0, 0.2), 0 5px 10px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.2), 0 20px 20px rgba(0, 0, 0, 0.15);
 }
 #mainContent .endpoint {
   padding: 10px 0;
@@ -126,7 +164,7 @@ footer {
   font-weight: bolder;
 }
 .codePanel .panel-body {
-  max-height: 300px;
+  height: 300px;
   overflow: auto;
 }
 .codeSample {

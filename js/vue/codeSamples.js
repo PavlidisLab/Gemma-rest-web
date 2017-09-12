@@ -42,4 +42,44 @@ var pythonCode = "\n" +
     "\n" +
     "print \"Processed %s rows in total.\" % total";
 
-var rCode = " working on it!";
+var rCode = "\n" +
+    "# Example script demonstrating usage of Gemma REST API\n" +
+    "# This script call the 'Datasets' endpoint (see the 'Api parameters' section)\n" +
+    "# and writes the result to a file (RESULT_FILE).\n" +
+    "# Author: Stepan Tesar\n" +
+    "\n" +
+    "library(httr)\n" +
+    "library(jsonlite)\n" +
+    "library(RCurl)\n" +
+    "\n" +
+    "# Constants\n" +
+    "BASE_URL <- 'http://www.chibi.ubc.ca/Gemma/rest/v2'\n" +
+    "RESULT_FILE <- './rGemmaData.csv'\n" +
+    "\n" +
+    "# Api parameters\n" +
+    "\n" +
+    "offset <- '100'\n" +
+    "limit <- '10'\n" +
+    "sort <- curlEscape('+id')\n" +
+    "\n" +
+    "# Api call\n" +
+    "url  <- paste(BASE_URL, '/datasets', '?offset=', offset, '&limit=', limit, '&sort=', sort, sep='')\n" +
+    "cat(\"Calling gemma REST API:\", url, '\\n')\n" +
+    "raw.result <- GET(url = url)\n" +
+    "this.content <- fromJSON(rawToChar(raw.result$content))\n" +
+    "\n" +
+    "# Response check\n" +
+    "if(raw.result$status_code != 200){\n" +
+    "  cat(\"Received a response with status\", raw.result$status_code, '\\n', file = stderr())\n" +
+    "  stop(this.content$error$message);\n" +
+    "}\n" +
+    "\n" +
+    "# Change the 'list of lists' to a dataframe\n" +
+    "this.content.df <- do.call(what = \"rbind\", args = lapply(this.content, as.data.frame))\n" +
+    "\n" +
+    "# Remove differentialAnalyses subclass (required to flatten the data in order to write it in the file)\n" +
+    "this.content.df$differentialExpressionAnalyses <- NULL\n" +
+    "# this.content.df <- this.content.df[,!names(this.content.df) == \"differentialExpressionAnalyses\"] \n" +
+    "\n" +
+    "# Output as csv\n" +
+    "write.csv(file=RESULT_FILE, x=this.content.df)\n";

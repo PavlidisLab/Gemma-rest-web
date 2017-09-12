@@ -4,6 +4,7 @@
  */
 
 @darkest: black;
+@darker: #2b2b2b;
 @dark: #737373;
 @darkMed: #9b9b9b;
 @light: #f5f5f5;
@@ -12,8 +13,9 @@
 @warning: gold;
 @codeBg: #333;
 @headFg: rgba(255, 255, 255, 0.93);
-@headBg: #0e8dbc;
-@headBg2: #179abc;
+@blueDarkest: #0e8dbc;
+@blueDark: #179abc;
+@blueMed: #cdffcd;
 
 @dim-tiny: 2px;
 @dim-small: 5px;
@@ -33,7 +35,7 @@ body {
 }
 
 header {
-    background: linear-gradient(to right, @headBg, @headBg2);
+    background: linear-gradient(to right, @blueDarkest, @blueDark);
     flex: 0 1 auto;
 }
 
@@ -55,18 +57,67 @@ pre, .preLike.response {
     background-color: @lightest;
 }
 
+header {
+    box-shadow: inset 0 -@dim-small @dim-small -@dim-small black;
+}
+
+.welcome {
+    background: @light;
+    padding: @dim-big 0;
+    box-shadow: inset 0 -@dim-small @dim-small -@dim-small black;
+}
+
+.codeSamples {
+    padding: @dim-big 0;
+    box-shadow: inset 0 -@dim-small @dim-small -@dim-small black;
+}
+
+.codeSamples .container-fluid {
+    padding: @dim-big @dim-big;
+}
+
+.endpoints {
+    padding: @dim-big 0;
+}
+
 footer {
     margin-top: @dim-big;
     padding-top: @dim-big;
-    padding-bottom: @dim-med;
     color: @lightest;
     background-color: @darkMed;
     box-shadow: inset 0 @dim-small @dim-small -@dim-small black;
 }
 
+footer footer {
+    background-color: @dark;
+    padding-bottom: @dim-big;
+}
+
+footer ul li {
+    list-style-type: disc;
+    vertical-align: middle;
+}
+
+footer ul li a {
+    vertical-align:middle;
+}
+
+footer a {
+    color: @light;
+}
+
+footer a:hover {
+    color: @lightest;
+    text-decoration: none;
+}
+
+footer .row img{
+    filter: grayscale(100%);
+}
+
 .jumbotron {
     background-size: auto 100px;
-    background: url("../img/gemmaLogo.gif") no-repeat 5% 60%, linear-gradient(to right, @headBg, @headBg2);
+    background: url("../img/gemmaLogo.png") no-repeat 5% 60%, linear-gradient(to right, @blueDarkest, @blueDark);
 }
 
 .jumbotron .container h1 {
@@ -76,15 +127,13 @@ footer {
     text-shadow: 0 1px 0 #ccc,
     0 2px 0 #c9c9c9,
     0 3px 0 #bbb,
-    0 4px 0 #b9b9b9,
-    0 5px 0 #aaa,
-    0 6px 1px rgba(0,0,0,.1),
-    0 0 5px rgba(0,0,0,.1),
-    0 1px 3px rgba(0,0,0,.3),
-    0 3px 5px rgba(0,0,0,.2),
-    0 5px 10px rgba(0,0,0,.25),
-    0 10px 10px rgba(0,0,0,.2),
-    0 20px 20px rgba(0,0,0,.15);
+    0 6px 1px rgba(0, 0, 0, .1),
+    0 0 5px rgba(0, 0, 0, .1),
+    0 1px 3px rgba(0, 0, 0, .3),
+    0 3px 5px rgba(0, 0, 0, .2),
+    0 5px 10px rgba(0, 0, 0, .25),
+    0 10px 10px rgba(0, 0, 0, .2),
+    0 20px 20px rgba(0, 0, 0, .15);
 }
 
 #mainContent .endpoint {
@@ -115,17 +164,17 @@ footer {
     margin-left: @dim-big;
 }
 
-.endpoint .header .glyphicon, .endpointsGroupTitle .glyphicon{
+.endpoint .header .glyphicon, .endpointsGroupTitle .glyphicon {
     display: inline-block;
     font-size: 130%;
     color: @dark;
 }
 
-.endpointsGroupTitle{
+.endpointsGroupTitle {
     cursor: pointer;
 }
 
-.endpointsGroupTitle .glyphicon{
+.endpointsGroupTitle .glyphicon {
     font-size: 150%;
 }
 
@@ -171,25 +220,25 @@ footer {
     border-radius: 0;
 }
 
-.codePanel{
+.codePanel {
     background: @codeBg;
     border: none;
     box-shadow: 0 0 @dim-small @dark;
 }
 
-.codePanel .panel-heading{
+.codePanel .panel-heading {
     background: @light;
     border: none;
     font-size: 120%;
     font-weight: bolder;
 }
 
-.codePanel .panel-body{
-    max-height:300px;
+.codePanel .panel-body {
+    height: 300px;
     overflow: auto;
 }
 
-.codeSample{
+.codeSample {
     background: @codeBg;
     border: none;
     overflow: visible;
