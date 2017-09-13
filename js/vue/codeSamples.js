@@ -1,3 +1,4 @@
+// Author: Stepan Tesar
 var pythonCode = "\n" +
     "# loads all elements of a specific platform (see 'url' variable) in increments of 'limit'\n" +
     "# and writes transcripts for each element into a file (see variable 'f').\n" +
