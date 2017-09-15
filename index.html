@@ -554,10 +554,8 @@
                                 </h5>
                             </div>
                             <pre v-if="loadingMsgFull != null" class="response">{{ loadingMsgFull }}</pre>
-                            <!--<pre v-else-if="jsonResponse" class="response">-->
                             <tree-view v-else-if="jsonResponse" class="preLike response" :data="response"
-                                       :options="{maxDepth: 10}"></tree-view>
-                            <!--</pre>-->
+                                       :options="{maxDepth: 2, rootObjectKey: ''}"></tree-view>
                             <pre v-else class="response">{{ response }}</pre>
                         </div>
                     </div>
