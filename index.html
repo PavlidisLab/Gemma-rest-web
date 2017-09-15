@@ -58,13 +58,23 @@
                         See the <a href="#footer">links section</a> in the footer of this page for other relevant links.
                     </p>
                     <div class="alert alert-warning">
-                        The current release of the REST API does not have an authentication system implemented yet,
-                        which
-                        causes some of the endpoints to filter out results that require authorized access. Current
-                        work-around
-                        is to go to <a href="http://www.chibi.ubc.ca/Gemma/">the Gemma website</a> and log in. This will
-                        create
-                        an authorised session for your connection, that will be applied to the API calls as well.
+                        <p>
+                            The current release of the REST API does not have an authentication system implemented yet,
+                            which causes some of the endpoints to filter out results that require authorized access.
+                        </p>
+                        <p>
+                            These are notably experiments and platforms that are marked as unusable or private, and it
+                            is unlikely you would want them included in your data processing in the first place ('not
+                            a bug, but a feature!').
+                        </p>
+                        <p>
+                            Current work-around is to go to <a href="http://www.chibi.ubc.ca/Gemma/">the Gemma
+                            website</a> and log in. This will create an authorized session that will be applied to the
+                            API calls from this web-site as well.
+                        </p>
+                        <p>
+                            Note that this authorization does not extend beyond your browser (e.g. calls from scripts).
+                        </p>
                     </div>
                 </div>
             </div>
@@ -275,10 +285,10 @@
 
                     <div class="container">
                         <div class="alert alert-warning">
-                            Please be aware that the 'Official symbol' identifier of a gene refers to the set of
-                            homologues.
-                            Using the official symbol as a gene parameter for these endpoints will yield a random
-                            homologue.
+                            Please be aware that the 'Official symbol' identifier of a gene refers to a set of
+                            gene homologues.
+                            Using the official symbol as a gene parameter for these endpoints will yield an arbitrary
+                            homologue (likely the same one every time, but that is not guaranteed).
                             Use the methods from the 'Taxa endpoints' if you want to use the official symbol for a
                             specific
                             homologue.
@@ -601,13 +611,13 @@
         <script src="js/plugins.js"></script>
 
         <!--<script>-->
-            <!--window.ga = function () {-->
-                <!--ga.q.push(arguments)-->
-            <!--};-->
-            <!--ga.q = [];-->
-            <!--ga.l = +new Date;-->
-            <!--ga('create', 'UA-XXXXX-Y', 'auto');-->
-            <!--ga('send', 'pageview')-->
+        <!--window.ga = function () {-->
+        <!--ga.q.push(arguments)-->
+        <!--};-->
+        <!--ga.q = [];-->
+        <!--ga.l = +new Date;-->
+        <!--ga('create', 'UA-XXXXX-Y', 'auto');-->
+        <!--ga('send', 'pageview')-->
         <!--</script>-->
         <!--<script src="https://www.google-analytics.com/analytics.js" async defer></script>-->
     </body>
