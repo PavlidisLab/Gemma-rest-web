@@ -37,7 +37,7 @@ Vue.component('endpoint', {
         computeUrl: function () {
             var url = this.apiUrlBase + this.endpointUrlBase;
             this.pathParams.forEach(function (pParam) {
-                url = url.replace(/%\d+/, pParam.value);
+                url = url.replace(/%\d+/, encodeURIComponent(pParam.value));
             });
             var first = true;
             this.queryParams.forEach(function (qParam) {
@@ -184,7 +184,7 @@ var apiApp = new Vue({
 
         // Single parameter getters
         getSearchParam: function () {
-            return {name: "query", value: "", required: true, description: "The search query"};
+            return {name: "query", value: "http://purl.obolibrary.org/obo/OBI_0000105", required: true, description: searchDescription};
         },
         getFilterParam: function () {
             return {name: "filter", value: "", required: false, description: filterDescription};
@@ -220,14 +220,6 @@ var apiApp = new Vue({
                 value: "AFFX_Rat_beta-actin_M_at",
                 required: true,
                 description: probeDescription
-            };
-        },
-        getTaxonSearchParam: function () {
-            return {
-                name: "taxon",
-                value: "human",
-                required: true,
-                description: taxonSearchDescription
             };
         },
         getGeneParam: function () {

@@ -414,16 +414,23 @@
                 <span
                     v-bind:class="[showOther ? 'glyphicon-collapse-up' : 'glyphicon-collapse-down', 'glyphicon']"></span>
                     <h3>Other endpoints</h3>
-                    <p>Endpoints accessing more general information that would not fit in other categories.</p>
+                    <p>Annotations, search, etc.</p>
                 </div>
 
                 <div id="otherEndpoints" v-show="showOther">
 
                     <endpoint :name="'Annotation search'"
                               :description="'Does a search for ontology terms based on the given string'"
-                              :query-params="[getTaxonSearchParam()]"
+                              :query-params="[]"
                               :path-params="[getSearchParam()]"
                               :endpoint-url-base="'annotations/search/%1'">
+                    </endpoint>
+
+                    <endpoint :name="'Dataset search'"
+                              :description="'Does a search for datasets containing ontology terms matching the given string'"
+                              :query-params="[]"
+                              :path-params="[getSearchParam()]"
+                              :endpoint-url-base="'annotations/search/%1/experiments'">
                     </endpoint>
 
                     <endpoint :name="'Evidence'"
@@ -584,6 +591,8 @@
                     <!--suppress HtmlFormInputWithoutLabel -->
                     <input class="form-control" v-model="param.value" v-on:change="$parent.computeUrl()"
                            v-bind:id="$parent.name.replace(/ /g,'') + '.' + param.name "
+                           v-on:keyup="$parent.getResponse"
+                           v-on:keypress.enter.prevent=""
                     >
                     <span class="input-group-btn">
                         <button class="btn btn-info" v-on:click=" showInfo = !showInfo ">
