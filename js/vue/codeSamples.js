@@ -79,7 +79,6 @@ var rCode = "\n" +
     "\n" +
     "# Remove differentialAnalyses subclass (required to flatten the data in order to write it in the file)\n" +
     "this.content.df$differentialExpressionAnalyses <- NULL\n" +
-    "# this.content.df <- this.content.df[,!names(this.content.df) == \"differentialExpressionAnalyses\"] \n" +
     "\n" +
     "# Output as csv\n" +
     "write.csv(file=RESULT_FILE, x=this.content.df)\n";

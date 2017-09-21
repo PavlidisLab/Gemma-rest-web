@@ -53,5 +53,5 @@ var probeDescription = "The name or ID of the platform element for which the gen
 var taxonDescription = "can either be Taxon ID or one of its string identifiers:" +
     "                      scientific name, common name, abbreviation. It is recommended to use ID for efficiency.";
 var geneDescription = "can either be the NCBI ID, Ensembl ID or official symbol. NCBI ID is the most efficient (and" +
-    "                     guaranteed to be unique) identifier. Official symbol returns a gene homologue for a random taxon.";
+    "                     guaranteed to be unique) identifier. Official symbol represents a gene homologue for a random taxon.";
 var searchDescription = "The search query. Either plain text, or an ontology term URI. When using in scripts, remember to URL-encode any forward slashes (see the compiled URL below).";

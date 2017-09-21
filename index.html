@@ -39,7 +39,7 @@
 
             <div class="jumbotron">
                 <div class="container">
-                    <h1>Gemma REST&#160;API interactive documen&shy;tation</h1>
+                    <h1>Gemma REST&#160;API interactive <span style="display:inline-block">documen&shy;tation</span></h1>
                 </div>
             </div>
         </header>
@@ -420,14 +420,14 @@
                 <div id="otherEndpoints" v-show="showOther">
 
                     <endpoint :name="'Annotation search'"
-                              :description="'Does a search for ontology terms based on the given string'"
+                              :description="'Does a search for annotations based on the given string'"
                               :query-params="[]"
                               :path-params="[getSearchParam()]"
                               :endpoint-url-base="'annotations/search/%1'">
                     </endpoint>
 
                     <endpoint :name="'Dataset search'"
-                              :description="'Does a search for datasets containing ontology terms matching the given string'"
+                              :description="'Does a search for datasets containing annotations matching the given string'"
                               :query-params="[]"
                               :path-params="[getSearchParam()]"
                               :endpoint-url-base="'annotations/search/%1/experiments'">
