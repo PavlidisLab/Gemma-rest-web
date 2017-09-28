@@ -591,7 +591,7 @@
                     <!--suppress HtmlFormInputWithoutLabel -->
                     <input class="form-control" v-model="param.value" v-on:change="$parent.computeUrl()"
                            v-bind:id="$parent.name.replace(/ /g,'') + '.' + param.name "
-                           v-on:keyup="$parent.getResponse"
+                           v-on:keyup="$parent.keyMonitor"
                            v-on:keypress.enter.prevent=""
                     >
                     <span class="input-group-btn">

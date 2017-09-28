@@ -48,6 +48,7 @@ Vue.component('endpoint', {
             });
             this.completeUrl = url;
         },
+
         getResponse: function () {
             var vm = this;
             this.status = null;
@@ -88,6 +89,12 @@ Vue.component('endpoint', {
             } else {
                 this.loadingMsgFull = null;
                 this.dots = 0;
+            }
+        },
+
+        keyMonitor: function(event){
+            if(event.key === "Enter"){
+                this.getResponse();
             }
         }
     },
