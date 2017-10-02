@@ -151,6 +151,13 @@
                               :endpoint-url-base="'datasets/'">
                     </endpoint>
 
+                    <endpoint :name="'Listed datasets'"
+                              :description="'Lists datasets with given identifiers'"
+                              :query-params="getDatasetsAllQueryParams()"
+                              :path-params="[getDatasetsParam()]"
+                              :endpoint-url-base="'datasets/%1'">
+                    </endpoint>
+
                     <endpoint :name="'Specific dataset'"
                               :description="'Retrieves single dataset based on the given dataset identifier'"
                               :query-params="[]"
@@ -374,9 +381,16 @@
 
                     <endpoint :name="'Taxon phenotypes'"
                               :description="'Loads all phenotypes for the given taxon.'"
-                              :query-params="[getEditableParam()]"
+                              :query-params="[getEditableParam(), getTreeParam()]"
                               :path-params="[getTaxonParam()]"
                               :endpoint-url-base="'taxa/%1/phenotypes'">
+                    </endpoint>
+
+                    <endpoint :name="'Taxon phenotypes candidate genes'"
+                              :description="'Given a set of phenotypes, return all genes associated with them.'"
+                              :query-params="[getEditableParam(), getPhenotypesParam()]"
+                              :path-params="[getTaxonParam()]"
+                              :endpoint-url-base="'taxa/%1/phenotypes/candidates'">
                     </endpoint>
 
                     <endpoint :name="'Gene on specific taxon'"

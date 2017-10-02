@@ -92,8 +92,8 @@ Vue.component('endpoint', {
             }
         },
 
-        keyMonitor: function(event){
-            if(event.key === "Enter"){
+        keyMonitor: function (event) {
+            if (event.key === "Enter") {
                 this.getResponse();
             }
         }
@@ -191,7 +191,12 @@ var apiApp = new Vue({
 
         // Single parameter getters
         getSearchParam: function () {
-            return {name: "query", value: "http://purl.obolibrary.org/obo/OBI_0000105", required: true, description: searchDescription};
+            return {
+                name: "query",
+                value: "http://purl.obolibrary.org/obo/OBI_0000105",
+                required: true,
+                description: searchDescription
+            };
         },
         getFilterParam: function () {
             return {name: "filter", value: "", required: false, description: filterDescription};
@@ -211,6 +216,14 @@ var apiApp = new Vue({
                 value: "GSE81454",
                 required: true,
                 description: datasetDescription
+            };
+        },
+        getDatasetsParam: function () {
+            return {
+                name: "datasets",
+                value: "GSE2871,GSE2869,GSE2868",
+                required: true,
+                description: datasetsDescription
             };
         },
         getPlatformParam: function () {
@@ -258,7 +271,7 @@ var apiApp = new Vue({
                 name: "strand",
                 value: "+",
                 required: false,
-                description: "'+' or '-'. Defaults to '+'. (WIP, currently does not do anything)."
+                description: "<p>'+' or '-'</p><p>Defaults to '+'</p> (Note that this is WIP and currently does not do anything)."
             };
         },
         getStartParam: function () {
@@ -282,7 +295,23 @@ var apiApp = new Vue({
                 name: "editableOnly",
                 value: "false",
                 required: false,
-                description: "whether to only list editable phenotypes."
+                description: "whether to only list editable objects. Optional, defaults to false"
+            };
+        },
+        getPhenotypesParam: function () {
+            return {
+                name: "phenotypes",
+                value: "http://purl.obolibrary.org/obo/DOID_11934,http://purl.obolibrary.org/obo/DOID_3119",
+                required: true,
+                description: phenotypesDescription
+            };
+        },
+        getTreeParam: function(){
+            return {
+                name: "tree",
+                value: "false",
+                required: false,
+                description: treeDescription
             };
         }
     }

@@ -46,12 +46,26 @@ var sortDescription = "Optional parameter (defaults to +id) sets the ordering pr
     "                    E.g: <code>+curationDetails.lastTroubledEvent.date</code>";
 var datasetDescription = "Can either be the ExpressionExperiment ID or its short name (e.g. GSE1234). Retrieval by ID" +
     "                        is more efficient. Only datasets that user has access to will be available";
+var datasetsDescription = "a list of identifiers, separated by commas (','). Identifiers can either be the\n" +
+    "                         ExpressionExperiment ID or its short name (e.g. GSE1234). Retrieval by ID\n" +
+    "                         is more efficient.\n" +
+    "                         <p>" +
+    "                         Only datasets that user has access to will be available.\n" +
+    "                         </p>" +
+    "                         <p>" +
+    "                         Do not combine different identifiers in one query.\n" +
+    "                         </p>";
 var platformDescription = "Can either be the ArrayDesign ID or its short name (e.g. \"Generic_yeast\" or \"GPL1355\" ). Retrieval by ID" +
     "                         is more efficient. Only platforms that user has access to will be available.";
-var probeDescription = "The name or ID of the platform element for which the genes should be retrieved. When using in scripts, " +
-    "remember to URL-encode any forward slashes (see the compiled URL below).";
+var probeDescription = "The name or ID of the platform element for which the genes should be retrieved. <br/>" +
+    "When using in scripts, remember to URL-encode any forward slashes (see the compiled URL below).";
 var taxonDescription = "can either be Taxon ID or one of its string identifiers:" +
     "                      scientific name, common name, abbreviation. It is recommended to use ID for efficiency.";
 var geneDescription = "can either be the NCBI ID, Ensembl ID or official symbol. NCBI ID is the most efficient (and" +
     "                     guaranteed to be unique) identifier. Official symbol represents a gene homologue for a random taxon.";
-var searchDescription = "The search query. Either plain text, or an ontology term URI. When using in scripts, remember to URL-encode any forward slashes (see the compiled URL below).";
+var searchDescription = "The search query. Either plain text, or an ontology term URI. " +
+    "<br/>When using in scripts, remember to URL-encode any forward slashes (see the compiled URL below).";
+var phenotypesDescription = "phenotype value URIs separated by commas. <br/>When using in scripts, remember to URL-encode any forward slashes (see the compiled URL below).";
+var treeDescription = "whether the returned structure should be an actual tree (nested JSON objects). Default is" +
+    "                          false - the tree is flattened and the edges of the tree are stored in" +
+    "                          the values of the value object.";
