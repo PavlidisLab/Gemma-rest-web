@@ -16,7 +16,7 @@ header {
   background: linear-gradient(to right, #0e8dbc, #179abc);
   flex: 0 1 auto;
 }
-#mainContent {
+#main-content {
   flex: 1 1 auto;
 }
 footer {
@@ -28,7 +28,7 @@ Styling settings
 
 */
 pre,
-.preLike.response {
+.pre-like.response {
   background-color: #ffffff;
 }
 header {
@@ -75,11 +75,11 @@ header {
   padding: 20px 0;
   box-shadow: inset 0 -5px 5px -5px #000000;
 }
-.codeSamples {
+.code-samples {
   padding: 20px 0;
   box-shadow: inset 0 -5px 5px -5px #000000;
 }
-.codeSamples .container-fluid {
+.code-samples .container-fluid {
   padding: 20px 20px;
 }
 .endpoints {
@@ -142,10 +142,10 @@ footer footer a:hover * {
   color: #f5f5f5;
   filter: grayscale(100%) drop-shadow(0 0 5px #2b2b2b);
 }
-#mainContent .endpoint {
+#main-content .endpoint {
   padding: 10px 0;
 }
-#mainContent .endpoint:nth-child(odd) {
+#main-content .endpoint:nth-child(odd) {
   background: #f5f5f5;
 }
 .endpoint h4 {
@@ -165,27 +165,27 @@ footer footer a:hover * {
   margin-left: 20px;
 }
 .endpoint .header .glyphicon,
-.endpointsGroupTitle .glyphicon {
+.endpoints-group-title .glyphicon {
   display: inline-block;
   font-size: 130%;
   color: #737373;
 }
-.endpointsGroupTitle {
+.endpoints-group-title {
   cursor: pointer;
 }
-.endpointsGroupTitle .glyphicon {
+.endpoints-group-title .glyphicon {
   font-size: 150%;
 }
-.endpointsGroupTitle h3 {
+.endpoints-group-title h3 {
   display: inline-block;
 }
-.rowPad {
+.row-pad {
   padding-bottom: 20px;
 }
-.paramRow {
+.param-row {
   margin-bottom: 5px;
 }
-.preLike {
+.pre-like {
   display: block;
   padding: 9.5px;
   margin: 0 0 20px;
@@ -199,7 +199,7 @@ footer footer a:hover * {
   border-radius: 4px;
   font-family: monospace, monospace;
 }
-.preLike code {
+.pre-like code {
   padding: 0;
   font-size: inherit;
   color: mediumvioletred;
@@ -207,30 +207,41 @@ footer footer a:hover * {
   background-color: transparent;
   border-radius: 0;
 }
-.codePanel {
+.pre-like table {
+  width: 100%;
+}
+.pre-like table tr th,
+.pre-like table tr td {
+  padding-right: 5px;
+}
+.pre-like table tr:nth-child(2n+3) {
+  background-color: #ffffff;
+  color: #434343;
+}
+.code-panel {
   background: #333333;
   border: none;
   box-shadow: 0 0 5px #737373;
 }
-.codePanel .panel-heading {
+.code-panel .panel-heading {
   background: #f5f5f5;
   border: none;
   font-size: 120%;
   font-weight: bolder;
 }
-.codePanel .panel-body {
+.code-panel .panel-body {
   height: 300px;
   overflow: auto;
 }
-.codeSample {
+.code-sample {
   background: #333333;
   border: none;
   overflow: visible;
 }
-.responseCol {
+.response-col {
   max-width: 100%;
 }
-.responseHeader {
+.response-header {
   width: 100%;
   max-width: 100%;
 }
@@ -260,7 +271,7 @@ footer footer a:hover * {
   color: royalblue;
 }
 /* Browser Upgrade Prompt */
-.browserUpgrade {
+.browser-upgrade {
   background: #ffd700;
   color: #000000;
 }

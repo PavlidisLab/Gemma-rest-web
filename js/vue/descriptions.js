@@ -59,8 +59,29 @@ var platformDescription = "Can either be the ArrayDesign ID or its short name (e
     "                         is more efficient. Only platforms that user has access to will be available.";
 var probeDescription = "The name or ID of the platform element for which the genes should be retrieved. <br/>" +
     "When using in scripts, remember to URL-encode any forward slashes (see the compiled URL below).";
-var taxonDescription = "can either be Taxon ID, Taxon NCBI ID, or one of its string identifiers:" +
-    "                      scientific name, common name, abbreviation. It is recommended to use Taxon ID for efficiency.";
+
+var taxonDescription = "<p>can either be Taxon ID, Taxon NCBI ID, or one of its string identifiers:" +
+    "                      scientific name, common name, abbreviation.</p>" +
+    "<p>It is recommended to use Taxon ID for efficiency.</p>" +
+    "<p>Please note, that not all taxa have all the possible identifiers available.</p>" +
+    "<p>Use the 'all taxa' endpoint to retrieve the necessary information. For convenience, below is a list of some common taxa: </p>" +
+    "<table>" +
+    "<tr><th> ID </th><th>Comm.name</th><th>Scient.name</th><th>Abbr.</th><th>NcbiID</th></tr>" +
+    "<tr><td>  1 </td><td> human           </td><td> Homo sapiens              </td><td>              </td><td>    9606 </td></tr>" +
+    "<tr><td>  2 </td><td> mouse           </td><td> Mus musculus              </td><td>              </td><td>   10090 </td></tr>" +
+    "<tr><td>  3 </td><td> rat             </td><td> Rattus norvegicus         </td><td>              </td><td>   10116 </td></tr>" +
+    "<tr><td>  4 </td><td> salmonid        </td><td> Salmonidae                </td><td>              </td><td>    8015 </td></tr>" +
+    "<tr><td>  5 </td><td> atlantic salmon </td><td> Salmo salar               </td><td> ssal         </td><td>    8030 </td></tr>" +
+    "<tr><td>  6 </td><td> rainbow trout   </td><td> Oncorhynchus mykiss       </td><td> omyk         </td><td>    8022 </td></tr>" +
+    "<tr><td>  7 </td><td> whitefish       </td><td> Coregonus clupeaformis    </td><td> cclu         </td><td>   59861 </td></tr>" +
+    "<tr><td>  8 </td><td> chinook salmon  </td><td> Oncorhynchus tshawytscha  </td><td> otsh         </td><td>   74940 </td></tr>" +
+    "<tr><td> 10 </td><td> rainbow smelt   </td><td> Osmerus mordax            </td><td> omor         </td><td>    8014 </td></tr>" +
+    "<tr><td> 11 </td><td> yeast           </td><td> Saccharomyces cerevisiae  </td><td>              </td><td>    4932 </td></tr>" +
+    "<tr><td> 12 </td><td> zebrafish       </td><td> Danio rerio               </td><td>              </td><td>    7955 </td></tr>" +
+    "<tr><td> 13 </td><td> fly             </td><td> Drosophila melanogaster   </td><td>              </td><td>    7227 </td></tr>" +
+    "<tr><td> 14 </td><td> worm            </td><td> Caenorhabditis elegans    </td><td>              </td><td>    6239 </td></tr>" +
+    "</table>";
+
 var geneDescription = "can either be the NCBI ID, Ensembl ID or official symbol. NCBI ID is the most efficient (and" +
     "                     guaranteed to be unique) identifier. Official symbol represents a gene homologue for a random taxon.";
 var searchDescription = "The search query. Either plain text, or an ontology term URI. " +

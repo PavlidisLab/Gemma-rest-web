@@ -28,7 +28,7 @@
 
         <header>
             <!--[if lte IE 9]>
-            <div class="modal-header browserUpgrade">
+            <div class="modal-header browser-upgrade">
                 <p>
                     You are using an <strong>outdated</strong> browser.
                     Please <a href="https://browsehappy.com/">upgrade your browser</a>
@@ -44,7 +44,7 @@
             </div>
         </header>
 
-        <div id="mainContent">
+        <div id="main-content">
 
             <div class="welcome">
                 <div class="container">
@@ -79,7 +79,7 @@
                 </div>
             </div>
 
-            <div class="codeSamples">
+            <div class="code-samples">
                 <div class="container">
                     <h2>Code samples</h2>
                     <p>Examples of the API usage in scripts.</p>
@@ -88,24 +88,24 @@
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-sm-6">
-                            <div class="panel panel-default codePanel">
+                            <div class="panel panel-default code-panel">
                                 <div class="panel-heading">
                                     Python
                                 </div>
                                 <div class="panel-body">
-                                <pre class="prettyprint codeSample">
+                                <pre class="prettyprint code-sample">
                                     {{ pythonExample }}
                                 </pre>
                                 </div>
                             </div>
                         </div>
                         <div class="col-sm-6">
-                            <div class="panel panel-default codePanel">
+                            <div class="panel panel-default code-panel">
                                 <div class="panel-heading">
                                     R
                                 </div>
                                 <div class="panel-body">
-                                <pre class="prettyprint codeSample">
+                                <pre class="prettyprint code-sample">
                                     {{ rExample }}
                                 </pre>
                                 </div>
@@ -134,7 +134,7 @@
 
                 <hr>
 
-                <div class="container endpointsGroupTitle" v-on:click=" showDatasets = !showDatasets">
+                <div class="container endpoints-group-title" v-on:click=" showDatasets = !showDatasets">
                 <span
                     v-bind:class="[showDatasets ? 'glyphicon-collapse-up' : 'glyphicon-collapse-down', 'glyphicon']"></span>
                     <h3>Dataset endpoints</h3>
@@ -209,13 +209,13 @@
                               :json-response="false">
                     </endpoint>
 
-                    <div class="rowPad"></div>
+                    <div class="row-pad"></div>
 
                 </div>
 
                 <hr>
 
-                <div class="container endpointsGroupTitle" v-on:click=" showPlatforms = !showPlatforms">
+                <div class="container endpoints-group-title" v-on:click=" showPlatforms = !showPlatforms">
                 <span
                     v-bind:class="[showPlatforms ? 'glyphicon-collapse-up' : 'glyphicon-collapse-down', 'glyphicon']"></span>
                     <h3>Platform endpoints</h3>
@@ -274,13 +274,13 @@
                               :json-response="false">
                     </endpoint>
 
-                    <div class="rowPad"></div>
+                    <div class="row-pad"></div>
 
                 </div>
 
                 <hr>
 
-                <div class="container endpointsGroupTitle" v-on:click=" showGenes = !showGenes">
+                <div class="container endpoints-group-title" v-on:click=" showGenes = !showGenes">
                 <span
                     v-bind:class="[showGenes ? 'glyphicon-collapse-up' : 'glyphicon-collapse-down', 'glyphicon']"></span>
                     <h3>Gene endpoints</h3>
@@ -344,13 +344,13 @@
                               :endpoint-url-base="'genes/%1/goTerms'">
                     </endpoint>
 
-                    <div class="rowPad"></div>
+                    <div class="row-pad"></div>
 
                 </div>
 
                 <hr>
 
-                <div class="container endpointsGroupTitle" v-on:click=" showTaxa = !showTaxa">
+                <div class="container endpoints-group-title" v-on:click=" showTaxa = !showTaxa">
                 <span
                     v-bind:class="[showTaxa ? 'glyphicon-collapse-up' : 'glyphicon-collapse-down', 'glyphicon']"></span>
                     <h3>Taxa endpoints</h3>
@@ -424,7 +424,7 @@
 
                 <hr>
 
-                <div class="container endpointsGroupTitle" v-on:click=" showOther = !showOther">
+                <div class="container endpoints-group-title" v-on:click=" showOther = !showOther">
                 <span
                     v-bind:class="[showOther ? 'glyphicon-collapse-up' : 'glyphicon-collapse-down', 'glyphicon']"></span>
                     <h3>Other endpoints</h3>
@@ -461,7 +461,7 @@
                               :endpoint-url-base="'phenotypes/dumps/'">
                     </endpoint>
 
-                    <div class="rowPad"></div>
+                    <div class="row-pad"></div>
 
                 </div>
 
@@ -541,19 +541,19 @@
                             <h5>Parameters:<span class="badge invisible"><span class="glyphicon">&#160;</span></span>
                             </h5>
                             <form v-on:submit.prevent="">
-                                <div v-for="param in pathParams" class="paramRow">
+                                <div v-for="param in pathParams" class="param-row">
                                     <api-param :param="param"></api-param>
                                 </div>
 
-                                <div v-for="param in queryParams" class="paramRow">
+                                <div v-for="param in queryParams" class="param-row">
                                     <api-param :param="param"></api-param>
                                 </div>
 
-                                <div v-if="pathParams.length == 0 && queryParams.length == 0" class="paramRow">
-                                    <span class="preLike">No parameters</span>
+                                <div v-if="pathParams.length == 0 && queryParams.length == 0" class="param-row">
+                                    <span class="pre-like">No parameters</span>
                                 </div>
 
-                                <div class="preLike">{{ completeUrl }}</div>
+                                <div class="pre-like">{{ completeUrl }}</div>
 
                                 <button class="btn btn-primary" v-on:click="getResponse"
                                         title="Executes the call and displays the response in the response panel.">Call
@@ -565,8 +565,8 @@
                                 </a>
                             </form>
                         </div>
-                        <div class="col-sm-6 responseCol">
-                            <div class="responseHeader">
+                        <div class="col-sm-6 response-col">
+                            <div class="response-header">
                                 <h5>Response:
                                     <span v-if="status!=null" v-bind:class="[isError ? 'apiError' : 'apiOk', 'badge']"
                                           title="Response status code">
@@ -585,7 +585,7 @@
                                 </h5>
                             </div>
                             <pre v-if="loadingMsgFull != null" class="response">{{ loadingMsgFull }}</pre>
-                            <tree-view v-else-if="jsonResponse" class="preLike response" :data="response"
+                            <tree-view v-else-if="jsonResponse" class="pre-like response" :data="response"
                                        :options="{maxDepth: 2, rootObjectKey: ''}"></tree-view>
                             <pre v-else class="response">{{ response }}</pre>
                         </div>
@@ -615,15 +615,15 @@
                     </span>
                 </div>
 
-                <div class="preLike" v-if="showInfo" v-html="param.description"></div>
+                <div class="pre-like" v-if="showInfo" v-html="param.description"></div>
             </div>
         </script>
 
         <!-- Vue init -->
         <script src="js/vue/descriptions.js"></script>
         <script src="js/vue/codeSamples.js"></script>
-        <script src="https://vuejs.org/js/vue.min.js"></script>
-        <!--<script src="https://unpkg.com/vue"></script>-->
+        <!--<script src="https://vuejs.org/js/vue.min.js"></script>-->
+        <script src="https://unpkg.com/vue"></script>
         <script src="https://cdn.jsdelivr.net/npm/axios@0.12.0/dist/axios.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/lodash@4.13.1/lodash.min.js"></script>
         <script src="js/vendor/vue-json-tree-view.min.js"></script>

@@ -7,15 +7,15 @@
 @darker: #2b2b2b;
 @darkr: #434343;
 @dark: #737373;
-@darkMed: #9b9b9b;
+@dark-med: #9b9b9b;
 @light: #f5f5f5;
 @lightest: white;
 
 @warning: gold;
-@codeBg: #333;
-@blueDarkest: #0e8dbc;
-@blueDark: #179abc;
-@blueMed: #cdffcd;
+@code-bg: #333;
+@blue-darkest: #0e8dbc;
+@blue-dark: #179abc;
+@blue-med: #cdffcd;
 
 @dim-tiny: 2px;
 @dim-small: 5px;
@@ -35,11 +35,11 @@ body {
 }
 
 header {
-    background: linear-gradient(to right, @blueDarkest, @blueDark);
+    background: linear-gradient(to right, @blue-darkest, @blue-dark);
     flex: 0 1 auto;
 }
 
-#mainContent {
+#main-content {
     flex: 1 1 auto;
 }
 
@@ -53,7 +53,7 @@ Styling settings
 
 */
 
-pre, .preLike.response {
+pre, .pre-like.response {
     background-color: @lightest;
 }
 
@@ -68,28 +68,31 @@ header {
 }
 
 @media (max-width: 767px) {
-    .jumbotron .container{
+    .jumbotron .container {
         padding-left: 25%;
     }
 }
+
 @media (min-width: 768px) and (max-width: 991px) {
-    .jumbotron .container{
+    .jumbotron .container {
         padding-left: 20%;
     }
 }
+
 @media (min-width: 992px) and (max-width: 1199px) {
-    .jumbotron .container{
+    .jumbotron .container {
         padding-left: 20%;
     }
 }
+
 @media (min-width: 1200px) and (max-width: 1599px) {
-    .jumbotron .container{
+    .jumbotron .container {
         padding-left: 200px;
     }
 }
 
 @media (min-width: 1600px) {
-    .jumbotron .container{
+    .jumbotron .container {
         padding-left: auto;
     }
 }
@@ -116,12 +119,12 @@ header {
     box-shadow: inset 0 -@dim-small @dim-small -@dim-small black;
 }
 
-.codeSamples {
+.code-samples {
     padding: @dim-big 0;
     box-shadow: inset 0 -@dim-small @dim-small -@dim-small black;
 }
 
-.codeSamples .container-fluid {
+.code-samples .container-fluid {
     padding: @dim-big @dim-big;
 }
 
@@ -133,7 +136,7 @@ footer {
     margin-top: @dim-big;
     padding-top: @dim-big;
     color: @lightest;
-    background-color: @darkMed;
+    background-color: @dark-med;
     box-shadow: inset 0 @dim-small @dim-small -@dim-small black;
 }
 
@@ -170,7 +173,7 @@ footer .row img {
 }
 
 footer .row img:hover {
-    filter: grayscale(100%) invert(64%) drop-shadow(0 0 @dim-small @darkMed);
+    filter: grayscale(100%) invert(64%) drop-shadow(0 0 @dim-small @dark-med);
 }
 
 footer footer {
@@ -189,7 +192,7 @@ footer footer a {
 
 footer footer a h4 {
     color: @darkr;
-    text-shadow: 0 0 @dim-med @darkMed;
+    text-shadow: 0 0 @dim-med @dark-med;
 }
 
 footer footer img {
@@ -201,11 +204,11 @@ footer footer a:hover * {
     filter: grayscale(100%) drop-shadow(0 0 @dim-small @darker);
 }
 
-#mainContent .endpoint {
+#main-content .endpoint {
     padding: @dim-med 0;
 }
 
-#mainContent .endpoint:nth-child(odd) {
+#main-content .endpoint:nth-child(odd) {
     background: @light;
 }
 
@@ -229,21 +232,21 @@ footer footer a:hover * {
     margin-left: @dim-big;
 }
 
-.endpoint .header .glyphicon, .endpointsGroupTitle .glyphicon {
+.endpoint .header .glyphicon, .endpoints-group-title .glyphicon {
     display: inline-block;
     font-size: 130%;
     color: @dark;
 }
 
-.endpointsGroupTitle {
+.endpoints-group-title {
     cursor: pointer;
 }
 
-.endpointsGroupTitle .glyphicon {
+.endpoints-group-title .glyphicon {
     font-size: 150%;
 }
 
-.endpointsGroupTitle h3 {
+.endpoints-group-title h3 {
     display: inline-block;
 }
 
@@ -251,32 +254,32 @@ footer footer a:hover * {
     //padding-bottom: @dim-med;
 }
 
-.rowPad {
+.row-pad {
     padding-bottom: @dim-big;
 }
 
-.paramRow {
+.param-row {
     margin-bottom: @dim-small;
 }
 
 //Copied from bootstrap.css pre element
-.preLike {
+.pre-like {
     display: block;
     padding: 9.5px;
     margin: 0 0 20px;
     font-size: 13px;
     line-height: 1.42857143;
-    color: @codeBg;
+    color: @code-bg;
     word-break: normal;
     word-wrap: break-word;
     background-color: @light;
-    border: 1px solid @darkMed;
+    border: 1px solid @dark-med;
     border-radius: 4px;
 
     font-family: monospace, monospace;
 }
 
-.preLike code {
+.pre-like code {
     padding: 0;
     font-size: inherit;
     color: mediumvioletred;
@@ -285,35 +288,49 @@ footer footer a:hover * {
     border-radius: 0;
 }
 
-.codePanel {
-    background: @codeBg;
+.pre-like table{
+    width: 100%;
+}
+
+.pre-like table tr th,
+.pre-like table tr td {
+    padding-right: @dim-small;
+}
+
+.pre-like table tr:nth-child(2n+3) {
+    background-color: @lightest;
+    color: @darkr;
+}
+
+.code-panel {
+    background: @code-bg;
     border: none;
     box-shadow: 0 0 @dim-small @dark;
 }
 
-.codePanel .panel-heading {
+.code-panel .panel-heading {
     background: @light;
     border: none;
     font-size: 120%;
     font-weight: bolder;
 }
 
-.codePanel .panel-body {
+.code-panel .panel-body {
     height: 300px;
     overflow: auto;
 }
 
-.codeSample {
-    background: @codeBg;
+.code-sample {
+    background: @code-bg;
     border: none;
     overflow: visible;
 }
 
-.responseCol {
+.response-col {
     max-width: 100%;
 }
 
-.responseHeader {
+.response-header {
     width: 100%;
     max-width: 100%;
 }
@@ -351,7 +368,7 @@ footer footer a:hover * {
 
 /* Browser Upgrade Prompt */
 
-.browserUpgrade {
+.browser-upgrade {
     background: @warning;
     color: @darkest;
 }

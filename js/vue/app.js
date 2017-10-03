@@ -117,7 +117,7 @@ Vue.component('api-param', {
 
 // noinspection JSUnusedGlobalSymbols // Used in html templates
 var apiApp = new Vue({
-    el: '#mainContent',
+    el: '#main-content',
     data: {
         showDatasets: false,
         showPlatforms: false,
