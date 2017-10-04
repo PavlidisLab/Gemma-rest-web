@@ -9,7 +9,8 @@ var datasetsDescription = "" +
     "<p>Do not combine different identifiers in one query.</p>" +
     "<p class='description-imp'>" +
     "   <span class='glyphicon glyphicon-th-large glyphicon-exclamation-sign'></span>" +
-    "   If only a single identifier is provided, this endpoint effectively turns into the 'Specific dataset' endpoint, and should be treated as such." +
+    "   If only a single identifier is provided, this endpoint effectively turns into the 'Specific dataset' endpoint, and should be treated as such" +
+    "   (e.g: other parameters are disregarded, the returned data is a single object and not an array.)" +
     "</p>";
 
 
