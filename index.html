@@ -145,14 +145,7 @@
                 <div id="datasetEndpoints" v-show="showDatasets">
 
                     <endpoint :name="'All datasets'"
-                              :description="'Lists all datasets'"
-                              :query-params="getDatasetsAllQueryParams()"
-                              :path-params="[]"
-                              :endpoint-url-base="'datasets/'">
-                    </endpoint>
-
-                    <endpoint :name="'Listed datasets'"
-                              :description="'Lists datasets with given identifiers'"
+                              :description="'Lists all datasets, or datasets with provided identifiers'"
                               :query-params="getDatasetsAllQueryParams()"
                               :path-params="[getDatasetsParam()]"
                               :endpoint-url-base="'datasets/%1'">
@@ -269,7 +262,7 @@
                     <endpoint :name="'Platform annotations'"
                               :description="'Retrieves the annotation file for the given platform'"
                               :query-params="[]"
-                              :path-params="[getPlatformParam()]"
+                              :path-params="[getPlatformAnnotParam()]"
                               :endpoint-url-base="'platforms/%1/annotations/'"
                               :json-response="false">
                     </endpoint>
@@ -341,7 +334,7 @@
                               :description="'Retrieves the coexpression of two given genes'"
                               :query-params="getGeneCoexpQueryParams()"
                               :path-params="[getGeneParam()]"
-                              :endpoint-url-base="'genes/%1/goTerms'">
+                              :endpoint-url-base="'genes/%1/coexpression'">
                     </endpoint>
 
                     <div class="row-pad"></div>
@@ -622,8 +615,8 @@
         <!-- Vue init -->
         <script src="js/vue/descriptions.js"></script>
         <script src="js/vue/codeSamples.js"></script>
-        <!--<script src="https://vuejs.org/js/vue.min.js"></script>-->
-        <script src="https://unpkg.com/vue"></script>
+        <script src="https://vuejs.org/js/vue.min.js"></script>
+        <!--<script src="https://unpkg.com/vue"></script>-->
         <script src="https://cdn.jsdelivr.net/npm/axios@0.12.0/dist/axios.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/lodash@4.13.1/lodash.min.js"></script>
         <script src="js/vendor/vue-json-tree-view.min.js"></script>

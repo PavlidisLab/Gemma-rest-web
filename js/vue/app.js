@@ -135,7 +135,7 @@ var apiApp = new Vue({
         },
         getDatasetsDiffAnalQueryParams: function () {
             return [
-                {name: "qValueThreshold", value: "", required: true, description: "Q-value threshold"},
+                {name: "qValueThreshold", value: "", required: true, description: qValueDescription},
                 this.getOffsetParam(),
                 this.getLimitParam()
             ];
@@ -145,7 +145,7 @@ var apiApp = new Vue({
                 name: "filter",
                 value: "false",
                 required: false,
-                description: "filters the expression data so that they do not contain samples under a minimum threshold."
+                description: dataFilterDescription
             }]
         },
         getOffsetLimitQueryParams: function () {
@@ -156,13 +156,13 @@ var apiApp = new Vue({
         },
         getEvidenceQueryParams: function () {
             return [
-                {name: "database", value: "", required: true, description: "The name of external database to match"},
+                {name: "database", value: "", required: true, description: extDbDescription},
                 this.getOffsetParam(),
                 {
                     name: "limit",
                     value: "10000",
                     required: false,
-                    description: "Limit the number of results to this amount"
+                    description: geneEvidenceLimitDescription
                 }
             ];
         },
@@ -172,19 +172,19 @@ var apiApp = new Vue({
                     name: "with",
                     value: "",
                     required: true,
-                    description: "The gene to calculate the coexpression with. Same formatting rules as with the 'gene' arg. apply."
+                    description: geneWithDescription
                 },
                 {
                     name: "limit",
                     value: "100",
                     required: false,
-                    description: "Limit the number of results to this amount"
+                    description: geneCoexpLimitDescription
                 },
                 {
                     name: "stringency",
                     value: "1",
                     required: false,
-                    description: "Optional parameter controlling the stringency of coexpression search. Defaults to 1"
+                    description: stringencyDescription
                 }
             ];
         },
@@ -221,8 +221,8 @@ var apiApp = new Vue({
         getDatasetsParam: function () {
             return {
                 name: "datasets",
-                value: "GSE2871,GSE2869,GSE2868",
-                required: true,
+                value: "",
+                required: false,
                 description: datasetsDescription
             };
         },
@@ -234,7 +234,14 @@ var apiApp = new Vue({
                 description: platformDescription
             };
         },
-        getProbeParam: function () {
+        getPlatformAnnotParam: function () {
+            return {
+                name: "platform",
+                value: "GPL19485",
+                required: true,
+                description: platformDescription
+            };
+        },getProbeParam: function () {
             return {
                 name: "probe",
                 value: "AFFX_Rat_beta-actin_M_at",
@@ -245,7 +252,7 @@ var apiApp = new Vue({
         getGeneParam: function () {
             return {
                 name: "gene",
-                value: "ENSG00000157540",
+                value: "1859",
                 required: true,
                 description: geneDescription
             };
@@ -263,7 +270,7 @@ var apiApp = new Vue({
                 name: "chromosome",
                 value: "21",
                 required: true,
-                description: "eg: 3, 21, X"
+                description: chromosomeDescription
             };
         },
         getStrandParam: function () {
@@ -271,7 +278,7 @@ var apiApp = new Vue({
                 name: "strand",
                 value: "+",
                 required: false,
-                description: "<p>'+' or '-'</p><p>Defaults to '+'</p> (Note that this is WIP and currently does not do anything)."
+                description: strandDescription
             };
         },
         getStartParam: function () {
@@ -279,7 +286,7 @@ var apiApp = new Vue({
                 name: "start",
                 value: "37365790",
                 required: true,
-                description: "start of the region (nucleotide position)"
+                description: nuclStartDescription
             };
         },
         getSizeParam: function () {
@@ -287,7 +294,7 @@ var apiApp = new Vue({
                 name: "size",
                 value: "1",
                 required: true,
-                description: "size of the region (in nucleotides)"
+                description: nuclSizeDescription
             };
         },
         getEditableParam: function () {
@@ -295,7 +302,7 @@ var apiApp = new Vue({
                 name: "editableOnly",
                 value: "false",
                 required: false,
-                description: "whether to only list editable objects. Optional, defaults to false"
+                description: editableDescription
             };
         },
         getPhenotypesParam: function () {

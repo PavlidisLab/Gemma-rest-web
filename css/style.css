@@ -218,6 +218,16 @@ footer footer a:hover * {
   background-color: #ffffff;
   color: #434343;
 }
+.pre-like .description-frow {
+  font-weight: bolder;
+}
+.pre-like .description-imp {
+  font-weight: bolder;
+  color: darkred;
+}
+.pre-like .glyphicon {
+  font-size: 150%;
+}
 .code-panel {
   background: #333333;
   border: none;
