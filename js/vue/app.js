@@ -19,8 +19,8 @@ Vue.component('endpoint', {
 
     data: function () {
         return {
-            //apiUrlBase: "http://localhost:8080/Gemma/rest/v2/", //For testing
-            apiUrlBase: "http://www.chibi.ubc.ca/Gemma/rest/v2/",
+            apiUrlBase: "http://localhost:8080/Gemma/rest/v2/", //For testing
+            // apiUrlBase: "http://www.chibi.ubc.ca/Gemma/rest/v2/",
             response: "{}",
             show: false,
             status: null,
@@ -94,6 +94,7 @@ Vue.component('endpoint', {
 
         keyMonitor: function (event) {
             if (event.key === "Enter") {
+                this.computeUrl();
                 this.getResponse();
             }
         }
@@ -234,6 +235,14 @@ var apiApp = new Vue({
                 description: platformDescription
             };
         },
+        getPlatformsParam: function () {
+            return {
+                name: "platforms",
+                value: "",
+                required: false,
+                description: platformsDescription
+            };
+        },
         getPlatformAnnotParam: function () {
             return {
                 name: "platform",
@@ -263,6 +272,14 @@ var apiApp = new Vue({
                 value: "human",
                 required: true,
                 description: taxonDescription
+            };
+        },
+        getTaxaParam: function () {
+            return {
+                name: "taxa",
+                value: "",
+                required: false,
+                description: taxaDescription
             };
         },
         getChromosomeParam: function () {
