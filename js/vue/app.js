@@ -19,8 +19,7 @@ Vue.component('endpoint', {
 
     data: function () {
         return {
-            // apiUrlBase: "http://localhost:8080/Gemma/rest/v2/", //For testing
-            apiUrlBase: "http://www.chibi.ubc.ca/Gemma/rest/v2/",
+            apiUrlBase: BASE_URL,
             response: "{}",
             show: false,
             status: null,
