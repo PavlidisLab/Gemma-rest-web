@@ -37,3 +37,4 @@ _$*
 *.Z
 *.elc
 *.ln
+/js/vue/conf.js
