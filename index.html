@@ -144,18 +144,11 @@
 
                 <div id="datasetEndpoints" v-show="showDatasets">
 
-                    <endpoint :name="'All datasets'"
-                              :description="'Lists all datasets, or datasets with provided identifiers'"
+                    <endpoint :name="'Datasets'"
+                              :description="'Lists datasets filtered and organized by given parameters'"
                               :query-params="getDatasetsAllQueryParams()"
                               :path-params="[getDatasetsParam()]"
                               :endpoint-url-base="'datasets/%1'">
-                    </endpoint>
-
-                    <endpoint :name="'Specific dataset'"
-                              :description="'Retrieves single dataset based on the given dataset identifier'"
-                              :query-params="[]"
-                              :path-params="[getDatasetParam()]"
-                              :endpoint-url-base="'datasets/%1/'">
                     </endpoint>
 
                     <endpoint :name="'Dataset platforms'"
@@ -217,18 +210,11 @@
 
                 <div id="platformEndpoints" v-show="showPlatforms">
 
-                    <endpoint :name="'All platforms'"
-                              :description="'List all platforms'"
+                    <endpoint :name="'Platforms'"
+                              :description="'List platforms filtered and organized by given parameters'"
                               :query-params="getDatasetsAllQueryParams()"
-                              :path-params="[]"
-                              :endpoint-url-base="'platforms/'">
-                    </endpoint>
-
-                    <endpoint :name="'Specific platform'"
-                              :description="'Retrieves single platform based on the given dataset identifier'"
-                              :query-params="[]"
-                              :path-params="[getPlatformParam()]"
-                              :endpoint-url-base="'platforms/%1/'">
+                              :path-params="[getPlatformsParam()]"
+                              :endpoint-url-base="'platforms/%1'">
                     </endpoint>
 
                     <endpoint :name="'Platform datasets'"
@@ -351,18 +337,11 @@
                 </div>
 
                 <div id="taxaEndpoints" v-show="showTaxa">
-                    <endpoint :name="'All taxa'"
-                              :description="'Lists all available taxa.'"
+                    <endpoint :name="'Taxa'"
+                              :description="'List taxa filtered by given parameters'"
                               :query-params="[]"
-                              :path-params="[]"
-                              :endpoint-url-base="'taxa/'">l
-                    </endpoint>
-
-                    <endpoint :name="'Specific taxon'"
-                              :description="'Retrieves single taxon based on the given identifier.'"
-                              :query-params="[]"
-                              :path-params="[getTaxonParam()]"
-                              :endpoint-url-base="'taxa/%1'">
+                              :path-params="[getTaxaParam()]"
+                              :endpoint-url-base="'taxa/%1'">l
                     </endpoint>
 
                     <endpoint :name="'Taxon datasets'"

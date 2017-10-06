@@ -2,17 +2,19 @@ var datasetsDescription = "" +
     "<p class='description-frow'>Optional, defaults to <code>empty</code>.</p>" +
     "<p>" +
     "   A list of identifiers, separated by commas (e.g: <code>GSE2871,GSE2869,GSE2868</code>). Identifiers can either be the" +
-    "   ExpressionExperiment ID or its short name. Retrieval by ID" +
-    "   is more efficient." +
+    "   Dataset ID or its short name. Retrieval by ID is more efficient." +
     "</p>" +
     "<p>Only datasets that user has access to will be available.</p>" +
-    "<p>Do not combine different identifiers in one query.</p>" +
-    "<p class='description-imp'>" +
-    "   <span class='glyphicon glyphicon-th-large glyphicon-exclamation-sign'></span>" +
-    "   If only a single identifier is provided, this endpoint effectively turns into the 'Specific dataset' endpoint, and should be treated as such" +
-    "   (e.g: other parameters are disregarded, the returned data is a single object and not an array.)" +
-    "</p>";
+    "<p>Do not combine different identifiers in one query.</p>";
 
+var platformsDescription = "" +
+    "<p class='description-frow'>Optional, defaults to <code>empty</code>.</p>" +
+    "<p>" +
+    "   A list of identifiers, separated by commas (e.g: <code>GPL96,GPL1355,GPL1261</code>). Identifiers can either be the" +
+    "   Platform ID or its short name. Retrieval by ID is more efficient." +
+    "</p>" +
+    "<p>Only platforms that user has access to will be available.</p>" +
+    "<p>Do not combine different identifiers in one query.</p>";
 
 var filterDescription = "" +
     "<p class='description-frow'>Optional, defaults to <code>empty</code>.</p>" +
@@ -162,15 +164,7 @@ var stringencyDescription = "" +
     "<p class='description-frow'>Optional, defaults to <code>1</code>.</p>" +
     "<p>Sets the stringency of coexpression search.</p>";
 
-var taxonDescription = "" +
-    "<p class='description-frow'>Required, part of the URL path.</p>" +
-    "<p>" +
-    "   can either be Taxon ID, Taxon NCBI ID, or one of its string identifiers:" +
-    "   scientific name, common name, abbreviation." +
-    "</p>" +
-    "<p>It is recommended to use Taxon ID for efficiency.</p>" +
-    "<p>Please note, that not all taxa have all the possible identifiers available.</p>" +
-    "<p>Use the 'All Taxa' endpoint to retrieve the necessary information. For convenience, below is a list of few example taxa: </p>" +
+var taxaTable = "" +
     "<table>" +
     "<tr><th> ID </th><th>Comm.name</th><th>Scient.name</th><th>Abbr.</th><th>NcbiID</th></tr>" +
     "<tr><td>  1 </td><td> human           </td><td> Homo sapiens              </td><td>              </td><td>    9606 </td></tr>" +
@@ -187,6 +181,33 @@ var taxonDescription = "" +
     "<tr><td> 13 </td><td> fly             </td><td> Drosophila melanogaster   </td><td>              </td><td>    7227 </td></tr>" +
     "<tr><td> 14 </td><td> worm            </td><td> Caenorhabditis elegans    </td><td>              </td><td>    6239 </td></tr>" +
     "</table>";
+
+var taxaDescription = "" +
+    "<p class='description-frow'>Optional, defaults to <code>empty</code>.</p>" +
+    "<p>" +
+    "   A list of identifiers, separated by commas (e.g: <code>human, mouse, fly</code>). Identifiers can be the any" +
+    "   of the following:" +
+    "   <ul>" +
+    "       <li>taxon ID</li>" +
+    "       <li>scientific name</li>" +
+    "       <li>common name</li>" +
+    "       <li>abbreviation</li>" +
+    "    </ul>" +
+    "   Retrieval by ID is more efficient." +
+    "</p>" +
+    "<p>Do not combine different identifiers in one query.</p>" +
+    "<p>For convenience, below is a list of few example taxa:</p>" + taxaTable;
+
+var taxonDescription = "" +
+    "<p class='description-frow'>Required, part of the URL path.</p>" +
+    "<p>" +
+    "   can either be Taxon ID, Taxon NCBI ID, or one of its string identifiers:" +
+    "   scientific name, common name, abbreviation." +
+    "</p>" +
+    "<p>It is recommended to use Taxon ID for efficiency.</p>" +
+    "<p>Please note, that not all taxa have all the possible identifiers available.</p>" +
+    "<p>Use the 'All Taxa' endpoint to retrieve the necessary information. For convenience, below is a list of few example taxa: </p>" +
+    taxaTable;
 
 var editableDescription = "" +
     "<p class='description-frow'>Optional, defaults to <code>false</code>.</p>" +
