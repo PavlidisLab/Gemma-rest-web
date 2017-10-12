@@ -53,6 +53,10 @@
                                                                   target="_blank">Gemma REST API</a>. Here
                         you can find example script usage of the API, as well as graphical interface for each
                         endpoint, with description of its parameters and the endpoint URL.</p>
+                    <p>To display information about any parameter, click this button:
+                        <button class="btn btn-info"><span class="glyphicon glyphicon-info-sign"></span></button>
+                        next to the parameter field.
+                    </p>
                     <p>The documentation of the underlying java code can be found <a
                         href="http://www.chibi.ubc.ca/Gemma/resources/apidocs/ubic/gemma/web/services/rest/package-summary.html">here</a>.
                         See the <a href="#footer">links section</a> in the footer of this page for other relevant links.
@@ -227,15 +231,8 @@
                     <endpoint :name="'Platform elements'"
                               :description="'Retrieves the composite sequences (elements) for the given platform'"
                               :query-params="getOffsetLimitQueryParams()"
-                              :path-params="[getPlatformParam()]"
-                              :endpoint-url-base="'platforms/%1/elements/'">
-                    </endpoint>
-
-                    <endpoint :name="'Specific element on a platform'"
-                              :description="'Retrieves a specific composite sequence (element) for the given platform'"
-                              :query-params="[]"
-                              :path-params="getPlatformsElementPathParams()"
-                              :endpoint-url-base="'platforms/%1/elements/%2/'">
+                              :path-params="[getPlatformParam(),getProbesParam()]"
+                              :endpoint-url-base="'platforms/%1/elements/%2'">
                     </endpoint>
 
                     <endpoint :name="'Platform element genes'"
@@ -284,7 +281,7 @@
                     <endpoint :name="'Genes'"
                               :description="'Retrieves all genes matching the identifier'"
                               :query-params="[]"
-                              :path-params="[getGeneParam()]"
+                              :path-params="[getGenesParam()]"
                               :endpoint-url-base="'genes/%1'">
                     </endpoint>
 

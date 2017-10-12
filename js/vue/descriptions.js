@@ -1,5 +1,6 @@
 var datasetsDescription = "" +
     "<p class='description-frow'>Optional, defaults to <code>empty</code>.</p>" +
+    "<p>Limits the result to entities with given identifiers.</p>" +
     "<p>" +
     "   A list of identifiers, separated by commas (e.g: <code>GSE2871,GSE2869,GSE2868</code>). Identifiers can either be the" +
     "   Dataset ID or its short name. Retrieval by ID is more efficient." +
@@ -9,6 +10,7 @@ var datasetsDescription = "" +
 
 var platformsDescription = "" +
     "<p class='description-frow'>Optional, defaults to <code>empty</code>.</p>" +
+    "<p>Limits the result to entities with given identifiers.</p>" +
     "<p>" +
     "   A list of identifiers, separated by commas (e.g: <code>GPL96,GPL1355,GPL1261</code>). Identifiers can either be the" +
     "   Platform ID or its short name. Retrieval by ID is more efficient." +
@@ -135,6 +137,17 @@ var probeDescription = "" +
     "   When using in scripts, remember to URL-encode any forward slashes in the probe name (see the compiled URL below)." +
     "</p>";
 
+var probesDescription = "" +
+    "<p class='description-frow'>Optional, defaults to <code>empty</code>.</p>" +
+    "<p>Limits the result to entities with given identifiers.</p>" +
+    "<p>A list of identifiers, separated by commas (e.g: <code>AFFX_Rat_beta-actin_M_at, AFFX_Rat_Hexokinase_M_at</code>).</p>" +
+    "<p>Can either be probes name or IDs. <br/>" +
+    "<p>Do not combine different identifiers in one query.</p>" +
+    "<p class='description-imp'>" +
+    "   <span class='glyphicon glyphicon-th-large glyphicon-exclamation-sign'></span>" +
+    "   When using in scripts, remember to URL-encode any forward slashes in the probe name (see the compiled URL below)." +
+    "</p>";
+
 var geneDescriptionBase = "" +
     "<p>" +
     "   Can either be the NCBI ID (<code>1859</code>), Ensembl ID (<code>ENSG00000157540</code>) " +
@@ -149,16 +162,20 @@ var geneDescriptionBase = "" +
 var geneDescription = "" +
     "<p class='description-frow'>Required, part of the URL path.</p>" + geneDescriptionBase;
 
-
 var geneWithDescription = "" +
     "<p class='description-frow'>Required, defaults to <code>empty</code>.</p>" + geneDescriptionBase;
+
+var genesDescription = "" +
+    "<p class='description-frow'>Required, part of the URL path.</p>" +
+    "<p>A list of identifiers, separated by commas (e.g: <code>1859, 50557</code>).</p>" +
+    geneDescriptionBase +
+    "<p>Do not combine different identifiers in one query.</p>";
 
 var geneCoexpLimitDescription = "" +
     "<p class='description-frow'>Optional, defaults to <code>100</code>.</p>" + limitDescriptionBase;
 
 var geneEvidenceLimitDescription = "" +
     "<p class='description-frow'>Optional, defaults to <code>1000</code>.</p>" + limitDescriptionBase;
-
 
 var stringencyDescription = "" +
     "<p class='description-frow'>Optional, defaults to <code>1</code>.</p>" +
@@ -184,6 +201,7 @@ var taxaTable = "" +
 
 var taxaDescription = "" +
     "<p class='description-frow'>Optional, defaults to <code>empty</code>.</p>" +
+    "<p>Limits the result to entities with given identifiers.</p>" +
     "<p>" +
     "   A list of identifiers, separated by commas (e.g: <code>human, mouse, fly</code>). Identifiers can be the any" +
     "   of the following:" +

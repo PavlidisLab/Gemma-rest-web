@@ -251,10 +251,17 @@ var apiApp = new Vue({
             };
         },getProbeParam: function () {
             return {
-                name: "probe",
+                name: "element",
                 value: "AFFX_Rat_beta-actin_M_at",
                 required: true,
                 description: probeDescription
+            };
+        },getProbesParam: function () {
+            return {
+                name: "elements",
+                value: "",
+                required: false,
+                description: probesDescription
             };
         },
         getGeneParam: function () {
@@ -263,6 +270,14 @@ var apiApp = new Vue({
                 value: "1859",
                 required: true,
                 description: geneDescription
+            };
+        },
+        getGenesParam: function () {
+            return {
+                name: "genes",
+                value: "1859, 50557",
+                required: true,
+                description: genesDescription
             };
         },
         getTaxonParam: function () {
