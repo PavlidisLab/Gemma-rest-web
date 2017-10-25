@@ -275,7 +275,7 @@ var apiApp = new Vue({
         getGenesParam: function () {
             return {
                 name: "genes",
-                value: "1859, 50557",
+                value: "1859, 5728",
                 required: true,
                 description: genesDescription
             };
