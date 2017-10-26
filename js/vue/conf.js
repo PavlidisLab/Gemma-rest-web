@@ -1,1 +1,1 @@
-var BASE_URL = "http://gemma.msl.ubc.ca/rest/v2/";
+var BASE_URL = "https://gemma.msl.ubc.ca/rest/v2/";
