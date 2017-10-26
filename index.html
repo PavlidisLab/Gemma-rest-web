@@ -49,7 +49,7 @@
             <div class="welcome">
                 <div class="container">
                     <h2>Welcome</h2>
-                    <p>This website documents the usage of the <a href="http://www.chibi.ubc.ca/Gemma/rest/v2/"
+                    <p>This website documents the usage of the <a href="http://gemma.msl.ubc.ca/rest/v2/"
                                                                   target="_blank">Gemma REST API</a>. Here
                         you can find example script usage of the API, as well as graphical interface for each
                         endpoint, with description of its parameters and the endpoint URL.</p>
@@ -58,7 +58,7 @@
                         next to the parameter field.
                     </p>
                     <p>The documentation of the underlying java code can be found <a
-                        href="http://www.chibi.ubc.ca/Gemma/resources/apidocs/ubic/gemma/web/services/rest/package-summary.html">here</a>.
+                        href="http://gemma.msl.ubc.ca/resources/apidocs/ubic/gemma/web/services/rest/package-summary.html">here</a>.
                         See the <a href="#footer">links section</a> in the footer of this page for other relevant links.
                     </p>
                     <div class="alert alert-warning">
@@ -72,7 +72,7 @@
                             a bug, but a feature!').
                         </p>
                         <p>
-                            Current work-around is to go to <a href="http://www.chibi.ubc.ca/Gemma/">the Gemma
+                            Current work-around is to go to <a href="http://gemma.msl.ubc.ca/">the Gemma
                             website</a> and log in. This will create an authorized session that will be applied to the
                             API calls from this web-site as well.
                         </p>
@@ -197,6 +197,27 @@
                               :path-params="[getDatasetParam()]"
                               :endpoint-url-base="'datasets/%1/design'"
                               :json-response="false">
+                    </endpoint>
+
+                    <endpoint :name="'Datasets genes expression levels'"
+                              :description="'Retrieves the expression levels of given genes for given datasets'"
+                              :query-params="[]"
+                              :path-params="[getDatasetsExpressParam(),getGenesExpressParam()]"
+                              :endpoint-url-base="'datasets/%1/expressions/genes/%2'">
+                    </endpoint>
+
+                    <endpoint :name="'Datasets pca component expression levels'"
+                              :description="'Retrieves the expression levels of given pca component for given datasets'"
+                              :query-params="[getPcaComponentParam(),getExpressLimitParam()]"
+                              :path-params="[getDatasetsExpressParam()]"
+                              :endpoint-url-base="'datasets/%1/expressions/pca'">
+                    </endpoint>
+
+                    <endpoint :name="'Datasets differential expression levels'"
+                              :description="'Retrieves differential expression levels for given datasets'"
+                              :query-params="[getDiffExSetParam(),getThresholdParam(),getExpressLimitParam()]"
+                              :path-params="[getDatasetsExpressParam()]"
+                              :endpoint-url-base="'datasets/%1/expressions/differential'">
                     </endpoint>
 
                     <div class="row-pad"></div>
@@ -451,15 +472,15 @@
                     <div class="col-xs-4">
                         <h4>Gemma</h4>
                         <ul>
-                            <li><a href="http://www.chibi.ubc.ca/Gemma" target="_blank">
+                            <li><a href="http://gemma.msl.ubc.ca" target="_blank">
                                 Website</a></li>
                             <li><a href="http://gemma-doc.chibi.ubc.ca/" target="_blank">
                                 User manual & blog </a></li>
-                            <li><a href="http://www.chibi.ubc.ca/Gemma/resources/apidocs/" target="_blank">
+                            <li><a href="http://gemma.msl.ubc.ca/resources/apidocs/" target="_blank">
                                 Code documentation</a></li>
                             <li><a href="https://github.com/ppavlidis/Gemma" target="_blank">
                                 GitHub project</a></li>
-                            <li><a href="http://www.chibi.ubc.ca/Gemma/rest/v2/" target="_blank">
+                            <li><a href="http://gemma.msl.ubc.ca/rest/v2/" target="_blank">
                                 REST API Root</a></li>
                         </ul>
                     </div>

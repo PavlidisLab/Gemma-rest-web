@@ -351,6 +351,54 @@ var apiApp = new Vue({
                 required: false,
                 description: treeDescription
             };
+        },
+        getGenesExpressParam: function () {
+            return {
+                name: "genes",
+                value: "1859, 5728",
+                required: true,
+                description: genesExpressDescription
+            };
+        },
+        getDatasetsExpressParam: function () {
+            return {
+                name: "datasets",
+                value: "3888",
+                required: true,
+                description: datasetsExpressDescription
+            };
+        },
+        getExpressLimitParam: function () {
+            return {
+                name: "limit",
+                value: "100",
+                required: false,
+                description: expressionLimitDescription
+            };
+        },
+        getPcaComponentParam: function () {
+            return {
+                name: "component",
+                value: "1",
+                required: true,
+                description: pcaComponentDescription
+            };
+        },
+        getDiffExSetParam: function () {
+            return {
+                name: "diffExSet",
+                value: "472836",
+                required: true,
+                description: diffExSetDescription
+            };
+        },
+        getThresholdParam: function () {
+            return {
+                name: "threshold",
+                value: "100.0",
+                required: false,
+                description: diffExThresholdDescription
+            };
         }
     }
 });

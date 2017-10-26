@@ -53,7 +53,7 @@ var rCode = "\n" +
     "library(RCurl)\n" +
     "\n" +
     "# Constants\n" +
-    "BASE_URL <- 'http://www.chibi.ubc.ca/Gemma/rest/v2'\n" +
+    "BASE_URL <- 'http://gemma.msl.ubc.ca/rest/v2'\n" +
     "RESULT_FILE <- './rGemmaData.csv'\n" +
     "\n" +
     "# Api parameters\n" +

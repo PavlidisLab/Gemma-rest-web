@@ -28,13 +28,13 @@ var filterDescription = "" +
     "<p>Class definitions: " +
     "   <ul>" +
     "       <li>Datasets: " +
-    "           <a href='http://www.chibi.ubc.ca/Gemma/resources/apidocs/ubic/gemma/model/expression/experiment/ExpressionExperiment.html'>" +
+    "           <a href='http://gemma.msl.ubc.ca/resources/apidocs/ubic/gemma/model/expression/experiment/ExpressionExperiment.html'>" +
     "           [javaDoc]</a> " +
     "           <a href='https://github.com/ppavlidis/Gemma/blob/development/gemma-core/src/main/java/ubic/gemma/model/expression/experiment/ExpressionExperiment.java'>" +
     "           [gitHub]</a>" +
     "       </li>" +
     "       <li>Platforms: " +
-    "           <a href='http://www.chibi.ubc.ca/Gemma/resources/apidocs/ubic/gemma/model/expression/arrayDesign/ArrayDesign.html'>" +
+    "           <a href='http://gemma.msl.ubc.ca/resources/apidocs/ubic/gemma/model/expression/arrayDesign/ArrayDesign.html'>" +
     "           [javaDoc]</a> " +
     "           <a href='https://github.com/ppavlidis/Gemma/blob/development/gemma-core/src/main/java/ubic/gemma/model/expression/arrayDesign/ArrayDesign.java'>" +
     "           [gitHub]</a>" +
@@ -167,7 +167,7 @@ var geneWithDescription = "" +
 
 var genesDescription = "" +
     "<p class='description-frow'>Required, part of the URL path.</p>" +
-    "<p>A list of identifiers, separated by commas (e.g: <code>1859, 50557</code>).</p>" +
+    "<p>A list of identifiers, separated by commas (e.g: <code>1859, 5728</code>).</p>" +
     geneDescriptionBase +
     "<p>Do not combine different identifiers in one query.</p>";
 
@@ -284,5 +284,44 @@ var extDbDescription = "" +
     "<p>The name of external database to match.</p>" +
     "<p>E.g: <code>PubMed</code>, <code>GEO</code>, <code>ArrayExpress</code>, <code>Genbank</code> etc.</p>";
 
+var datasetsExpressDescription = "" +
+    "<p class='description-frow'>Required, part of the URL path.</p>" +
+    "<p>Limits the result to entities with given identifiers.</p>" +
+    "<p>" +
+    "   A list of identifiers, separated by commas (e.g: <code>GSE2871,GSE2869,GSE2868</code>). Identifiers can either be the" +
+    "   Dataset ID or its short name. Retrieval by ID is more efficient." +
+    "</p>" +
+    "<p>Only datasets that user has access to will be available.</p>" +
+    "<p>" +
+    "   You can combine various identifiers in one query, but any invalid identifier will cause the" +
+    "   call to yield an error." +
+    "</p>";
 
+var genesExpressDescription = "" +
+    "<p class='description-frow'>Required, defaults to <code>empty</code>.</p>" +
+    "<p>A list of identifiers, separated by commas (e.g: <code>1859, 5728</code>).</p>" +
+    geneDescriptionBase +
+    "<p>" +
+    "   If the gene taxon does not match the taxon of the given datasets, expression levels for that gene will " +
+    "   be missing from the response" +
+    "</p>" +
+    "<p>" +
+    "   You can combine various identifiers in one query, but any invalid identifier will cause the" +
+    "   call to yield an error. Duplicate identifiers of the same gene will result in duplicates in the response." +
+    "</p>";
 
+var expressionLimitDescription = "" +
+    "<p class='description-frow'>Optional, defaults to <code>100</code>.</p>" +
+    "<p>Maximum amount of returned gene-probe expression level pairs to include in the response.</p>";
+
+var pcaComponentDescription = "" +
+    "<p class='description-frow'>Required, defaults to <code>empty</code>.</p>" +
+    "<p>The pca component to limit the results to.</p>";
+
+var diffExSetDescription = "" +
+    "<p class='description-frow'>Required, defaults to <code>empty</code>.</p>" +
+    "<p>The ID of the differential expression set to retrieve the data from.</p>";
+
+var diffExThresholdDescription = "" +
+    "<p class='description-frow'>Optional, defaults to <code>100.0</code>.</p>" +
+    "<p>The threshold that the differential expression has to meet to be included in the response.</p>";
