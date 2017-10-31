@@ -39,7 +39,8 @@
 
             <div class="jumbotron">
                 <div class="container">
-                    <h1>Gemma REST&#160;API interactive <span style="display:inline-block">documen&shy;tation</span></h1>
+                    <h1>Gemma REST&#160;API interactive <span style="display:inline-block">documen&shy;tation</span>
+                    </h1>
                 </div>
             </div>
         </header>
@@ -138,6 +139,10 @@
 
                 <hr>
 
+                <!--
+                    Dataset endpoints
+                 -->
+
                 <div class="container endpoints-group-title" v-on:click=" showDatasets = !showDatasets">
                 <span
                     v-bind:class="[showDatasets ? 'glyphicon-collapse-up' : 'glyphicon-collapse-down', 'glyphicon']"></span>
@@ -207,7 +212,7 @@
                     </endpoint>
 
                     <endpoint :name="'Datasets pca component expression levels'"
-                              :description="'Retrieves the expression levels of given pca component for given datasets'"
+                              :description="'Retrieves the expression levels most correlated with the given principal component'"
                               :query-params="[getPcaComponentParam(),getExpressLimitParam()]"
                               :path-params="[getDatasetsExpressParam()]"
                               :endpoint-url-base="'datasets/%1/expressions/pca'">
@@ -225,6 +230,10 @@
                 </div>
 
                 <hr>
+
+                <!--
+                    Platform endpoints
+                 -->
 
                 <div class="container endpoints-group-title" v-on:click=" showPlatforms = !showPlatforms">
                 <span
@@ -276,6 +285,10 @@
                 </div>
 
                 <hr>
+
+                <!--
+                    Gene endpoints
+                 -->
 
                 <div class="container endpoints-group-title" v-on:click=" showGenes = !showGenes">
                 <span
@@ -347,6 +360,10 @@
 
                 <hr>
 
+                <!--
+                    Taxa endpoints
+                 -->
+
                 <div class="container endpoints-group-title" v-on:click=" showTaxa = !showTaxa">
                 <span
                     v-bind:class="[showTaxa ? 'glyphicon-collapse-up' : 'glyphicon-collapse-down', 'glyphicon']"></span>
@@ -413,6 +430,10 @@
                 </div>
 
                 <hr>
+
+                <!--
+                    Other endpoints
+                 -->
 
                 <div class="container endpoints-group-title" v-on:click=" showOther = !showOther">
                 <span
