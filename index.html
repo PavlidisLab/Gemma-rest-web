@@ -132,6 +132,7 @@
 
                 <endpoint :name="'Root endpoint'"
                           :description="'Displays a welcome message'"
+                          :response-description="'A special object containing a welcome message, API version and a link to this documentation.'"
                           :query-params="[]"
                           :path-params="[]"
                           :endpoint-url-base="''">
@@ -155,74 +156,84 @@
 
                     <endpoint :name="'Datasets'"
                               :description="'Lists datasets filtered and organized by given parameters'"
+                              :response-description="RDAll"
                               :query-params="getDatasetsAllQueryParams()"
                               :path-params="[getDatasetsParam()]"
-                              :endpoint-url-base="'datasets/%1'">
+                              :endpoint-url-base="'datasets/%%%1'">
                     </endpoint>
 
                     <endpoint :name="'Dataset platforms'"
                               :description="'Retrieves platforms for the given dataset'"
+                              :response-description="RDDatasetsPlatforms"
                               :query-params="[]"
                               :path-params="[getDatasetParam()]"
-                              :endpoint-url-base="'datasets/%1/platforms'">
+                              :endpoint-url-base="'datasets/%%%1/platforms'">
                     </endpoint>
 
                     <endpoint :name="'Dataset samples'"
                               :description="'Retrieves samples for the given dataset'"
+                              :response-description="RDDatasetsSamples"
                               :query-params="[]"
                               :path-params="[getDatasetParam()]"
-                              :endpoint-url-base="'datasets/%1/samples'">
+                              :endpoint-url-base="'datasets/%%%1/samples'">
                     </endpoint>
 
                     <endpoint :name="'Dataset differential analysis'"
+                              :response-description="RDDatasetsDiffEx"
                               :description="'Retrieves the differential analysis results for the given dataset'"
                               :query-params="getDatasetsDiffAnalQueryParams()"
                               :path-params="[getDatasetParam()]"
-                              :endpoint-url-base="'datasets/%1/analyses/differential'">
+                              :endpoint-url-base="'datasets/%%%1/analyses/differential'">
                     </endpoint>
 
                     <endpoint :name="'Dataset annotations'"
                               :description="'Retrieves the annotations for the given dataset'"
+                              :response-description="RDDatasetsAnnots"
                               :query-params="[]"
                               :path-params="[getDatasetParam()]"
-                              :endpoint-url-base="'datasets/%1/annotations'">
+                              :endpoint-url-base="'datasets/%%%1/annotations'">
                     </endpoint>
 
                     <endpoint :name="'Dataset data'"
                               :description="'Retrieves the data for the given dataset'"
+                              :response-description="RDDatasetsData"
                               :query-params="getDatasetsDataQueryParams()"
                               :path-params="[getDatasetParam()]"
-                              :endpoint-url-base="'datasets/%1/data'"
+                              :endpoint-url-base="'datasets/%%%1/data'"
                               :json-response="false">
                     </endpoint>
 
                     <endpoint :name="'Dataset design'"
                               :description="'Retrieves the design for the given dataset'"
+                              :response-description="RDDatasetsDesign"
                               :query-params="[]"
                               :path-params="[getDatasetParam()]"
-                              :endpoint-url-base="'datasets/%1/design'"
+                              :endpoint-url-base="'datasets/%%%1/design'"
                               :json-response="false">
                     </endpoint>
 
                     <endpoint :name="'Datasets genes expression levels'"
                               :description="'Retrieves the expression levels of given genes for given datasets'"
+                              :response-description="RDDatasetsGeneExp"
                               :query-params="[]"
                               :path-params="[getDatasetsExpressParam(),getGenesExpressParam()]"
-                              :endpoint-url-base="'datasets/%1/expressions/genes/%2'">
+                              :endpoint-url-base="'datasets/%%%1/expressions/genes/%%%2'">
                     </endpoint>
 
                     <endpoint :name="'Datasets pca component expression levels'"
                               :description="'Retrieves the expression levels most correlated with the given principal component'"
+                              :response-description="RDDatasetsPcaExp"
                               :query-params="[getPcaComponentParam(),getExpressLimitParam()]"
                               :path-params="[getDatasetsExpressParam()]"
-                              :endpoint-url-base="'datasets/%1/expressions/pca'">
+                              :endpoint-url-base="'datasets/%%%1/expressions/pca'">
                     </endpoint>
 
                     <endpoint :name="'Datasets differential expression levels'"
                               :description="'Retrieves differential expression levels for given datasets'"
+                              :response-description="RDDatasetsDiffExp"
                               :query-params="[getDiffExSetParam(),getThresholdParam(),getExpressLimitParam()]"
                               :path-params="[getDatasetsExpressParam()]"
-                              :endpoint-url-base="'datasets/%1/expressions/differential'">
+                              :endpoint-url-base="'datasets/%%%1/expressions/differential'">
                     </endpoint>
 
                     <div class="row-pad"></div>
@@ -248,35 +259,35 @@
                               :description="'List platforms filtered and organized by given parameters'"
                               :query-params="getDatasetsAllQueryParams()"
                               :path-params="[getPlatformsParam()]"
-                              :endpoint-url-base="'platforms/%1'">
+                              :endpoint-url-base="'platforms/%%%1'">
                     </endpoint>
 
                     <endpoint :name="'Platform datasets'"
                               :description="'Retrieves experiments in the given platform'"
                               :query-params="getOffsetLimitQueryParams()"
                               :path-params="[getPlatformParam()]"
-                              :endpoint-url-base="'platforms/%1/datasets/'">
+                              :endpoint-url-base="'platforms/%%%1/datasets/'">
                     </endpoint>
 
                     <endpoint :name="'Platform elements'"
                               :description="'Retrieves the composite sequences (elements) for the given platform'"
                               :query-params="getOffsetLimitQueryParams()"
                               :path-params="[getPlatformParam(),getProbesParam()]"
-                              :endpoint-url-base="'platforms/%1/elements/%2'">
+                              :endpoint-url-base="'platforms/%%%1/elements/%%%2'">
                     </endpoint>
 
                     <endpoint :name="'Platform element genes'"
                               :description="'Retrieves the genes on the given platform element'"
                               :query-params="getOffsetLimitQueryParams()"
                               :path-params="getPlatformsElementPathParams()"
-                              :endpoint-url-base="'platforms/%1/elements/%2/genes/'">
+                              :endpoint-url-base="'platforms/%%%1/elements/%%%2/genes/'">
                     </endpoint>
 
                     <endpoint :name="'Platform annotations'"
                               :description="'Retrieves the annotation file for the given platform'"
                               :query-params="[]"
                               :path-params="[getPlatformAnnotParam()]"
-                              :endpoint-url-base="'platforms/%1/annotations/'"
+                              :endpoint-url-base="'platforms/%%%1/annotations/'"
                               :json-response="false">
                     </endpoint>
 
@@ -316,42 +327,42 @@
                               :description="'Retrieves all genes matching the identifier'"
                               :query-params="[]"
                               :path-params="[getGenesParam()]"
-                              :endpoint-url-base="'genes/%1'">
+                              :endpoint-url-base="'genes/%%%1'">
                     </endpoint>
 
                     <endpoint :name="'Gene evidence'"
                               :description="'Retrieves gene evidence for the given gene'"
                               :query-params="[]"
                               :path-params="[getGeneParam()]"
-                              :endpoint-url-base="'genes/%1/evidence'">
+                              :endpoint-url-base="'genes/%%%1/evidence'">
                     </endpoint>
 
                     <endpoint :name="'Gene locations'"
                               :description="'Retrieves the physical location of the given gene'"
                               :query-params="[]"
                               :path-params="[getGeneParam()]"
-                              :endpoint-url-base="'genes/%1/locations'">
+                              :endpoint-url-base="'genes/%%%1/locations'">
                     </endpoint>
 
                     <endpoint :name="'Gene probes'"
                               :description="'Retrieves the probes (composite sequences) with this gene'"
                               :query-params="getOffsetLimitQueryParams()"
                               :path-params="[getGeneParam()]"
-                              :endpoint-url-base="'genes/%1/probes'">
+                              :endpoint-url-base="'genes/%%%1/probes'">
                     </endpoint>
 
                     <endpoint :name="'Gene goTerms'"
                               :description="'Retrieves the GO terms of the given gene'"
                               :query-params="[]"
                               :path-params="[getGeneParam()]"
-                              :endpoint-url-base="'genes/%1/goTerms'">
+                              :endpoint-url-base="'genes/%%%1/goTerms'">
                     </endpoint>
 
                     <endpoint :name="'Gene coexpression'"
                               :description="'Retrieves the coexpression of two given genes'"
                               :query-params="getGeneCoexpQueryParams()"
                               :path-params="[getGeneParam()]"
-                              :endpoint-url-base="'genes/%1/coexpression'">
+                              :endpoint-url-base="'genes/%%%1/coexpression'">
                     </endpoint>
 
                     <div class="row-pad"></div>
@@ -376,56 +387,56 @@
                               :description="'List taxa filtered by given parameters'"
                               :query-params="[]"
                               :path-params="[getTaxaParam()]"
-                              :endpoint-url-base="'taxa/%1'">l
+                              :endpoint-url-base="'taxa/%%%1'">l
                     </endpoint>
 
                     <endpoint :name="'Taxon datasets'"
                               :description="'Retrieves datasets for the given taxon.'"
                               :query-params="getDatasetsAllQueryParams()"
                               :path-params="[getTaxonParam()]"
-                              :endpoint-url-base="'taxa/%1/datasets'">
+                              :endpoint-url-base="'taxa/%%%1/datasets'">
                     </endpoint>
 
                     <endpoint :name="'Taxon phenotypes'"
                               :description="'Loads all phenotypes for the given taxon.'"
                               :query-params="[getEditableParam(), getTreeParam()]"
                               :path-params="[getTaxonParam()]"
-                              :endpoint-url-base="'taxa/%1/phenotypes'">
+                              :endpoint-url-base="'taxa/%%%1/phenotypes'">
                     </endpoint>
 
                     <endpoint :name="'Taxon phenotypes candidate genes'"
                               :description="'Given a set of phenotypes, return all genes associated with them.'"
                               :query-params="[getEditableParam(), getPhenotypesParam()]"
                               :path-params="[getTaxonParam()]"
-                              :endpoint-url-base="'taxa/%1/phenotypes/candidates'">
+                              :endpoint-url-base="'taxa/%%%1/phenotypes/candidates'">
                     </endpoint>
 
                     <endpoint :name="'Gene on specific taxon'"
                               :description="'Retrieves genes matching the identifier on the given taxon.'"
                               :query-params="[]"
                               :path-params="[getTaxonParam(), getGeneParam()]"
-                              :endpoint-url-base="'taxa/%1/genes/%2'">
+                              :endpoint-url-base="'taxa/%%%1/genes/%%%2'">
                     </endpoint>
 
                     <endpoint :name="'Gene evidence on specific taxon'"
                               :description="'Retrieves gene evidence for the gene on the given taxon.'"
                               :query-params="[]"
                               :path-params="[getTaxonParam(), getGeneParam()]"
-                              :endpoint-url-base="'taxa/%1/genes/%2/evidence'">
+                              :endpoint-url-base="'taxa/%%%1/genes/%%%2/evidence'">
                     </endpoint>
 
                     <endpoint :name="'Gene location on specific taxon'"
                               :description="'Retrieves gene evidence for the gene on the given taxon.'"
                               :query-params="[]"
                               :path-params="[getTaxonParam(), getGeneParam()]"
-                              :endpoint-url-base="'taxa/%1/genes/%2/locations'">
+                              :endpoint-url-base="'taxa/%%%1/genes/%%%2/locations'">
                     </endpoint>
 
                     <endpoint :name="'Genes at location'"
                               :description="'Finds genes overlapping a given region.'"
                               :query-params="[getStrandParam(), getStartParam(), getSizeParam()]"
                               :path-params="[getTaxonParam(), getChromosomeParam()]"
-                              :endpoint-url-base="'taxa/%1/chromosomes/%2/genes'">
+                              :endpoint-url-base="'taxa/%%%1/chromosomes/%%%2/genes'">
                     </endpoint>
                 </div>
 
@@ -448,14 +459,14 @@
                               :description="'Does a search for annotations based on the given string'"
                               :query-params="[]"
                               :path-params="[getSearchParam()]"
-                              :endpoint-url-base="'annotations/search/%1'">
+                              :endpoint-url-base="'annotations/search/%%%1'">
                     </endpoint>
 
                     <endpoint :name="'Dataset search'"
                               :description="'Does a search for datasets containing annotations matching the given string'"
                               :query-params="[]"
                               :path-params="[getSearchParam()]"
-                              :endpoint-url-base="'annotations/search/%1/datasets'">
+                              :endpoint-url-base="'annotations/search/%%%1/datasets'">
                     </endpoint>
 
                     <endpoint :name="'Evidence'"
@@ -595,6 +606,16 @@
                                     <span class="badge invisible"><span class="glyphicon">&#160;</span></span>
                                 </h5>
                             </div>
+
+                            <div class="" >
+                                <button class="btn-response-desc" v-on:click=" showResponseInfo = !showResponseInfo " v-show="!showResponseInfo">
+                                    <span class="glyphicon glyphicon-info-sign"></span>
+                                    Show response description
+                                </button>
+                                <div class="pre-like" v-html="responseDescription" v-show="showResponseInfo"
+                                     v-on:click=" showResponseInfo = !showResponseInfo "></div>
+                            </div>
+
                             <pre v-if="loadingMsgFull != null" class="response">{{ loadingMsgFull }}</pre>
                             <tree-view v-else-if="jsonResponse" class="pre-like response" :data="response"
                                        :options="{maxDepth: 2, rootObjectKey: ''}"></tree-view>

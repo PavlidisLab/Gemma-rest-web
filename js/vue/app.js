@@ -7,6 +7,7 @@ Vue.component('endpoint', {
     props: {
         name: String,
         description: String,
+        responseDescription: String,
         pathParams: Array,
         queryParams: Array,
         endpointUrlBase: String,
@@ -22,6 +23,7 @@ Vue.component('endpoint', {
             apiUrlBase: BASE_URL,
             response: "{}",
             show: false,
+            showResponseInfo: false,
             status: null,
             isError: false,
             loadingMsgBase: "Fetching data",
@@ -36,7 +38,7 @@ Vue.component('endpoint', {
         computeUrl: function () {
             var url = this.apiUrlBase + this.endpointUrlBase;
             this.pathParams.forEach(function (pParam) {
-                url = url.replace(/%\d+/, encodeURIComponent(pParam.value));
+                url = url.replace(/%%%\d+/, encodeURIComponent(pParam.value));
             });
             var first = true;
             this.queryParams.forEach(function (qParam) {
@@ -112,7 +114,6 @@ Vue.component('api-param', {
             showInfo: false
         }
     }
-
 });
 
 // noinspection JSUnusedGlobalSymbols // Used in html templates
@@ -125,11 +126,22 @@ var apiApp = new Vue({
         showGenes: false,
         showTaxa: false,
         pythonExample: pythonCode,
-        rExample: rCode
+        rExample: rCode,
+
+        // Response descriptions
+        RDAll: RDAll,
+        RDDatasetsPlatforms: RDDatasetsPlatforms,
+        RDDatasetsSamples: RDDatasetsSamples,
+        RDDatasetsDiffEx: RDDatasetsDiffEx,
+        RDDatasetsAnnots: RDDatasetsAnnots,
+        RDDatasetsData: RDDatasetsData,
+        RDDatasetsDesign: RDDatasetsDesign,
+        RDDatasetsGeneExp: RDDatasetsGeneExp,
+        RDDatasetsPcaExp: RDDatasetsPcaExp,
+        RDDatasetsDiffExp: RDDatasetsDiffExp
     },
     methods: {
         // Parameter bundles getters
-
         getDatasetsAllQueryParams: function () {
             return [this.getFilterParam(), this.getOffsetParam(), this.getLimitParam(), this.getSortParam()];
         },
@@ -399,6 +411,6 @@ var apiApp = new Vue({
                 required: false,
                 description: diffExThresholdDescription
             };
-        }
+        },
     }
 });

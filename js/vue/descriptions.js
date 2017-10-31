@@ -1,3 +1,7 @@
+/*
+ * Parameters descriptions
+ */
+
 var datasetsDescription = "" +
     "<p class='description-frow'>Optional, defaults to <code>empty</code>.</p>" +
     "<p>Limits the result to entities with given identifiers.</p>" +
@@ -320,8 +324,106 @@ var pcaComponentDescription = "" +
 
 var diffExSetDescription = "" +
     "<p class='description-frow'>Required, defaults to <code>empty</code>.</p>" +
-    "<p>The ID of the differential expression set to retrieve the data from.</p>";
+    "<p>The ID of the differential expression set to retrieve the data from.</p>" +
+    "<p>" +
+    "   This value can be obtained through the 'Dataset differential analysis' endpoint in the 'Dataset endpoints' section. " +
+    "   See the <code>resultSetId</code> in one of the response objects in said endpoint." +
+    "</p>";
 
 var diffExThresholdDescription = "" +
     "<p class='description-frow'>Optional, defaults to <code>100.0</code>.</p>" +
     "<p>The threshold that the differential expression has to meet to be included in the response.</p>";
+
+/*
+ * Response descriptions
+ */
+
+var errId404 = "<p>A <code>404 error</code> if the given identifier does not map to any object.</p>";
+var errMissingParam400 = "<p>A <code>400 error</code> if required parameters are missing.</p>";
+
+var RDAll = "" +
+    "<p>" +
+    "   An array of value objects representing the objects that matched the query. Empty array if no objects matched." +
+    "</p>";
+
+var RDDatasetsPlatforms = "" +
+    "<p>" +
+    "   An array of platforms (array design value objects) containing the given dataset." +
+    errId404 +
+    "</p>";
+
+var RDDatasetsSamples = "" +
+    "<p>" +
+    "   An array of samples (bio assay value objects) in the given dataset." +
+    errId404 +
+    "</p>";
+
+var RDDatasetsDiffEx = "" +
+    "<p>" +
+    "   An array of analyses (differential expression value objects) in the given dataset." +
+    errId404 +
+    errMissingParam400 +
+    "</p>";
+
+var RDDatasetsAnnots = "" +
+    "<p>" +
+    "   An array of annotations (annotation value objects) attached to given dataset has." +
+    errId404 +
+    "</p>";
+
+var RDDatasetsData = "" +
+    "<p>" +
+    "   The data file for the given dataset." +
+    errId404 +
+    "</p>";
+
+var RDDatasetsDesign = "" +
+    "<p>" +
+    "   The design file for the given dataset." +
+    errId404 +
+    "</p>";
+
+var geneWarn = "" +
+    "<p class='description-imp'>" +
+    "   <span class='glyphicon glyphicon-th-large glyphicon-exclamation-sign'></span>" +
+    "   If the design element is mapped to multiple genes, the <code>geneSpecific</code> property will be set to <code>false</code>" +
+    "</p>";
+
+var probeNote = "" +
+    "<p>" +
+    "   Probes not mapped to any gene are also included (the " +
+    "   <code>limit</code> argument does not account for them, so the length of the 'geneExpressionLevels' array " +
+    "   for each experiment can be longer than the given limit.)." +
+    "</p>";
+
+var RDDatasetsGeneExp = "" +
+    "<p>" +
+    "   The expression levels of given genes for each given experiment (experiment expression levels value object)." +
+    "   All identifiers have to be valid." +
+    errId404 +
+    geneWarn +
+    "</p>";
+
+var RDDatasetsPcaExp = "" +
+    "<p>" +
+    "   The expression levels for each given experiment (experiment expression levels value object) of genes that are" +
+    "   most correlated with the given principal component." +
+    "</p>" +
+    probeNote +
+    errId404 +
+    geneWarn +
+    "</p>";
+
+var RDDatasetsDiffExp = "" +
+    "<p>" +
+    "   The differential expression levels for each given experiment (experiment expression levels value object) in the" +
+    "   given differential expression set." +
+    "</p>" +
+    probeNote +
+    "<p>" +
+    "   If the experiment is not in the given diff. exp. set, an empty array is returned." +
+    errId404 +
+    geneWarn +
+    "</p>";
+
+
