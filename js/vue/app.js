@@ -193,7 +193,7 @@ var apiApp = new Vue({
         getSearchParam: function () {
             return {
                 name: "query",
-                value: "http://purl.obolibrary.org/obo/DOID_11934, http://purl.obolibrary.org/obo/DOID_3119",
+                value: "http://purl.obolibrary.org/obo/CL_0002368, http://purl.obolibrary.org/obo/UBERON_0002048",
                 required: true,
                 description: searchDescription
             };
