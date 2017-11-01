@@ -126,19 +126,7 @@ var apiApp = new Vue({
         showGenes: false,
         showTaxa: false,
         pythonExample: pythonCode,
-        rExample: rCode,
-
-        // Response descriptions
-        RDAll: RDAll,
-        RDDatasetsPlatforms: RDDatasetsPlatforms,
-        RDDatasetsSamples: RDDatasetsSamples,
-        RDDatasetsDiffEx: RDDatasetsDiffEx,
-        RDDatasetsAnnots: RDDatasetsAnnots,
-        RDDatasetsData: RDDatasetsData,
-        RDDatasetsDesign: RDDatasetsDesign,
-        RDDatasetsGeneExp: RDDatasetsGeneExp,
-        RDDatasetsPcaExp: RDDatasetsPcaExp,
-        RDDatasetsDiffExp: RDDatasetsDiffExp
+        rExample: rCode
     },
     methods: {
         // Parameter bundles getters
@@ -205,7 +193,7 @@ var apiApp = new Vue({
         getSearchParam: function () {
             return {
                 name: "query",
-                value: "http://purl.obolibrary.org/obo/OBI_0000105",
+                value: "http://purl.obolibrary.org/obo/DOID_11934, http://purl.obolibrary.org/obo/DOID_3119",
                 required: true,
                 description: searchDescription
             };

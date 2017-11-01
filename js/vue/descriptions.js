@@ -277,7 +277,10 @@ var nuclSizeDescription = "" +
 
 var searchDescription = "" +
     "<p class='description-frow'>Required, defaults to <code>empty</code>.</p>" +
-    "<p>The search query. Either plain text, or an ontology term URI.</p>" +
+    "<p>" +
+    "   The search query. Either plain text, or an ontology term URI. Plain text search is significantly slower. " +
+    "   Can be multiple identifiers separated by commas." +
+    "</p>" +
     "<p class='description-imp'>" +
     "   <span class='glyphicon glyphicon-th-large glyphicon-exclamation-sign'></span>" +
     "   When using in scripts, remember to URL-encode any forward slashes in the phenotype value URIs (see the compiled URL below)." +
@@ -326,7 +329,7 @@ var diffExSetDescription = "" +
     "<p class='description-frow'>Required, defaults to <code>empty</code>.</p>" +
     "<p>The ID of the differential expression set to retrieve the data from.</p>" +
     "<p>" +
-    "   This value can be obtained through the 'Dataset differential analysis' endpoint in the 'Dataset endpoints' section. " +
+    "   This value can be obtained through the 'Dataset differential analysis' endpoint in the 'Dataset endpoints' category. " +
     "   See the <code>resultSetId</code> in one of the response objects in said endpoint." +
     "</p>";
 
@@ -343,7 +346,10 @@ var errMissingParam400 = "<p>A <code>400 error</code> if required parameters are
 
 var RDAll = "" +
     "<p>" +
-    "   An array of value objects representing the objects that matched the query. Empty array if no objects matched." +
+    "   An array of value objects representing the objects that matched the query. " +
+    "</p>" +
+    "<p>" +
+    "   Empty array if no objects matched." +
     "</p>";
 
 var RDDatasetsPlatforms = "" +
@@ -367,7 +373,7 @@ var RDDatasetsDiffEx = "" +
 
 var RDDatasetsAnnots = "" +
     "<p>" +
-    "   An array of annotations (annotation value objects) attached to given dataset has." +
+    "   An array of annotations (annotation value objects) attached to the given dataset." +
     errId404 +
     "</p>";
 
@@ -399,7 +405,7 @@ var probeNote = "" +
 var RDDatasetsGeneExp = "" +
     "<p>" +
     "   The expression levels of given genes for each given experiment (experiment expression levels value object)." +
-    "   All identifiers have to be valid." +
+    "   All identifiers must be valid." +
     errId404 +
     geneWarn +
     "</p>";
@@ -426,4 +432,114 @@ var RDDatasetsDiffExp = "" +
     geneWarn +
     "</p>";
 
+var RDPlatformsDatasets = "" +
+    "<p>" +
+    "   An array of datasets (expression experiment value objects) that are on the given platform." +
+    errId404 +
+    "</p>";
 
+var RDPlatformsElements = "" +
+    "<p> An array of elements (composite sequence value objects) of the given platform.</p>" +
+    "<p>" +
+    "   Empty collection, if no elements matched the <code>elements</code> parameter." +
+    "</p>" +
+    errId404 +
+    "</p>";
+
+var RDPlatformsElementsGenes = "" +
+    "<p> An array of genes (gene value objects) aligned with the the given platform element.</p>" +
+    "<p> All identifiers must be valid. </p>" +
+    errId404 +
+    "</p>";
+
+var RDPlatformsAnnots = "" +
+    "<p> An annotation file for the given platform. </p>" +
+    "<p> A <code>404 error</code> if the given platform has no annotation file, or the file is not accessible.</p>" +
+    errId404 +
+    "</p>";
+
+var RDGenesAll = "" +
+    RDAll +
+    errMissingParam400;
+
+var RDGenesEvidence = "" +
+    "<p> An array of gene evidence value objects for the given gene or gene homologues.</p>" +
+    errId404;
+
+var RDGenesLocation = "" +
+    "<p> An array of locations (physical location value objects) of the given gene or gene homologues.</p>" +
+    errId404;
+
+var RDGenesProbes = "" +
+    "<p> " +
+    "   An array of probes (composite sequence value objects) that are mapped to this gene. Note, that it is" +
+    "   possible for probes to map to multiple genes." +
+    "</p>" +
+    errId404;
+
+var RDGenesGo = "" +
+    "<p> An array of GO terms (gene ontology term value objects) associated with the given gene.</p>" +
+    errId404;
+
+var RDGenesCoexp = "" +
+    "<p> " +
+    "   An array of gene coexpression data (coexpression meta value objects) representing the coexpression of the" +
+    "   two given genes." +
+    "</p>" +
+    errId404 +
+    errMissingParam400;
+
+var RDTaxaAll = "" +
+    "<p> An array of taxa (taxon value objects) matching the given identifiers. </p>" +
+    "<p> A <code>400 error</code> if all identifiers are invalid.</p>" +
+    "<p> An array of all available taxa, if no identifiers were provided.</p>";
+
+var RDTaxaDatasets = "" +
+    "<p> An array of datasets (expression experiment value objects) associated with the given taxon.</p>"
+    + errId404;
+
+var RDTaxaPhenotypes = "" +
+    "<p>If <code>tree = false</code>, an array of simple tree value objects.</p>" +
+    "<p>" +
+    "   If <code>tree = true</code>, an array of tree characteristic value objects, that will represent root nodes of" +
+    "   a phenotype tree. Each node has its child nodes in the <code>children</code> array property. There will be " +
+    "   exactly 3 root nodes - for a disease ontology tree, human phenotype ontology tree and a mammalian phenotype ontology tree." +
+    "   If there are no terms for the given taxon in any of the ontologies, the relevant root node will be null." +
+    "</p>"
+    + errId404;
+
+var RDTaxaCandidateGenes = "" +
+    "<p> An array of gene evidence value objects for genes associated with the given phenotypes on the given taxon.</p>"
+    + errId404
+    + errMissingParam400;
+
+var RDTaxaGene = "" +
+    "<p> An array of genes (gene value objects) on the given taxon, matching the given identifier.</p>"
+    + errId404;
+
+var RDTaxaGeneEvidence = "" +
+    "<p> An array of gene evidence value objects for the given gene on the given taxon.</p>"
+    + errId404;
+
+var RDTaxaGeneLocation = "" +
+    "<p> An array of locations (physical location value objects) of the given gene on the given taxon.</p>"
+    + errId404;
+
+var RDTaxaGeneAtLoc = "" +
+    "<p> An array of genes (gene value objects) that overlap the given region.</p>"
+    + errId404
+    + errMissingParam400;
+
+var RDAnnotSearch = "" +
+    "<p> An array of characteristics (characteristic value objects) matching the given identifiers.</p>"
+    + errMissingParam400;
+
+var RDDatasetSearch = "" +
+    "<p> An array of datasets (expression experiment value objects) that are associated with all of the given annotations.</p>";
+
+var RDEvidence = "" +
+    "<p> An array of evidence value objects from the given database.</p>"
+    + errMissingParam400;
+
+var RDDumps = "" +
+    "<p> An array of all available dumps (dumps value objects).</p>";

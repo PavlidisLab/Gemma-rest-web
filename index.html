@@ -54,10 +54,6 @@
                                                                   target="_blank">Gemma REST API</a>. Here
                         you can find example script usage of the API, as well as graphical interface for each
                         endpoint, with description of its parameters and the endpoint URL.</p>
-                    <p>To display information about any parameter, click this button:
-                        <button class="btn btn-info"><span class="glyphicon glyphicon-info-sign"></span></button>
-                        next to the parameter field.
-                    </p>
                     <p>The documentation of the underlying java code can be found <a
                         href="http://gemma.msl.ubc.ca/resources/apidocs/ubic/gemma/web/services/rest/package-summary.html">here</a>.
                         See the <a href="#footer">links section</a> in the footer of this page for other relevant links.
@@ -126,8 +122,38 @@
                     <h2>API Endpoints</h2>
                     <p>List of all API endpoints, with a GUI for test calls.</p>
                     <p>Click on the endpoint category to expand it, and then on each endpoint name to see its interface
-                        and
-                        parameters.</p>
+                        and parameters.</p>
+                    <p>
+                        To display information about any parameter, click the
+                        <button class="btn btn-info"><span class="glyphicon glyphicon-info-sign"></span></button>
+                        button next to the parameter field.
+                    </p>
+
+                    <h3>Response format</h3>
+
+                    <p>The default format of the response is JSON. Some endpoints return text files or tar.gz
+                        archives.</p>
+                    <p>For successful api calls, the reply will have a root element <code>data</code> containing all
+                        retrieved information wrapped in endpoint-specific objects, and if there was an error, the
+                        response will have an
+                        <code>apiVersion</code> element and <code>error</code> element, that will contain
+                        <code>code</code>,<code> message</code> and <code>errors</code> sub-elements.
+                        The <code>errors</code> sub-element may contain details about the exception that occured.
+                    </p>
+
+                    <p>Should you receive a <code>500 class error</code> (any error code starting with the number 5)
+                        indicating a server problem, we kindly ask you to
+                        <a href="#contact">contact us</a> and provide the api call url you used when you received the
+                        error, and the response.</p>
+
+
+                    <p>To display endpoint-specific information about the response, click the
+                        <button class="btn-response-desc-mock">
+                            <span class="glyphicon glyphicon-info-sign"></span>
+                            Show response description
+                        </button>
+                        button under the 'response' subtitle.
+                    </p>
                 </div>
 
                 <endpoint :name="'Root endpoint'"
@@ -257,6 +283,7 @@
 
                     <endpoint :name="'Platforms'"
                               :description="'List platforms filtered and organized by given parameters'"
+                              :response-description="RDAll"
                               :query-params="getDatasetsAllQueryParams()"
                               :path-params="[getPlatformsParam()]"
                               :endpoint-url-base="'platforms/%%%1'">
@@ -264,6 +291,7 @@
 
                     <endpoint :name="'Platform datasets'"
                               :description="'Retrieves experiments in the given platform'"
+                              :response-description="RDPlatformsDatasets"
                               :query-params="getOffsetLimitQueryParams()"
                               :path-params="[getPlatformParam()]"
                               :endpoint-url-base="'platforms/%%%1/datasets/'">
@@ -271,6 +299,7 @@
 
                     <endpoint :name="'Platform elements'"
                               :description="'Retrieves the composite sequences (elements) for the given platform'"
+                              :response-description="RDPlatformsElements"
                               :query-params="getOffsetLimitQueryParams()"
                               :path-params="[getPlatformParam(),getProbesParam()]"
                               :endpoint-url-base="'platforms/%%%1/elements/%%%2'">
@@ -278,6 +307,7 @@
 
                     <endpoint :name="'Platform element genes'"
                               :description="'Retrieves the genes on the given platform element'"
+                              :response-description="RDPlatformsElementsGenes"
                               :query-params="getOffsetLimitQueryParams()"
                               :path-params="getPlatformsElementPathParams()"
                               :endpoint-url-base="'platforms/%%%1/elements/%%%2/genes/'">
@@ -285,6 +315,7 @@
 
                     <endpoint :name="'Platform annotations'"
                               :description="'Retrieves the annotation file for the given platform'"
+                              :response-description="RDPlatformsAnnots"
                               :query-params="[]"
                               :path-params="[getPlatformAnnotParam()]"
                               :endpoint-url-base="'platforms/%%%1/annotations/'"
@@ -324,7 +355,8 @@
                     </div>
 
                     <endpoint :name="'Genes'"
-                              :description="'Retrieves all genes matching the identifier'"
+                              :description="'Retrieves all genes matching the identifiers'"
+                              :response-description="RDGenesAll"
                               :query-params="[]"
                               :path-params="[getGenesParam()]"
                               :endpoint-url-base="'genes/%%%1'">
@@ -332,6 +364,7 @@
 
                     <endpoint :name="'Gene evidence'"
                               :description="'Retrieves gene evidence for the given gene'"
+                              :response-description="RDGenesEvidence"
                               :query-params="[]"
                               :path-params="[getGeneParam()]"
                               :endpoint-url-base="'genes/%%%1/evidence'">
@@ -339,6 +372,7 @@
 
                     <endpoint :name="'Gene locations'"
                               :description="'Retrieves the physical location of the given gene'"
+                              :response-description="RDGenesLocation"
                               :query-params="[]"
                               :path-params="[getGeneParam()]"
                               :endpoint-url-base="'genes/%%%1/locations'">
@@ -346,6 +380,7 @@
 
                     <endpoint :name="'Gene probes'"
                               :description="'Retrieves the probes (composite sequences) with this gene'"
+                              :response-description="RDGenesProbes"
                               :query-params="getOffsetLimitQueryParams()"
                               :path-params="[getGeneParam()]"
                               :endpoint-url-base="'genes/%%%1/probes'">
@@ -353,6 +388,7 @@
 
                     <endpoint :name="'Gene goTerms'"
                               :description="'Retrieves the GO terms of the given gene'"
+                              :response-description="RDGenesGo"
                               :query-params="[]"
                               :path-params="[getGeneParam()]"
                               :endpoint-url-base="'genes/%%%1/goTerms'">
@@ -360,6 +396,7 @@
 
                     <endpoint :name="'Gene coexpression'"
                               :description="'Retrieves the coexpression of two given genes'"
+                              :response-description="RDGenesCoexp"
                               :query-params="getGeneCoexpQueryParams()"
                               :path-params="[getGeneParam()]"
                               :endpoint-url-base="'genes/%%%1/coexpression'">
@@ -385,6 +422,7 @@
                 <div id="taxaEndpoints" v-show="showTaxa">
                     <endpoint :name="'Taxa'"
                               :description="'List taxa filtered by given parameters'"
+                              :response-description="RDTaxaAll"
                               :query-params="[]"
                               :path-params="[getTaxaParam()]"
                               :endpoint-url-base="'taxa/%%%1'">l
@@ -392,6 +430,7 @@
 
                     <endpoint :name="'Taxon datasets'"
                               :description="'Retrieves datasets for the given taxon.'"
+                              :response-description="RDTaxaDatasets"
                               :query-params="getDatasetsAllQueryParams()"
                               :path-params="[getTaxonParam()]"
                               :endpoint-url-base="'taxa/%%%1/datasets'">
@@ -399,6 +438,7 @@
 
                     <endpoint :name="'Taxon phenotypes'"
                               :description="'Loads all phenotypes for the given taxon.'"
+                              :response-description="RDTaxaPhenotypes"
                               :query-params="[getEditableParam(), getTreeParam()]"
                               :path-params="[getTaxonParam()]"
                               :endpoint-url-base="'taxa/%%%1/phenotypes'">
@@ -406,6 +446,7 @@
 
                     <endpoint :name="'Taxon phenotypes candidate genes'"
                               :description="'Given a set of phenotypes, return all genes associated with them.'"
+                              :response-description="RDTaxaCandidateGenes"
                               :query-params="[getEditableParam(), getPhenotypesParam()]"
                               :path-params="[getTaxonParam()]"
                               :endpoint-url-base="'taxa/%%%1/phenotypes/candidates'">
@@ -413,6 +454,7 @@
 
                     <endpoint :name="'Gene on specific taxon'"
                               :description="'Retrieves genes matching the identifier on the given taxon.'"
+                              :response-description="RDTaxaGene"
                               :query-params="[]"
                               :path-params="[getTaxonParam(), getGeneParam()]"
                               :endpoint-url-base="'taxa/%%%1/genes/%%%2'">
@@ -420,6 +462,7 @@
 
                     <endpoint :name="'Gene evidence on specific taxon'"
                               :description="'Retrieves gene evidence for the gene on the given taxon.'"
+                              :response-description="RDTaxaGeneEvidence"
                               :query-params="[]"
                               :path-params="[getTaxonParam(), getGeneParam()]"
                               :endpoint-url-base="'taxa/%%%1/genes/%%%2/evidence'">
@@ -427,6 +470,7 @@
 
                     <endpoint :name="'Gene location on specific taxon'"
                               :description="'Retrieves gene evidence for the gene on the given taxon.'"
+                              :response-description="RDTaxaGeneLocation"
                               :query-params="[]"
                               :path-params="[getTaxonParam(), getGeneParam()]"
                               :endpoint-url-base="'taxa/%%%1/genes/%%%2/locations'">
@@ -434,6 +478,7 @@
 
                     <endpoint :name="'Genes at location'"
                               :description="'Finds genes overlapping a given region.'"
+                              :response-description="RDTaxaGeneAtLoc"
                               :query-params="[getStrandParam(), getStartParam(), getSizeParam()]"
                               :path-params="[getTaxonParam(), getChromosomeParam()]"
                               :endpoint-url-base="'taxa/%%%1/chromosomes/%%%2/genes'">
@@ -457,6 +502,7 @@
 
                     <endpoint :name="'Annotation search'"
                               :description="'Does a search for annotations based on the given string'"
+                              :response-description="RDAnnotSearch"
                               :query-params="[]"
                               :path-params="[getSearchParam()]"
                               :endpoint-url-base="'annotations/search/%%%1'">
@@ -464,6 +510,7 @@
 
                     <endpoint :name="'Dataset search'"
                               :description="'Does a search for datasets containing annotations matching the given string'"
+                              :response-description="RDDatasetSearch"
                               :query-params="[]"
                               :path-params="[getSearchParam()]"
                               :endpoint-url-base="'annotations/search/%%%1/datasets'">
@@ -471,6 +518,7 @@
 
                     <endpoint :name="'Evidence'"
                               :description="'Finds all evidence with the given external database name'"
+                              :response-description="RDEvidence"
                               :query-params="getEvidenceQueryParams()"
                               :path-params="[]"
                               :endpoint-url-base="'phenotypes/evidence/'">
@@ -478,6 +526,7 @@
 
                     <endpoint :name="'Dumps'"
                               :description="'Retrieves information about external data sources from Phenocarta, including URLs and timestamps of the most recent update dates/times'"
+                              :response-description="RDDumps"
                               :query-params="[]"
                               :path-params="[]"
                               :endpoint-url-base="'phenotypes/dumps/'">
@@ -532,6 +581,7 @@
                             </li>
                         </ul>
                         <h4>Contact</h4>
+                        <a id="contact"></a>
                         <ul>
                             <li><a href="mailto:gemma@chibi.ubc.ca" target="_blank">Email</a></li>
                         </ul>
@@ -607,8 +657,9 @@
                                 </h5>
                             </div>
 
-                            <div class="" >
-                                <button class="btn-response-desc" v-on:click=" showResponseInfo = !showResponseInfo " v-show="!showResponseInfo">
+                            <div class="">
+                                <button class="btn-response-desc" v-on:click=" showResponseInfo = !showResponseInfo "
+                                        v-show="!showResponseInfo">
                                     <span class="glyphicon glyphicon-info-sign"></span>
                                     Show response description
                                 </button>

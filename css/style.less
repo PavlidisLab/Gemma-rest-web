@@ -11,6 +11,8 @@
 @light: #f5f5f5;
 @lightest: white;
 
+@bs-warning: #ffda4a;
+@bs-warning-border: #8a6d3b;
 @warning: gold;
 @code-bg: #333;
 @blue-darkest: #0e8dbc;
@@ -70,6 +72,16 @@ header {
 @media (max-width: 767px) {
     .jumbotron .container {
         padding-left: 25%;
+    }
+
+    .response-col {
+        width: 100%;
+    }
+
+    .alert-warning {
+        &:before {
+            display: none;
+        }
     }
 }
 
@@ -315,14 +327,14 @@ footer footer a:hover * {
     font-size: 150%;
 }
 
-.btn-response-desc {
-    display: block;
+.btn-response-desc:extend(.pre-like) {
+    padding: 7px;
     width: 100%;
-    padding: 9.5px;
-    margin: 0 0 20px;
-    background-color: @light;
-    border: 1px solid @dark-med;
-    border-radius: 4px;
+}
+
+.btn-response-desc-mock:extend(.btn-response-desc) {
+    display: inline;
+    width: auto;
 }
 
 .code-panel {
@@ -349,10 +361,6 @@ footer footer a:hover * {
     overflow: visible;
 }
 
-.response-col {
-    max-width: 100%;
-}
-
 .response-header {
     width: 100%;
     max-width: 100%;
@@ -375,6 +383,23 @@ footer footer a:hover * {
 
 .badge.invisible {
     background-color: rgba(255, 255, 255, 0);
+}
+
+.alert-warning {
+    border: none;
+    box-shadow: 1px 1px  0 @bs-warning-border;
+    &:before {
+        content:"\e209";
+        //noinspection CssNoGenericFontName //Do not render if glyphicons are not available
+        font-family: "glyphicons halflings";
+        position: absolute;
+        margin-left: -60px;
+        margin-top: -23px;
+        font-size: 400%;
+        color: @bs-warning;
+        text-shadow: 0 0 0;
+        height: 100%;
+    }
 }
 
 .apiError {
@@ -401,13 +426,11 @@ footer footer a:hover * {
 .row.is-flex {
     display: flex;
     flex-wrap: wrap;
-    max-width: 100%;
 }
 
 .row.is-flex > [class*='col-'] {
     display: flex;
     flex-direction: column;
-    max-width: 100%;
 }
 
 /*
