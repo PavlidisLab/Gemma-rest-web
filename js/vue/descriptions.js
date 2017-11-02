@@ -535,7 +535,11 @@ var RDAnnotSearch = "" +
     + errMissingParam400;
 
 var RDDatasetSearch = "" +
-    "<p> An array of datasets (expression experiment value objects) that are associated with all of the given annotations.</p>";
+    "<p> An array of datasets (expression experiment value objects) that are associated with all of the given annotations.</p>" +
+    "<p> " +
+    "   If an ontology term URI is given, the results will also include datasets that are associated with the" +
+    "   descendants of the term." +
+    "</p>";
 
 var RDEvidence = "" +
     "<p> An array of evidence value objects from the given database.</p>"
