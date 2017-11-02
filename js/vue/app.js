@@ -198,6 +198,14 @@ var apiApp = new Vue({
                 description: searchDescription
             };
         },
+        getSearchAnnotParam: function () {
+            return {
+                name: "query",
+                value: "traumatic",
+                required: true,
+                description: searchDescription
+            };
+        },
         getFilterParam: function () {
             return {name: "filter", value: "", required: false, description: filterDescription};
         },

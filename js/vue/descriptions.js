@@ -278,7 +278,9 @@ var nuclSizeDescription = "" +
 var searchDescription = "" +
     "<p class='description-frow'>Required, defaults to <code>empty</code>.</p>" +
     "<p>" +
-    "   The search query. Either plain text, or an ontology term URI. Plain text search is significantly slower. " +
+    "   The search query. Either plain text ('traumatic'), or an ontology term URI ('http://purl.obolibrary.org/obo/UBERON_0002048'). " +
+    "</p>" +
+    "<p>" +
     "   Can be multiple identifiers separated by commas." +
     "</p>" +
     "<p class='description-imp'>" +
@@ -535,10 +537,17 @@ var RDAnnotSearch = "" +
     + errMissingParam400;
 
 var RDDatasetSearch = "" +
-    "<p> An array of datasets (expression experiment value objects) that are associated with all of the given annotations.</p>" +
+    "<p> " +
+    "   An array of datasets (expression experiment value objects) that are annotated with the given ontology terms," +
+    "   or, in case of plaintext query, experiments that contain the given words (name, short name, accession, tags)" +
+    "</p>" +
     "<p> " +
     "   If an ontology term URI is given, the results will also include datasets that are associated with the" +
     "   descendants of the term." +
+    "</p>" +
+    "<p>" +
+    "   The search only only checks the annotations value, not the category (which is also an" +
+    "   ontology term)." +
     "</p>";
 
 var RDEvidence = "" +
