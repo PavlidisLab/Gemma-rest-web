@@ -533,7 +533,7 @@ var RDTaxaGeneAtLoc = "" +
     + errMissingParam400;
 
 var RDAnnotSearch = "" +
-    "<p> An array of characteristics (characteristic value objects) matching the given identifiers.</p>"
+    "<p> An array of annotations (annotation search result value objects) matching the given identifiers.</p>"
     + errMissingParam400;
 
 var RDDatasetSearch = "" +
