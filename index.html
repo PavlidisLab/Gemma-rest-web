@@ -249,7 +249,7 @@
                     <endpoint :name="'Datasets genes expression levels'"
                               :description="'Retrieves the expression levels of given genes for given datasets'"
                               :response-description="RDDatasetsGeneExp"
-                              :query-params="[]"
+                              :query-params="[getDatasetsExpressSpecParam()]"
                               :path-params="[getDatasetsExpressParam(),getGenesExpressParam()]"
                               :endpoint-url-base="'datasets/%%%1/expressions/genes/%%%2'">
                     </endpoint>
@@ -257,7 +257,7 @@
                     <endpoint :name="'Datasets pca component expression levels'"
                               :description="'Retrieves the expression levels most correlated with the given principal component'"
                               :response-description="RDDatasetsPcaExp"
-                              :query-params="[getPcaComponentParam(),getExpressLimitParam()]"
+                              :query-params="[getPcaComponentParam(),getExpressLimitParam(),getDatasetsExpressSpecParam()]"
                               :path-params="[getDatasetsExpressParam()]"
                               :endpoint-url-base="'datasets/%%%1/expressions/pca'">
                     </endpoint>
@@ -266,7 +266,7 @@
                               :description="'Retrieves differential expression levels for given datasets'"
                               :response-description="RDDatasetsDiffExp"
                               :query-params="[getDiffExSetParam(),getThresholdParam(),getExpressLimitParam()]"
-                              :path-params="[getDatasetsExpressParam()]"
+                              :path-params="[getDatasetsExpressParam(),getDatasetsExpressSpecParam()]"
                               :endpoint-url-base="'datasets/%%%1/expressions/differential'">
                     </endpoint>
 

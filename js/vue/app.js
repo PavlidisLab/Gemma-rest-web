@@ -257,14 +257,14 @@ var apiApp = new Vue({
                 required: true,
                 description: platformDescription
             };
-        },getProbeParam: function () {
+        }, getProbeParam: function () {
             return {
                 name: "element",
                 value: "AFFX_Rat_beta-actin_M_at",
                 required: true,
                 description: probeDescription
             };
-        },getProbesParam: function () {
+        }, getProbesParam: function () {
             return {
                 name: "elements",
                 value: "",
@@ -352,7 +352,7 @@ var apiApp = new Vue({
                 description: phenotypesDescription
             };
         },
-        getTreeParam: function(){
+        getTreeParam: function () {
             return {
                 name: "tree",
                 value: "false",
@@ -374,6 +374,14 @@ var apiApp = new Vue({
                 value: "3888",
                 required: true,
                 description: datasetsExpressDescription
+            };
+        },
+        getDatasetsExpressSpecParam: function () {
+            return {
+                name: "keepNonSpecific",
+                value: "false",
+                required: false,
+                description: datasetsExpressSpecDescription
             };
         },
         getExpressLimitParam: function () {

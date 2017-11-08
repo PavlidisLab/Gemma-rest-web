@@ -306,6 +306,16 @@ var datasetsExpressDescription = "" +
     "   call to yield an error." +
     "</p>";
 
+var datasetsExpressSpecDescription = "" +
+    "<p class='description-frow'>Optional, defaults to <code>false</code>.</p>" +
+    "<p>" +
+    "   If set to <code>false</code>, the response will only include elements that map exclusively to each queried gene" +
+    "</p>" +
+    "<p>" +
+    "   If set to <code>true</code>, the response will include all elements that map to each queried gene, even if they" +
+    "   also map to other genes." +
+    "</p>";
+
 var genesExpressDescription = "" +
     "<p class='description-frow'>Required, defaults to <code>empty</code>.</p>" +
     "<p>A list of identifiers, separated by commas (e.g: <code>1859, 5728</code>).</p>" +
@@ -391,12 +401,6 @@ var RDDatasetsDesign = "" +
     errId404 +
     "</p>";
 
-var geneWarn = "" +
-    "<p class='description-imp'>" +
-    "   <span class='glyphicon glyphicon-th-large glyphicon-exclamation-sign'></span>" +
-    "   If the design element is mapped to multiple genes, the <code>geneSpecific</code> property will be set to <code>false</code>" +
-    "</p>";
-
 var probeNote = "" +
     "<p>" +
     "   Probes not mapped to any gene are also included (the " +
@@ -409,7 +413,6 @@ var RDDatasetsGeneExp = "" +
     "   The expression levels of given genes for each given experiment (experiment expression levels value object)." +
     "   All identifiers must be valid." +
     errId404 +
-    geneWarn +
     "</p>";
 
 var RDDatasetsPcaExp = "" +
@@ -419,7 +422,6 @@ var RDDatasetsPcaExp = "" +
     "</p>" +
     probeNote +
     errId404 +
-    geneWarn +
     "</p>";
 
 var RDDatasetsDiffExp = "" +
@@ -431,7 +433,6 @@ var RDDatasetsDiffExp = "" +
     "<p>" +
     "   If the experiment is not in the given diff. exp. set, an empty array is returned." +
     errId404 +
-    geneWarn +
     "</p>";
 
 var RDPlatformsDatasets = "" +
