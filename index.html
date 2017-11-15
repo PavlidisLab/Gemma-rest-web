@@ -58,25 +58,6 @@
                         href="http://gemma.msl.ubc.ca/resources/apidocs/ubic/gemma/web/services/rest/package-summary.html">here</a>.
                         See the <a href="#footer">links section</a> in the footer of this page for other relevant links.
                     </p>
-                    <div class="alert alert-warning">
-                        <p>
-                            The current release of the REST API does not have an authentication system implemented yet,
-                            which causes some of the endpoints to filter out results that require authorized access.
-                        </p>
-                        <p>
-                            These are notably experiments and platforms that are marked as unusable or private, and it
-                            is unlikely you would want them included in your data processing in the first place ('not
-                            a bug, but a feature!').
-                        </p>
-                        <p>
-                            Current work-around is to go to <a href="http://gemma.msl.ubc.ca/">the Gemma
-                            website</a> and log in. This will create an authorized session that will be applied to the
-                            API calls from this web-site as well.
-                        </p>
-                        <p>
-                            Note that this authorization does not extend beyond your browser (e.g. calls from scripts).
-                        </p>
-                    </div>
                 </div>
             </div>
 
@@ -130,7 +111,6 @@
                     </p>
 
                     <h3>Response format</h3>
-
                     <p>The default format of the response is JSON. Some endpoints return text files or tar.gz
                         archives.</p>
                     <p>For successful api calls, the reply will have a root element <code>data</code> containing all
@@ -140,13 +120,10 @@
                         <code>code</code>,<code> message</code> and <code>errors</code> sub-elements.
                         The <code>errors</code> sub-element may contain details about the exception that occured.
                     </p>
-
                     <p>Should you receive a <code>500 class error</code> (any error code starting with the number 5)
                         indicating a server problem, we kindly ask you to
                         <a href="#contact">contact us</a> and provide the api call url you used when you received the
                         error, and the response.</p>
-
-
                     <p>To display endpoint-specific information about the response, click the
                         <button class="btn-response-desc-mock">
                             <span class="glyphicon glyphicon-info-sign"></span>
@@ -154,6 +131,58 @@
                         </button>
                         button under the 'response' subtitle.
                     </p>
+
+                    <h3>Authentication</h3>
+                    <p>The REST API accepts HTTP Basic Authentication. A base64 encoded string containing your password
+                        and username is sent in the request headers with each api call.</p>
+                    <p>If no credentials are provided, anonymous access is granted for all GET methods (Any data
+                        retrieval). Anonymous access may cause some of the endpoints to filter out results that require
+                        authorized access (E.g. experiments and platforms that are marked as unusable or private).
+                    </p>
+
+                    <div class="param-row">
+                        <label hidden for="authUser">Gemma username</label>
+                        <div class="input-group has-warning" title="username">
+                            <span class="input-group-addon">Username = </span>
+                            <!--suppress HtmlFormInputWithoutLabel -->
+                            <input id="authUser" class="form-control" v-model="authUser"
+                                   v-on:keypress.enter.prevent=""
+                            >
+                            <span class="input-group-btn">
+                                <button class="btn btn-info" v-on:click=" showUserInfo = !showUserInfo ">
+                                    <span class="glyphicon glyphicon-info-sign"></span>
+                                </button>
+                            </span>
+                        </div>
+                        <div class="pre-like" v-if="showUserInfo">
+                            Your gemma username. If you need to create a new Gemma account, please go to the
+                            <a href="https://gemma.msl.ubc.ca">Gemma website</a> and register (click 'Log in' in the
+                            upper right corner, to show the login window, then click the 'Need an account? Register'
+                            button).
+                        </div>
+                    </div>
+
+                    <div class="param-row">
+                        <label hidden for="authPass">Gemma username</label>
+                        <div class="input-group has-warning" title="password">
+                            <span class="input-group-addon">Password = </span>
+                            <!--suppress HtmlFormInputWithoutLabel -->
+                            <input id="authPass" class="form-control" v-model="authPass"
+                                   v-on:keypress.enter.prevent=""
+                            >
+                            <span class="input-group-btn">
+                                <button class="btn btn-info" v-on:click=" showPassInfo = !showPassInfo ">
+                                    <span class="glyphicon glyphicon-info-sign"></span>
+                                </button>
+                            </span>
+                        </div>
+                        <div class="pre-like" v-if="showPassInfo">
+                            Your gemma password. If you forgot your password, you can reset it through the
+                            <a href="https://gemma.msl.ubc.ca">Gemma website</a> (click 'Log in' in the upper right
+                            corner, to show the login window, then click the 'Forgot your password' link).
+                        </div>
+                    </div>
+
                 </div>
 
                 <endpoint :name="'Root endpoint'"
@@ -641,7 +670,7 @@
                             <div class="response-header">
                                 <h5>Response:
                                     <span v-if="status!=null" v-bind:class="[isError ? 'apiError' : 'apiOk', 'badge']"
-                                          title="Response status code">
+                                          v-bind:title="statusMsg">
                                         {{ status }}
                                         <span v-if="status!=null"
                                               v-bind:class="[isError ? 'glyphicon-remove' : 'glyphicon-ok', 'glyphicon']">

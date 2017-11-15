@@ -25,6 +25,7 @@ Vue.component('endpoint', {
             show: false,
             showResponseInfo: false,
             status: null,
+            statusMsg: null,
             isError: false,
             loadingMsgBase: "Fetching data",
             loadingMsgFull: null,
@@ -56,18 +57,28 @@ Vue.component('endpoint', {
             this.showLoading = true;
             this.refreshLoading();
 
-            axios.get(this.completeUrl)
+            var config = this.$root.authUser !== null && this.$root.authUser !== "" ? {
+                auth: {
+                    username: this.$root.authUser,
+                    password: this.$root.authPass
+                }
+            } : {};
+
+            // noinspection JSUnresolvedFunction // Axios promise methods
+            axios.get(this.completeUrl, config)
                 .then(function (response) {
                     vm.showLoading = false;
                     vm.response = response.data;
                     vm.isError = false;
                     vm.status = response.status;
+                    vm.statusMsg = response.statusText;
                 })
                 .catch(function (error) {
                     vm.showLoading = false;
                     vm.response = error.data;
                     vm.isError = true;
                     vm.status = error.status;
+                    vm.statusMsg = error.statusText;
                 });
         },
 
@@ -126,7 +137,13 @@ var apiApp = new Vue({
         showGenes: false,
         showTaxa: false,
         pythonExample: pythonCode,
-        rExample: rCode
+        rExample: rCode,
+
+        authUser: null,
+        authPass: null,
+
+        showUserInfo: false,
+        showPassInfo: false
     },
     methods: {
         // Parameter bundles getters
