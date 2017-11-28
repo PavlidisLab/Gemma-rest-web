@@ -101,7 +101,7 @@
 
                 <div class="container">
                     <h2>API Endpoints</h2>
-                    <p>List of all API endpoints, with a GUI for test calls.</p>
+                    <p>Below is a list of all API endpoints, with a GUI for test calls.</p>
                     <p>Click on the endpoint category to expand it, and then on each endpoint name to see its interface
                         and parameters.</p>
                     <p>
@@ -134,7 +134,8 @@
 
                     <h3>Authentication</h3>
                     <p>The REST API accepts HTTP Basic Authentication. A base64 encoded string containing your password
-                        and username is sent in the request headers with each api call.</p>
+                        and username is sent in the request headers with each api call over a secure https protocol.</p>
+                    <p>Endpoints that require authorized access are marked with <span class="access-auth glyphicon glyphicon-minus-sign"></span> icon </p>
                     <p>If no credentials are provided, anonymous access is granted for all GET methods (Any data
                         retrieval). Anonymous access may cause some of the endpoints to filter out results that require
                         authorized access (E.g. experiments and platforms that are marked as unusable or private).
@@ -167,10 +168,13 @@
                         <div class="input-group has-warning" title="password">
                             <span class="input-group-addon">Password = </span>
                             <!--suppress HtmlFormInputWithoutLabel -->
-                            <input id="authPass" class="form-control" v-model="authPass"
+                            <input v-bind:type="showPass ? 'text' : 'password' "  id="authPass" class="form-control" v-model="authPass"
                                    v-on:keypress.enter.prevent=""
                             >
                             <span class="input-group-btn">
+                                <button class="btn btn-info" v-on:click=" showPass = !showPass ">
+                                    <span v-bind:class="showPass ? 'glyphicon-eye-close' : 'glyphicon-eye-open'" class="glyphicon"></span>
+                                </button>
                                 <button class="btn btn-info" v-on:click=" showPassInfo = !showPassInfo ">
                                     <span class="glyphicon glyphicon-info-sign"></span>
                                 </button>
@@ -181,6 +185,13 @@
                             <a href="https://gemma.msl.ubc.ca">Gemma website</a> (click 'Log in' in the upper right
                             corner, to show the login window, then click the 'Forgot your password' link).
                         </div>
+                    </div>
+
+                    <div class="alert alert-warning">
+                        <p>If you provide credentials that are invalid, all calls will return a '401 - Unauthorized'
+                            error, even if they allow anonymous access.</p>
+                        <p>Make sure to test your credentials before bulk queries, e.g. by calling the root
+                            endpoint.</p>
                     </div>
 
                 </div>
@@ -550,7 +561,9 @@
                               :response-description="RDEvidence"
                               :query-params="getEvidenceQueryParams()"
                               :path-params="[]"
-                              :endpoint-url-base="'phenotypes/evidence/'">
+                              :endpoint-url-base="'phenotypes/evidence/'"
+                              :auth-access="true"
+                    >
                     </endpoint>
 
                     <endpoint :name="'Dumps'"
@@ -635,6 +648,10 @@
                         <span
                             v-bind:class="[show ? 'glyphicon-collapse-up' : 'glyphicon-collapse-down', 'glyphicon']"></span>
                         <h4>{{ name }}</h4>
+                        <span class="access-badge">
+                            <span v-if="authAccess" class="glyphicon glyphicon-minus-sign access-auth"></span>
+                            <span v-if="adminAccess" class="glyphicon glyphicon-minus-sign access-admin"></span>
+                        </span>
                         <span class="description">{{ description }}</span>
                     </div>
                     <div class="row apiRow is-flex" v-if="show">
@@ -662,7 +679,7 @@
                                 </button>
                                 <a v-bind:href="completeUrl" class="btn" target="_blank"
                                    title="Calls the query in a new tab and lets your browser handle the response.">
-                                    Open link <span class="glyphicon glyphicon-link"></span>
+                                    Open link <span class="glyphicon glyphicon-link"></span> (no authentication)
                                 </a>
                             </form>
                         </div>

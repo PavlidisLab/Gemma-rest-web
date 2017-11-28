@@ -290,8 +290,14 @@ var searchDescription = "" +
 
 var extDbDescription = "" +
     "<p class='description-frow'>Required, defaults to <code>empty</code>.</p>" +
-    "<p>The name of external database to match.</p>" +
-    "<p>E.g: <code>PubMed</code>, <code>GEO</code>, <code>ArrayExpress</code>, <code>Genbank</code> etc.</p>";
+    "<p>The name of external database to match (case insensitive).</p>" +
+    "<p>Available names: (not all will yield results)" +
+    "<p>" +
+    "   PubMed, GEO, ArrayExpress, Genbank, human, hg18, mm8, mouse, rat, rn4, Homo sapiens ORFs, " +
+    "   Ensembl, mm9, Mus musculus ORFs, SGD, STRING, hg19, Caenorhabditis elegans ORFs, " +
+    "   Drosophila melanogaster ORFs, SFARI, NetAFFX, OMIM, epiGAD, RGD, CTD, AlzGene, MSGene, PDGene, " +
+    "   IDGene, ADHDGene, ALSoD, GWAS_Catalog, mm10, MK4MDD, BDgene, TreatableID, DGA" +
+    "</p>";
 
 var datasetsExpressDescription = "" +
     "<p class='description-frow'>Required, part of the URL path.</p>" +

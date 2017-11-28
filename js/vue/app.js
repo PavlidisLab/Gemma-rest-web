@@ -15,6 +15,14 @@ Vue.component('endpoint', {
         jsonResponse: {
             default: true,
             type: Boolean
+        },
+        authAccess: {
+            default: false,
+            type: Boolean
+        },
+        adminAccess: {
+            default: false,
+            type: Boolean
         }
     },
 
@@ -139,9 +147,11 @@ var apiApp = new Vue({
         pythonExample: pythonCode,
         rExample: rCode,
 
+
         authUser: null,
         authPass: null,
 
+        showPass: false,
         showUserInfo: false,
         showPassInfo: false
     },
