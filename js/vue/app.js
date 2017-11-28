@@ -147,7 +147,6 @@ var apiApp = new Vue({
         pythonExample: pythonCode,
         rExample: rCode,
 
-
         authUser: null,
         authPass: null,
 
@@ -443,5 +442,13 @@ var apiApp = new Vue({
                 description: diffExThresholdDescription
             };
         },
+        getConsolidateParam: function () {
+            return {
+                name: "consolidate",
+                value: "",
+                required: false,
+                description: consolidateDescription
+            };
+        }
     }
 });

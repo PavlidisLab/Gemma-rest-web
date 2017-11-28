@@ -322,6 +322,22 @@ var datasetsExpressSpecDescription = "" +
     "   also map to other genes." +
     "</p>";
 
+var consolidateDescription = "" +
+    "<p class='description-frow'>Optional, defaults to <code>empty</code>.</p>" +
+    "<p>" +
+    "   Whether genes with multiple elements should consolidate the information. If the 'keepNonSpecific' parameter is set" +
+    "   to <code>true</code>, then all gene non-specific vectors are excluded from the chosen procedure." +
+    "</p>" +
+    "<p>" +
+    "   The options are:" +
+    "   <ul>" +
+    "       <li><code>[empty]</code> - will list all vectors separately</li>" +
+    "       <li><code>pickmax</code> - only return the vector that has the highest expression (mean over all its bioAssays)</li>" +
+    "       <li><code>pickvar</code> - only return the vector with highest variance of expression across its bioAssays</li>" +
+    "       <li><code>average</code> - create a new vector that will average the bioAssay values from all vectors</li>" +
+    "   </ul>" +
+    "</p>";
+
 var genesExpressDescription = "" +
     "<p class='description-frow'>Required, defaults to <code>empty</code>.</p>" +
     "<p>A list of identifiers, separated by commas (e.g: <code>1859, 5728</code>).</p>" +
@@ -407,13 +423,6 @@ var RDDatasetsDesign = "" +
     errId404 +
     "</p>";
 
-var probeNote = "" +
-    "<p>" +
-    "   Probes not mapped to any gene are also included (the " +
-    "   <code>limit</code> argument does not account for them, so the length of the 'geneExpressionLevels' array " +
-    "   for each experiment can be longer than the given limit.)." +
-    "</p>";
-
 var RDDatasetsGeneExp = "" +
     "<p>" +
     "   The expression levels of given genes for each given experiment (experiment expression levels value object)." +
@@ -426,7 +435,6 @@ var RDDatasetsPcaExp = "" +
     "   The expression levels for each given experiment (experiment expression levels value object) of genes that are" +
     "   most correlated with the given principal component." +
     "</p>" +
-    probeNote +
     errId404 +
     "</p>";
 
@@ -435,7 +443,6 @@ var RDDatasetsDiffExp = "" +
     "   The differential expression levels for each given experiment (experiment expression levels value object) in the" +
     "   given differential expression set." +
     "</p>" +
-    probeNote +
     "<p>" +
     "   If the experiment is not in the given diff. exp. set, an empty array is returned." +
     errId404 +
