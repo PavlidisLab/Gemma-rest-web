@@ -3,7 +3,7 @@ var pythonCode = "\n" +
     "# loads all elements of a specific platform (see 'url' variable) in increments of 'limit'\n" +
     "# and writes transcripts for each element into a file (see variable 'f').\n" +
     "# the increments are a nice way to track the progress.\n" +
-    "# For gpl1261 the runtime was around 1 hour, and the resulting file was 1.3MB.\n" +
+    "# For gpl1261 the resulting file was 1.3MB.\n" +
     "\n" +
     "import json\n" +
     "import urllib2\n" +
@@ -19,7 +19,7 @@ var pythonCode = "\n" +
     "while(count == limit):\n" +
     "    print \"Limit: %s Offset: %s\" % (limit, offset)\n" +
     "    count = 0;\n" +
-    "    url = \"http://localhost:8080/Gemma/rest/v2/platforms/gpl1261/elements?limit=%s&offset=%s\" % (limit, offset)\n" +
+    "    url = \"http://gemma.msl.ubc.ca/rest/v2/platforms/gpl1261/elements?limit=%s&offset=%s\" % (limit, offset)\n" +
     "    response = urllib2.urlopen(url)\n" +
     "    text = response.read()\n" +
     "\n" +
