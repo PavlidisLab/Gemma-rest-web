@@ -409,11 +409,11 @@ var RDDatasetsSVD = "" +
     "   A simple SVD value object for the given dataset, containing information about SVD of expression data " +
     errId404 +
     "<p>" +
-    "   Notable properties of the returned object are:" +
+    "   Properties of the returned object are:" +
     "   <ul>" +
     "       <li><b>bioMaterialIds</b> - Array of Bio Material IDs, in same order as the rows of the v matrix</li>" +
     "       <li><b>variances</b> - An array of values representing the fraction of the variance each component accounts for</li>" +
-    "       <li><b>vMatrix</b> - the V matrix</li>" +
+    "       <li><b>vMatrix</b> - the V Matrix (DoubleMatrix object)</li>" +
     "   </ul>" +
     "</p>"+
     "</p>";
