@@ -325,11 +325,10 @@ var datasetsExpressSpecDescription = "" +
 var consolidateDescription = "" +
     "<p class='description-frow'>Optional, defaults to <code>empty</code>.</p>" +
     "<p>" +
-    "   Whether genes with multiple elements should consolidate the information. If the 'keepNonSpecific' parameter is set" +
-    "   to <code>true</code>, then all gene non-specific vectors are excluded from the chosen procedure." +
+    "   What action to take when there is more than one element per gene in a dataset." +
     "</p>" +
     "<p>" +
-    "   The options are:" +
+    "   The choices are:" +
     "   <ul>" +
     "       <li><code>[empty]</code> - will list all vectors separately</li>" +
     "       <li><code>pickmax</code> - only return the vector that has the highest expression (mean over all its bioAssays)</li>" +

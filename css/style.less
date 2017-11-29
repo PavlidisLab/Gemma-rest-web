@@ -49,6 +49,10 @@ footer {
     flex: 0 1 auto;
 }
 
+h2 {
+    margin-left: -40px;
+}
+
 /*
 
 Styling settings
@@ -250,11 +254,11 @@ footer footer a:hover * {
     color: @dark;
 }
 
-.access-auth, .endpoint .header .access-auth{
+.access-auth, .endpoint .header .access-auth {
     color: darkorange;
 }
 
-.access-admin, .endpoint .header .access-admin{
+.access-admin, .endpoint .header .access-admin {
     color: red;
 }
 
@@ -264,6 +268,7 @@ footer footer a:hover * {
 
 .endpoints-group-title .glyphicon {
     font-size: 150%;
+    margin-left: -40px;
 }
 
 .endpoints-group-title h3 {
@@ -395,9 +400,9 @@ footer footer a:hover * {
 
 .alert-warning {
     border: none;
-    box-shadow: 1px 1px  0 @bs-warning-border;
+    box-shadow: 1px 1px 0 @bs-warning-border;
     &:before {
-        content:"\e209";
+        content: "\e209";
         //noinspection CssNoGenericFontName //Do not render if glyphicons are not available
         font-family: "glyphicons halflings";
         position: absolute;

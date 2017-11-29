@@ -22,6 +22,9 @@ header {
 footer {
   flex: 0 1 auto;
 }
+h2 {
+  margin-left: -40px;
+}
 /*
 
 Styling settings
@@ -189,6 +192,7 @@ footer footer a:hover * {
 }
 .endpoints-group-title .glyphicon {
   font-size: 150%;
+  margin-left: -40px;
 }
 .endpoints-group-title h3 {
   display: inline-block;
