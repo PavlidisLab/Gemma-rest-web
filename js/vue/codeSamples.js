@@ -2,8 +2,16 @@
 var pythonCode = "\n" +
     "# loads all elements of a specific platform (see 'url' variable) in increments of 'limit'\n" +
     "# and writes transcripts for each element into a file (see variable 'f').\n" +
-    "# the increments are a nice way to track the progress.\n" +
     "# For gpl1261 the resulting file was 1.3MB.\n" +
+    "# First few lines of the output file should look like this:\n" +
+    "\n" +
+    "# element, transcripts \n" +
+    "# AFFX-TrpnX-M_at, ''\n" +
+    "# AFFX-TrpnX-5_at, ''\n" +
+    "# AFFX-TrpnX-3_at, ''\n" +
+    "# AFFX-TransRecMur/X57349_M_at, 'NM_011638 '\n" +
+    "# AFFX-TransRecMur/X57349_5_at, 'NM_011638 '\n" +
+    "# AFFX-TransRecMur/X57349_3_at, 'NM_011638 '\n" +
     "\n" +
     "import json\n" +
     "import urllib2\n" +

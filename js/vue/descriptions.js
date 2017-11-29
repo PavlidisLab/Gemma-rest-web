@@ -404,6 +404,20 @@ var RDDatasetsDiffEx = "" +
     errMissingParam400 +
     "</p>";
 
+var RDDatasetsSVD = "" +
+    "<p>" +
+    "   A simple SVD value object for the given dataset, containing information about SVD of expression data " +
+    errId404 +
+    "<p>" +
+    "   Notable properties of the returned object are:" +
+    "   <ul>" +
+    "       <li><b>bioMaterialIds</b> - Array of Bio Material IDs, in same order as the rows of the v matrix</li>" +
+    "       <li><b>variances</b> - An array of values representing the fraction of the variance each component accounts for</li>" +
+    "       <li><b>vMatrix</b> - the V matrix</li>" +
+    "   </ul>" +
+    "</p>"+
+    "</p>";
+
 var RDDatasetsAnnots = "" +
     "<p>" +
     "   An array of annotations (annotation value objects) attached to the given dataset." +

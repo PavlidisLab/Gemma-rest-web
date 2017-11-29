@@ -135,7 +135,9 @@
                     <h3>Authentication</h3>
                     <p>The REST API accepts HTTP Basic Authentication. A base64 encoded string containing your password
                         and username is sent in the request headers with each api call over a secure https protocol.</p>
-                    <p>Endpoints that require authorized access are marked with <span class="access-auth glyphicon glyphicon-minus-sign"></span> icon </p>
+                    <!--TODO uncomment when auth/admin endpoints exposed-->
+                    <!--<p>Endpoints that require authorized access are marked with <span class="access-auth glyphicon glyphicon-minus-sign"></span> icon </p>-->
+                    <!--<p>Endpoints only accessible with an admin account are marked with <span class="access-admin glyphicon glyphicon-minus-sign"></span> icon </p>-->
                     <p>If no credentials are provided, anonymous access is granted for all GET methods (Any data
                         retrieval). Anonymous access may cause some of the endpoints to filter out results that require
                         authorized access (E.g. experiments and platforms that are marked as unusable or private).
@@ -258,6 +260,14 @@
                               :query-params="getDatasetsDiffAnalQueryParams()"
                               :path-params="[getDatasetParam()]"
                               :endpoint-url-base="'datasets/%%%1/analyses/differential'">
+                    </endpoint>
+
+                    <endpoint :name="'Dataset SVD information'"
+                              :response-description="RDDatasetsSVD"
+                              :description="'Retrieves the SVD information for the given dataset'"
+                              :query-params="[]"
+                              :path-params="[getDatasetParam()]"
+                              :endpoint-url-base="'datasets/%%%1/svd'">
                     </endpoint>
 
                     <endpoint :name="'Dataset annotations'"
@@ -562,7 +572,6 @@
                               :query-params="getEvidenceQueryParams()"
                               :path-params="[]"
                               :endpoint-url-base="'phenotypes/evidence/'"
-                              :auth-access="true"
                     >
                     </endpoint>
 
