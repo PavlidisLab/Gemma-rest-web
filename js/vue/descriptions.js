@@ -179,7 +179,9 @@ var geneCoexpLimitDescription = "" +
     "<p class='description-frow'>Optional, defaults to <code>100</code>.</p>" + limitDescriptionBase;
 
 var geneEvidenceLimitDescription = "" +
-    "<p class='description-frow'>Optional, defaults to <code>1000</code>.</p>" + limitDescriptionBase;
+    "<p class='description-frow'>Optional, defaults to <code>10000</code>.</p>" +
+    "<p>The default parameter value here is set to 100, as the json parser has trouble rendering 10000 entries.</p>"
+    + limitDescriptionBase;
 
 var stringencyDescription = "" +
     "<p class='description-frow'>Optional, defaults to <code>1</code>.</p>" +

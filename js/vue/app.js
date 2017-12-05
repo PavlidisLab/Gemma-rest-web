@@ -186,7 +186,7 @@ var apiApp = new Vue({
                 this.getOffsetParam(),
                 {
                     name: "limit",
-                    value: "10000",
+                    value: "100",
                     required: false,
                     description: geneEvidenceLimitDescription
                 }
