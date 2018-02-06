@@ -84,6 +84,19 @@ header {
   padding: 20px 0;
   box-shadow: inset 0 -5px 5px -5px #000000;
 }
+
+.updates {
+    background: #f1fdff;
+    padding: 20px 0;
+    box-shadow: inset 0 -5px 5px -5px #000000;
+}
+
+.updates .date{
+    color: lightslategray;
+    position: relative;
+    top: -10px;
+}
+
 .code-samples {
   padding: 20px 0;
   box-shadow: inset 0 -5px 5px -5px #000000;

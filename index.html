@@ -61,6 +61,32 @@
                 </div>
             </div>
 
+            <div class="updates">
+                <div class="container">
+                    <h2>Updates</h2>
+                    <h3>Update 2.2.0</h3>
+                    <span class="date">February 8th, 2018</span>
+                    <p>
+                        Breaking change in the 'Dataset differential analysis' endpoint:
+                    </p>
+                    <ul>
+                        <li>No longer using qValueThreshold parameter</li>
+                        <li>Response format changed, now using
+                            <a href="https://gemma.msl.ubc.ca/resources/apidocs/ubic/gemma/model/analysis/expression/diff/DifferentialExpressionAnalysisValueObject.html">
+                                DifferentialExpressionAnalysisValueObject
+                            </a> instead of <a
+                                href="https://gemma.msl.ubc.ca/resources/apidocs/ubic/gemma/model/analysis/expression/diff/DifferentialExpressionValueObject.html">
+                                DifferentialExpressionValueObject
+                            </a>
+                        </li>
+                    </ul>
+                    <p>
+                        [Experimental] Added Geeq (Gene Expression Experiment Quality) scores to the dataset value objects
+                    </p>
+
+                </div>
+            </div>
+
             <div class="code-samples">
                 <div class="container">
                     <h2>Code samples</h2>
@@ -133,15 +159,18 @@
                     </p>
 
                     <h3>Authentication</h3>
-                    <p>The REST API accepts HTTP Basic Authentication. A base64 encoded string containing your password
+                    <p>The REST API accepts <a href="https://tools.ietf.org/html/rfc2617#section-2" target="_blank">HTTP
+                        Basic Authentication</a>. A base64 encoded string containing your password
                         and username is sent in the request headers with each api call over a secure https protocol.</p>
                     <!--TODO uncomment when auth/admin endpoints exposed-->
-                    <!--<p>Endpoints that require authorized access are marked with <span class="access-auth glyphicon glyphicon-minus-sign"></span> icon </p>-->
-                    <!--<p>Endpoints only accessible with an admin account are marked with <span class="access-admin glyphicon glyphicon-minus-sign"></span> icon </p>-->
-                    <p>If no credentials are provided, anonymous access is granted for all GET methods (Any data
-                        retrieval). Anonymous access may cause some of the endpoints to filter out results that require
-                        authorized access (E.g. experiments and platforms that are marked as unusable or private).
-                    </p>
+                    <!--<p>Endpoints that require authorized access are marked with <span-->
+                        <!--class="access-auth glyphicon glyphicon-minus-sign"></span> icon </p>-->
+                    <!--<p>Endpoints only accessible with an admin account are marked with <span-->
+                        <!--class="access-admin glyphicon glyphicon-minus-sign"></span> icon </p>-->
+                    <!--<p>If no credentials are provided, anonymous access is granted for all GET methods (Any data-->
+                        <!--retrieval). Anonymous access may cause some of the endpoints to filter out results that require-->
+                        <!--authorized access (E.g. experiments and platforms that are marked as unusable or private).-->
+                    <!--</p>-->
 
                     <div class="param-row">
                         <label hidden for="authUser">Gemma username</label>
@@ -170,12 +199,14 @@
                         <div class="input-group has-warning" title="password">
                             <span class="input-group-addon">Password = </span>
                             <!--suppress HtmlFormInputWithoutLabel -->
-                            <input v-bind:type="showPass ? 'text' : 'password' "  id="authPass" class="form-control" v-model="authPass"
+                            <input v-bind:type="showPass ? 'text' : 'password' " id="authPass" class="form-control"
+                                   v-model="authPass"
                                    v-on:keypress.enter.prevent=""
                             >
                             <span class="input-group-btn">
                                 <button class="btn btn-info" v-on:click=" showPass = !showPass ">
-                                    <span v-bind:class="showPass ? 'glyphicon-eye-close' : 'glyphicon-eye-open'" class="glyphicon"></span>
+                                    <span v-bind:class="showPass ? 'glyphicon-eye-close' : 'glyphicon-eye-open'"
+                                          class="glyphicon"></span>
                                 </button>
                                 <button class="btn btn-info" v-on:click=" showPassInfo = !showPassInfo ">
                                     <span class="glyphicon glyphicon-info-sign"></span>
@@ -192,6 +223,8 @@
                     <div class="alert alert-warning">
                         <p>If you provide credentials that are invalid, all calls will return a '401 - Unauthorized'
                             error, even if they allow anonymous access.</p>
+                        <p>Using this website, some browsers might prompt you for credentials again, if this form
+                            contains invalid ones.</p>
                         <p>Make sure to test your credentials before bulk queries, e.g. by calling the root
                             endpoint.</p>
                     </div>
@@ -658,8 +691,10 @@
                             v-bind:class="[show ? 'glyphicon-collapse-up' : 'glyphicon-collapse-down', 'glyphicon']"></span>
                         <h4>{{ name }}</h4>
                         <span class="access-badge">
-                            <span v-if="authAccess" class="glyphicon glyphicon-minus-sign access-auth"></span>
-                            <span v-if="adminAccess" class="glyphicon glyphicon-minus-sign access-admin"></span>
+                            <span v-if="authAccess" class="glyphicon glyphicon-minus-sign access-auth"
+                                  title="Authorized access only"></span>
+                            <span v-if="adminAccess" class="glyphicon glyphicon-minus-sign access-admin"
+                                  title="Admin access only"></span>
                         </span>
                         <span class="description">{{ description }}</span>
                     </div>

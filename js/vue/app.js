@@ -161,7 +161,6 @@ var apiApp = new Vue({
         },
         getDatasetsDiffAnalQueryParams: function () {
             return [
-                {name: "qValueThreshold", value: "", required: true, description: qValueDescription},
                 this.getOffsetParam(),
                 this.getLimitParam()
             ];
