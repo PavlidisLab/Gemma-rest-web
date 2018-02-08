@@ -387,6 +387,13 @@ var RDAll = "" +
     "   Empty array if no objects matched." +
     "</p>";
 
+var RDAllDatasets = RDAll +
+    "<p>" +
+    "   A successful response may contain a sub-element with 'Geeq' information. This is currently an experimental feature" +
+    "   that aims to provide a unified metric to measure experiments by the quality of their data, and their suitability for use in Gemma." +
+    "   See the <a href='https://gemma.msl.ubc.ca/resources/apidocs/ubic/gemma/model/expression/experiment/Geeq.html'>Geeq</a> class for description of the fields. " +
+    "</p>";
+
 var RDDatasetsPlatforms = "" +
     "<p>" +
     "   An array of platforms (array design value objects) containing the given dataset." +
@@ -417,7 +424,7 @@ var RDDatasetsSVD = "" +
     "       <li><b>variances</b> - An array of values representing the fraction of the variance each component accounts for</li>" +
     "       <li><b>vMatrix</b> - the V Matrix (DoubleMatrix object)</li>" +
     "   </ul>" +
-    "</p>"+
+    "</p>" +
     "</p>";
 
 var RDDatasetsAnnots = "" +
