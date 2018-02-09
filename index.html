@@ -81,7 +81,8 @@
                         </li>
                     </ul>
                     <p>
-                        [Experimental] Added Geeq (Gene Expression Experiment Quality) scores to the dataset value objects
+                        [Experimental] Added Geeq (Gene Expression Experiment Quality) scores to the dataset value
+                        objects
                     </p>
 
                 </div>
@@ -164,12 +165,12 @@
                         and username is sent in the request headers with each api call over a secure https protocol.</p>
                     <!--TODO uncomment when auth/admin endpoints exposed-->
                     <!--<p>Endpoints that require authorized access are marked with <span-->
-                        <!--class="access-auth glyphicon glyphicon-minus-sign"></span> icon </p>-->
+                    <!--class="access-auth glyphicon glyphicon-minus-sign"></span> icon </p>-->
                     <!--<p>Endpoints only accessible with an admin account are marked with <span-->
-                        <!--class="access-admin glyphicon glyphicon-minus-sign"></span> icon </p>-->
+                    <!--class="access-admin glyphicon glyphicon-minus-sign"></span> icon </p>-->
                     <!--<p>If no credentials are provided, anonymous access is granted for all GET methods (Any data-->
-                        <!--retrieval). Anonymous access may cause some of the endpoints to filter out results that require-->
-                        <!--authorized access (E.g. experiments and platforms that are marked as unusable or private).-->
+                    <!--retrieval). Anonymous access may cause some of the endpoints to filter out results that require-->
+                    <!--authorized access (E.g. experiments and platforms that are marked as unusable or private).-->
                     <!--</p>-->
 
                     <div class="param-row">
@@ -722,9 +723,12 @@
                                     API
                                 </button>
                                 <a v-bind:href="completeUrl" class="btn" target="_blank"
-                                   title="Calls the query in a new tab and lets your browser handle the response.">
-                                    Open link <span class="glyphicon glyphicon-link"></span> (no authentication)
+                                   title="Calls the query in a new tab and lets your browser handle the response.
+                                          Using the link won't pass the basic authentication credentials, but once you authenticate either through clicking the 'Call API', or though the Gemma webpage, the authenticated session should cover this link as well.">
+                                    Open link <span class="glyphicon glyphicon-link"></span>
+                                    <span class="glyphicon glyphicon-info-sign"></span>
                                 </a>
+
                             </form>
                         </div>
                         <div class="col-sm-6 response-col">
