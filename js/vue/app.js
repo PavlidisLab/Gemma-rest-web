@@ -152,7 +152,9 @@ var apiApp = new Vue({
 
         showPass: false,
         showUserInfo: false,
-        showPassInfo: false
+        showPassInfo: false,
+
+        showOlderUpdates: false
     },
     methods: {
         // Parameter bundles getters

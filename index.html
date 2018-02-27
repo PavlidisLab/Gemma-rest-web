@@ -62,29 +62,200 @@
             </div>
 
             <div class="updates">
-                <div class="container">
+                <div class="container updates-new">
                     <h2>Updates</h2>
-                    <h3>Update 2.2.0</h3>
-                    <span class="date">February 8th, 2018</span>
-                    <p>
-                        Breaking change in the 'Dataset differential analysis' endpoint:
-                    </p>
-                    <ul>
-                        <li>No longer using qValueThreshold parameter</li>
-                        <li>Response format changed, now using
-                            <a href="https://gemma.msl.ubc.ca/resources/apidocs/ubic/gemma/model/analysis/expression/diff/DifferentialExpressionAnalysisValueObject.html">
-                                DifferentialExpressionAnalysisValueObject
-                            </a> instead of <a
-                                href="https://gemma.msl.ubc.ca/resources/apidocs/ubic/gemma/model/analysis/expression/diff/DifferentialExpressionValueObject.html">
-                                DifferentialExpressionValueObject
-                            </a>
-                        </li>
-                    </ul>
-                    <p>
-                        [Experimental] Added Geeq (Gene Expression Experiment Quality) scores to the dataset value
-                        objects
-                    </p>
 
+                    <div>
+                        <h3>Update 2.2.1</h3>
+                        <span class="date">February 27th, 2018</span>
+                        <p>
+                            Fixed: Filter argument not working when the filtered field was a primitive type. This most
+                            significantly allows filtering by geeq boolean and double properties.
+                        </p>
+                    </div>
+
+                    <hr>
+
+                    <div>
+                        <h3>Update 2.2.0</h3>
+                        <span class="date">February 8th, 2018</span>
+                        <p>
+                            Breaking change in the 'Dataset differential analysis' endpoint:
+                        </p>
+                        <ul>
+                            <li>No longer using qValueThreshold parameter</li>
+                            <li>Response format changed, now using
+                                <a href="https://gemma.msl.ubc.ca/resources/apidocs/ubic/gemma/model/analysis/expression/diff/DifferentialExpressionAnalysisValueObject.html">
+                                    DifferentialExpressionAnalysisValueObject
+                                </a> instead of <a
+                                    href="https://gemma.msl.ubc.ca/resources/apidocs/ubic/gemma/model/analysis/expression/diff/DifferentialExpressionValueObject.html">
+                                    DifferentialExpressionValueObject
+                                </a>
+                            </li>
+                        </ul>
+                        <p>
+                            [Experimental] Added Geeq (Gene Expression Experiment Quality) scores to the dataset value
+                            objects
+                        </p>
+                    </div>
+
+                    <hr>
+
+                </div>
+
+                <div class="older-updates-button" v-on:click=" showOlderUpdates = !showOlderUpdates"
+                     title="Click for older updates">
+                    <span
+                        v-bind:class="[showOlderUpdates ? 'glyphicon-chevron-up' : 'glyphicon-chevron-down', 'glyphicon']"></span>
+                </div>
+
+                <div class="container updates-old" v-show="showOlderUpdates">
+
+                    <!-- Move older updates to this section -->
+                    <div>
+                        <h3>Update 2.1.1</h3>
+                        <span class="date">December 5th, 2017</span>
+                        <p>
+                            Added the 'Dataset SVD Information' Endpoint.
+                        </p>
+                    </div>
+
+                    <hr>
+
+                    <div>
+                        <h3>Update 2.1.0 (Public stable release)</h3>
+                        <span class="date">November 28th, 2017</span>
+                        <p>
+                            Breaking change in all endpoints that use the
+                            <a href="https://gemma.msl.ubc.ca/resources/apidocs/index.html?ubic/gemma/model/expression/bioAssayData/ExperimentExpressionLevelsValueObject.html">ExpressionExperimentValueObject</a>
+                            in the response (mainly Datasets, Dataset search, Platforms datasets). The structure of the
+                            value object has changed - removed unused properties (moved to
+                            ExpressioNExperimentDetailsValueObject, which not used in the API)
+                        </p>
+
+                        <p>
+                            Breaking changes in 'Dataset genes expression levels' endpoint:
+                        </p>
+                        <ul>
+                            <li>Added 'consolidate' parameter</li>
+                            <li>Structure of the
+                                <a href="https://gemma.msl.ubc.ca/resources/apidocs/ubic/gemma/model/expression/bioAssayData/ExperimentExpressionLevelsValueObject.html">
+                                    ExperimentExpressionLevelsValueObject
+                                </a>, that is used in the response, has changed.
+                            </li>
+                        </ul>
+
+                        <p>
+                            Added Basic Authentication.
+                        </p>
+                        <p>
+                            Fixed: The 'Short Name' identifier for datasets not allowing hyphens.
+                        </p>
+                    </div>
+
+                    <hr>
+                    <p>Versions prior to this release were considered experimental (beta - minor version not bumped on breaking changes).</p>
+                    <hr>
+
+                    <div>
+                        <h3>Update 2.0.5</h3>
+                        <span class="date">November 28th, 2017</span>
+                        <p>
+                            Fixed: gene coexpression endpoint not working.
+                        </p>
+                        <p>
+                            Fixed: Multiple ontology term URIs not being parsed properly in search endpoints.
+                        </p>
+                        <p>
+                            Fixed: Problems when some parameters contained unescaped forward slashes
+                        </p>
+                        <p>
+                            Fixed: Taxon array arguments not working if the first identifier was not found.
+                        </p>
+                        <p>
+                            Fixed: NPEs on various occasions.
+                        </p>
+                    </div>
+
+                    <hr>
+
+                    <div>
+                        <h3>Update 2.0.4</h3>
+                        <span class="date">October 30th, 2017</span>
+                        <p>
+                            Breaking change: Use FactorValueBasicValueObject in 'Dataset samples' endpoint.
+                        </p>
+                        <p>
+                            Added 'Datasets genes expression levels' endpoint.
+                        </p>
+                        <p>
+                            Added 'Datasets pca component expression levels' endpoint.
+                        </p>
+                        <p>
+                            Added 'Datasets differential expression levels' endpoint.
+                        </p>
+                        <p>
+                            Improved unrecognized identifier error message.
+                        </p>
+                    </div>
+
+                    <hr>
+
+                    <div>
+                        <h3>Update 2.0.3</h3>
+                        <span class="date">October 18th, 2017</span>
+                        <p>
+                            Breaking change: Removed 'specific x' endpoints - replaced with 'all x' endpoints using array arguments.
+                        </p>
+                        <p>
+                            Breaking change: Add array arguments to 'Platform elements' and 'Genes' endpoints.
+                        </p>
+                        <p>
+                            Breaking change: Change 'Dataset search' endpoint URI to use 'datasets' instead of 'experiments'
+                        </p>
+                        <p>
+                            Fixed: limit 0 causing 0 results instead of not limiting the response size in some endpoints.
+                        </p>
+                    </div>
+
+                    <hr>
+
+                    <div>
+                        <h3>Update 2.0.2</h3>
+                        <span class="date">October 18th, 2017</span>
+                        <p>
+                            Breaking change: Add array arguments, add listed datasets endpoint.
+                        </p>
+                        <p>
+                            Added NCBI ID as a possible Taxon identifier.
+                        </p>
+                        <p>
+                            Added optional tree parameter to the 'Taxon phenotypes' endpoint.
+                        </p>
+                        <p>
+                            Added 'Taxon phenotypes candidate genes' endpoint.
+                        </p>
+                    </div>
+
+                    <hr>
+
+                    <div>
+                        <h3>Update 2.0.1</h3>
+                        <span class="date">September 22nd, 2017</span>
+                        <p>
+                            Fixed: Various NPEs and small problems.
+                        </p>
+                    </div>
+
+                    <hr>
+
+                    <div>
+                        <h3>Update 2.0-Beta</h3>
+                        <span class="date">August 16th, 2017</span>
+                        <p>
+                            Public beta release.
+                        </p>
+                    </div>
                 </div>
             </div>
 
