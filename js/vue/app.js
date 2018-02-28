@@ -73,10 +73,12 @@ Vue.component('endpoint', {
             } : {};
 
             // noinspection JSUnresolvedFunction // Axios promise methods
-            axios.get(this.completeUrl, config)
+            var url = this.completeUrl;
+            axios.get(url, config)
                 .then(function (response) {
                     vm.showLoading = false;
-                    vm.response = response.data;
+                    if (this.jsonResponse) vm.response = response.data;
+                    else window.open(url);
                     vm.isError = false;
                     vm.status = response.status;
                     vm.statusMsg = response.statusText;
