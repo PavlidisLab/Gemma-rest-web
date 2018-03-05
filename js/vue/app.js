@@ -77,8 +77,13 @@ Vue.component('endpoint', {
             axios.get(url, config)
                 .then(function (response) {
                     vm.showLoading = false;
-                    if (this.jsonResponse) vm.response = response.data;
-                    else window.open(url);
+                    if (vm.jsonResponse) {
+                        vm.response = response.data;
+                    }
+                    else {
+                        vm.response = "File download initiated.";
+                        window.open(url);
+                    }
                     vm.isError = false;
                     vm.status = response.status;
                     vm.statusMsg = response.statusText;
