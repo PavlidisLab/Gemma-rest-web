@@ -2,7 +2,25 @@
 var pythonCode = "\n" +
     "# loads all elements of a specific platform (see 'url' variable) in increments of 'limit'\n" +
     "# and writes transcripts for each element into a file (see variable 'f').\n" +
+    "# This script also includes example usage of the basic authentication functionality, which in this case\n" +
+    "# allows access to the authenticated users private platforms.\n" +
     "# For gpl1261 the resulting file was 1.3MB.\n" +
+    "\n" +
+    "import json\n" +
+    "import urllib2\n" +
+    "import base64\n" +
+    "\n" +
+    "limit = 200\n" +
+    "count = limit\n" +
+    "offset = 0\n" +
+    "total = 0\n" +
+    "\n" +
+    "username = 'user'\n" +
+    "password = 'xxxx'\n" +
+    "\n" +
+    "f = open('gpl1261_elem_transcripts.csv', 'a')\n" +
+    "f.write(\"element, transcripts \\n\")\n" +
+    "\n" +
     "# First few lines of the output file should look like this:\n" +
     "\n" +
     "# element, transcripts \n" +
@@ -13,22 +31,17 @@ var pythonCode = "\n" +
     "# AFFX-TransRecMur/X57349_5_at, 'NM_011638 '\n" +
     "# AFFX-TransRecMur/X57349_3_at, 'NM_011638 '\n" +
     "\n" +
-    "import json\n" +
-    "import urllib2\n" +
-    "\n" +
-    "limit = 200;\n" +
-    "count = limit;\n" +
-    "offset = 0;\n" +
-    "total = 0;\n" +
-    "\n" +
-    "f = open('gpl1261_elem_transcripts.csv', 'a')\n" +
-    "f.write(\"element, transcripts \\n\")\n" +
-    "\n" +
     "while(count == limit):\n" +
     "    print \"Limit: %s Offset: %s\" % (limit, offset)\n" +
     "    count = 0;\n" +
     "    url = \"http://gemma.msl.ubc.ca/rest/v2/platforms/gpl1261/elements?limit=%s&offset=%s\" % (limit, offset)\n" +
-    "    response = urllib2.urlopen(url)\n" +
+    "\n" +
+    "    # Add basic authentication header\n" +
+    "    request = urllib2.Request(url)\n" +
+    "    base64string = base64.encodestring('%s:%s' % (username, password)).replace('\\n', '')\n" +
+    "    request.add_header(\"Authorization\", \"Basic %s\" % base64string)\n" +
+    "\n" +
+    "    response = urllib2.urlopen(request)\n" +
     "    text = response.read()\n" +
     "\n" +
     "    try:\n" +

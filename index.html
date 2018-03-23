@@ -66,11 +66,11 @@
                     <h2>Updates</h2>
 
                     <!--<div>-->
-                        <!--<h3>Update 2.2.2</h3>-->
-                        <!--<span class="date">March XXth, 2018</span>-->
-                        <!--<p>-->
-                            <!--Code maintenance-->
-                        <!--</p>-->
+                    <!--<h3>Update 2.2.2</h3>-->
+                    <!--<span class="date">March XXth, 2018</span>-->
+                    <!--<p>-->
+                    <!--Code maintenance-->
+                    <!--</p>-->
                     <!--</div>-->
 
                     <hr>
@@ -164,7 +164,8 @@
                     </div>
 
                     <hr>
-                    <p>Versions prior to this release were considered experimental (beta - minor version not bumped on breaking changes).</p>
+                    <p>Versions prior to this release were considered experimental (beta - minor version not bumped on
+                        breaking changes).</p>
                     <hr>
 
                     <div>
@@ -215,16 +216,19 @@
                         <h3>Update 2.0.3</h3>
                         <span class="date">October 18th, 2017</span>
                         <p>
-                            Breaking change: Removed 'specific x' endpoints - replaced with 'all x' endpoints using array arguments.
+                            Breaking change: Removed 'specific x' endpoints - replaced with 'all x' endpoints using
+                            array arguments.
                         </p>
                         <p>
                             Breaking change: Add array arguments to 'Platform elements' and 'Genes' endpoints.
                         </p>
                         <p>
-                            Breaking change: Change 'Dataset search' endpoint URI to use 'datasets' instead of 'experiments'
+                            Breaking change: Change 'Dataset search' endpoint URI to use 'datasets' instead of
+                            'experiments'
                         </p>
                         <p>
-                            Fixed: limit 0 causing 0 results instead of not limiting the response size in some endpoints.
+                            Fixed: limit 0 causing 0 results instead of not limiting the response size in some
+                            endpoints.
                         </p>
                     </div>
 
@@ -280,6 +284,28 @@
                         <div class="col-sm-6">
                             <div class="panel panel-default code-panel">
                                 <div class="panel-heading">
+                                    R
+                                </div>
+                                <div class="panel-body">
+                                <pre class="prettyprint code-sample">
+                                    {{ rExample }}
+                                </pre>
+                                </div>
+                            </div>
+                            <div class="container-fluid">
+                                <h3>R package</h3>
+                                <p>For the R language, it is best to use <a target="_blank"
+                                    href="https://github.com/PavlidisLab/gemmaAPI.R">
+                                    the gemmaAPI.R wrapper package <i class="glyphicon glyphicon-share"></i></a>.
+                                    Please follow the link for documentation on how to use it.
+                                    The above code example is connecting directly to the API without the use of the
+                                    package.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="panel panel-default code-panel">
+                                <div class="panel-heading">
                                     Python
                                 </div>
                                 <div class="panel-body">
@@ -289,20 +315,13 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-sm-6">
-                            <div class="panel panel-default code-panel">
-                                <div class="panel-heading">
-                                    R
-                                </div>
-                                <div class="panel-body">
-                                <pre class="prettyprint code-sample">
-                                    {{ rExample }}
-                                </pre>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </div>
+
+                <div class="container">
+
+                </div>
+
             </div>
 
             <div class="endpoints">
