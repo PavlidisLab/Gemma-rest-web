@@ -637,7 +637,7 @@
                     v-bind:class="[showGenes ? 'glyphicon-collapse-up' : 'glyphicon-collapse-down', 'glyphicon']"></span>
                     <h3>Gene endpoints</h3>
                     <p>Endpoints accessing genes (non taxon-specific). Most endpoints also have a
-                        taxon-specific counterpart in the 'Taxa endpoints'.</p>
+                        taxon-specific counterpart in the 'Taxon endpoints'.</p>
                 </div>
 
                 <div id="geneEndpoints" v-show="showGenes">
@@ -648,7 +648,7 @@
                             gene homologues.
                             Using the official symbol as a gene parameter for these endpoints will yield an arbitrary
                             homologue (likely the same one every time, but that is not guaranteed).
-                            Use the methods from the 'Taxa endpoints' if you want to use the official symbol for a
+                            Use the methods from the 'Taxon endpoints' if you want to use the official symbol for a
                             specific
                             homologue.
                         </div>
@@ -709,13 +709,13 @@
                 <hr>
 
                 <!--
-                    Taxa endpoints
+                    Taxon endpoints
                  -->
 
                 <div class="container endpoints-group-title" v-on:click=" showTaxa = !showTaxa">
                 <span
                     v-bind:class="[showTaxa ? 'glyphicon-collapse-up' : 'glyphicon-collapse-down', 'glyphicon']"></span>
-                    <h3>Taxa endpoints</h3>
+                    <h3>Taxon endpoints</h3>
                     <p>Endpoints accessing data for specific taxa. E.g: Taxon-specific genes or datasets</p>
                 </div>
 

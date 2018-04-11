@@ -160,7 +160,7 @@ var geneDescriptionBase = "" +
     "<p>NCBI ID is the most efficient (and guaranteed to be unique) identifier.</p>" +
     "<p class='description-imp'>" +
     "   <span class='glyphicon glyphicon-th-large glyphicon-exclamation-sign'></span>" +
-    "   Official symbol represents a gene homologue for a random taxon, unless used in a specific taxon (see the Taxa Endpoints)." +
+    "   Official symbol represents a gene homologue for a random taxon, unless used in a specific taxon (see Taxon Endpoints)." +
     "</p>";
 
 var geneDescription = "" +
@@ -189,20 +189,14 @@ var stringencyDescription = "" +
 
 var taxaTable = "" +
     "<table>" +
-    "<tr><th> ID </th><th>Comm.name</th><th>Scient.name</th><th>Abbr.</th><th>NcbiID</th></tr>" +
-    "<tr><td>  1 </td><td> human           </td><td> Homo sapiens              </td><td>              </td><td>    9606 </td></tr>" +
-    "<tr><td>  2 </td><td> mouse           </td><td> Mus musculus              </td><td>              </td><td>   10090 </td></tr>" +
-    "<tr><td>  3 </td><td> rat             </td><td> Rattus norvegicus         </td><td>              </td><td>   10116 </td></tr>" +
-    "<tr><td>  4 </td><td> salmonid        </td><td> Salmonidae                </td><td>              </td><td>    8015 </td></tr>" +
-    "<tr><td>  5 </td><td> atlantic salmon </td><td> Salmo salar               </td><td> ssal         </td><td>    8030 </td></tr>" +
-    "<tr><td>  6 </td><td> rainbow trout   </td><td> Oncorhynchus mykiss       </td><td> omyk         </td><td>    8022 </td></tr>" +
-    "<tr><td>  7 </td><td> whitefish       </td><td> Coregonus clupeaformis    </td><td> cclu         </td><td>   59861 </td></tr>" +
-    "<tr><td>  8 </td><td> chinook salmon  </td><td> Oncorhynchus tshawytscha  </td><td> otsh         </td><td>   74940 </td></tr>" +
-    "<tr><td> 10 </td><td> rainbow smelt   </td><td> Osmerus mordax            </td><td> omor         </td><td>    8014 </td></tr>" +
-    "<tr><td> 11 </td><td> yeast           </td><td> Saccharomyces cerevisiae  </td><td>              </td><td>    4932 </td></tr>" +
-    "<tr><td> 12 </td><td> zebrafish       </td><td> Danio rerio               </td><td>              </td><td>    7955 </td></tr>" +
-    "<tr><td> 13 </td><td> fly             </td><td> Drosophila melanogaster   </td><td>              </td><td>    7227 </td></tr>" +
-    "<tr><td> 14 </td><td> worm            </td><td> Caenorhabditis elegans    </td><td>              </td><td>    6239 </td></tr>" +
+    "<tr><th> ID </th><th>Comm.name</th><th>Scient.name</th><th>NcbiID</th></tr>" +
+    "<tr><td>  1 </td><td> human           </td><td> Homo sapiens              </td><td>    9606 </td></tr>" +
+    "<tr><td>  2 </td><td> mouse           </td><td> Mus musculus              </td><td>   10090 </td></tr>" +
+    "<tr><td>  3 </td><td> rat             </td><td> Rattus norvegicus         </td><td>   10116 </td></tr>" +
+    "<tr><td> 11 </td><td> yeast           </td><td> Saccharomyces cerevisiae  </td><td>    4932 </td></tr>" +
+    "<tr><td> 12 </td><td> zebrafish       </td><td> Danio rerio               </td><td>    7955 </td></tr>" +
+    "<tr><td> 13 </td><td> fly             </td><td> Drosophila melanogaster   </td><td>    7227 </td></tr>" +
+    "<tr><td> 14 </td><td> worm            </td><td> Caenorhabditis elegans    </td><td>    6239 </td></tr>" +
     "</table>";
 
 var taxaDescription = "" +
@@ -220,7 +214,8 @@ var taxaDescription = "" +
     "   Retrieval by ID is more efficient." +
     "</p>" +
     "<p>Do not combine different identifiers in one query.</p>" +
-    "<p>For convenience, below is a list of few example taxa:</p>" + taxaTable;
+    "<p>For convenience, below is a list of officially supported taxa</p>" +
+    taxaTable;
 
 var taxonDescription = "" +
     "<p class='description-frow'>Required, part of the URL path.</p>" +
@@ -230,7 +225,7 @@ var taxonDescription = "" +
     "</p>" +
     "<p>It is recommended to use Taxon ID for efficiency.</p>" +
     "<p>Please note, that not all taxa have all the possible identifiers available.</p>" +
-    "<p>Use the 'All Taxa' endpoint to retrieve the necessary information. For convenience, below is a list of few example taxa: </p>" +
+    "<p>Use the 'All Taxa' endpoint to retrieve the necessary information. For convenience, below is a list of officially supported taxa: </p>" +
     taxaTable;
 
 var editableDescription = "" +
