@@ -386,7 +386,7 @@ var RDAllDatasets = RDAll +
     "<p>" +
     "   A successful response may contain a sub-element with 'Geeq' information, which aims to provide a " +
     "   unified metric to measure experiments by the quality of their data, and their suitability for use in Gemma." +
-    "   You can <a href='https://pavlidislab.github.io/Gemma/upload.html' target='_blank'>read more about the geeq properties here</a>. " +
+    "   You can <a href='https://pavlidislab.github.io/Gemma/geeq.html' target='_blank'>read more about the geeq properties here</a>. " +
     "</p>";
 
 var RDDatasetsPlatforms = "" +
