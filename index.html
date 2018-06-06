@@ -79,13 +79,16 @@
                             Code maintenance, bug fixes. Geeq scores stable and made public.
                         </p>
                         <p>
-                            May 2nd [2.2.5] Fixed: Cleaned up and optimized platforms/elements endpoint, removed redundant information (recursive properties nesting).
+                            May 2nd [2.2.5] Fixed: Cleaned up and optimized platforms/elements endpoint, removed
+                            redundant information (recursive properties nesting).
                         </p>
                         <p>
-                            April 12th [2.2.3] Fixed: Array arguments not handling non-string properties properly, e.g. ncbiIds of genes.
+                            April 12th [2.2.3] Fixed: Array arguments not handling non-string properties properly, e.g.
+                            ncbiIds of genes.
                         </p>
                         <p>
-                            April 9th  [2.2.1] Fixed: Filter argument not working when the filtered field was a primitive type. This most
+                            April 9th [2.2.1] Fixed: Filter argument not working when the filtered field was a primitive
+                            type. This most
                             significantly allows filtering by geeq boolean and double properties.
                         </p>
                     </div>
@@ -371,14 +374,14 @@
                         Basic Authentication</a>. A base64 encoded string containing your password
                         and username is sent in the request headers with each api call over a secure https protocol.</p>
                     <!--TODO uncomment when auth/admin endpoints exposed-->
-                    <!--<p>Endpoints that require authorized access are marked with <span-->
-                    <!--class="access-auth glyphicon glyphicon-minus-sign"></span> icon </p>-->
+                    <p>Endpoints that require authorized access are marked with <span
+                        class="access-auth glyphicon glyphicon-minus-sign"></span> icon </p>
                     <!--<p>Endpoints only accessible with an admin account are marked with <span-->
                     <!--class="access-admin glyphicon glyphicon-minus-sign"></span> icon </p>-->
-                    <!--<p>If no credentials are provided, anonymous access is granted for all GET methods (Any data-->
-                    <!--retrieval). Anonymous access may cause some of the endpoints to filter out results that require-->
-                    <!--authorized access (E.g. experiments and platforms that are marked as unusable or private).-->
-                    <!--</p>-->
+                    <p>If no credentials are provided, anonymous access is granted for all GET methods (Any data
+                        retrieval). Anonymous access may cause some of the endpoints to filter out results that require
+                        authorized access (E.g. experiments and platforms that are marked as unusable or private).
+                    </p>
 
                     <div class="param-row">
                         <label hidden for="authUser">Gemma username</label>
@@ -386,6 +389,7 @@
                             <span class="input-group-addon">Username = </span>
                             <!--suppress HtmlFormInputWithoutLabel -->
                             <input id="authUser" class="form-control" v-model="authUser"
+                                   v-on:change="$parent.computeUrl()"
                                    v-on:keypress.enter.prevent=""
                             >
                             <span class="input-group-btn">
@@ -409,6 +413,7 @@
                             <!--suppress HtmlFormInputWithoutLabel -->
                             <input v-bind:type="showPass ? 'text' : 'password' " id="authPass" class="form-control"
                                    v-model="authPass"
+                                   v-on:change="$parent.computeUrl()"
                                    v-on:keypress.enter.prevent=""
                             >
                             <span class="input-group-btn">
@@ -427,6 +432,16 @@
                             corner, to show the login window, then click the 'Forgot your password' link).
                         </div>
                     </div>
+
+
+                    <endpoint :name="'Test login'"
+                              :description="'Checks that the provided login info is correct'"
+                              :response-description="'Successful response will contain the logged in users info.'"
+                              :query-params="[getPHashParam()]"
+                              :path-params="[getUNameParam()]"
+                              :endpoint-url-base="'users/%%%1'"
+                              :auth-access="true">
+                    </endpoint>
 
                     <div class="alert alert-warning">
                         <p>If you provide credentials that are invalid, all calls will return a '401 - Unauthorized'
@@ -911,15 +926,16 @@
                             <h5>Parameters:<span class="badge invisible"><span class="glyphicon">&#160;</span></span>
                             </h5>
                             <form v-on:submit.prevent="">
-                                <div v-for="param in pathParams" class="param-row">
+                                <div v-if="!hideParams" v-for="param in pathParams" class="param-row">
                                     <api-param :param="param"></api-param>
                                 </div>
 
-                                <div v-for="param in queryParams" class="param-row">
+                                <div v-if="!hideParams" v-for="param in queryParams" class="param-row">
                                     <api-param :param="param"></api-param>
                                 </div>
 
-                                <div v-if="pathParams.length == 0 && queryParams.length == 0" class="param-row">
+                                <div v-if="hideParams || (pathParams.length == 0 && queryParams.length == 0)"
+                                     class="param-row">
                                     <span class="pre-like">No parameters</span>
                                 </div>
 
@@ -1012,11 +1028,14 @@
         <script src="https://cdn.jsdelivr.net/npm/axios@0.12.0/dist/axios.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/lodash@4.13.1/lodash.min.js"></script>
         <script src="js/vendor/vue-json-tree-view.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/crypto-js.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/sha256.min.js"></script>
         <script src="js/vue/app.js"></script>
         <!-- Other scripts -->
         <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
         <script src="js/vendor/modernizr-3.5.0.min.js"></script>
         <script src="js/plugins.js"></script>
+
 
         <!--<script>-->
         <!--window.ga = function () {-->

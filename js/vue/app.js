@@ -1,4 +1,5 @@
 Vue.use(TreeView);
+Vue.use(CryptoJS);
 
 // noinspection JSUnusedGlobalSymbols // Used in html templates
 Vue.component('endpoint', {
@@ -21,6 +22,10 @@ Vue.component('endpoint', {
             type: Boolean
         },
         adminAccess: {
+            default: false,
+            type: Boolean
+        },
+        hideParams: {
             default: false,
             type: Boolean
         }
@@ -457,6 +462,23 @@ var apiApp = new Vue({
                 required: false,
                 description: consolidateDescription
             };
+        },
+        getPHashParam: function () {
+            return {
+                name: "phash",
+                value: CryptoJS.SHA256(this.authPass),
+                required: true,
+                description: "User password"
+            }
+        },
+        getUNameParam: function () {
+            return {
+                name: "uname",
+                value: this.authUser,
+                required: true,
+                description: "Username"
+            }
         }
+
     }
 });
