@@ -73,10 +73,13 @@
                     <h2>Updates</h2>
 
                     <div>
-                        <h3>Update 2.2.5</h3>
-                        <span class="date">April 18th, 2018</span>
+                        <h3>Update 2.2.6</h3>
+                        <span class="date">June 7th, 2018</span>
                         <p>
                             Code maintenance, bug fixes. Geeq scores stable and made public.
+                        </p>
+                        <p>
+                            June 7th [2.2.6] Added: User authentication endpoint.
                         </p>
                         <p>
                             May 2nd [2.2.5] Fixed: Cleaned up and optimized platforms/elements endpoint, removed
@@ -389,7 +392,6 @@
                             <span class="input-group-addon">Username = </span>
                             <!--suppress HtmlFormInputWithoutLabel -->
                             <input id="authUser" class="form-control" v-model="authUser"
-                                   v-on:change="$parent.computeUrl()"
                                    v-on:keypress.enter.prevent=""
                             >
                             <span class="input-group-btn">
@@ -413,7 +415,6 @@
                             <!--suppress HtmlFormInputWithoutLabel -->
                             <input v-bind:type="showPass ? 'text' : 'password' " id="authPass" class="form-control"
                                    v-model="authPass"
-                                   v-on:change="$parent.computeUrl()"
                                    v-on:keypress.enter.prevent=""
                             >
                             <span class="input-group-btn">
@@ -435,12 +436,15 @@
 
 
                     <endpoint :name="'Test login'"
-                              :description="'Checks that the provided login info is correct'"
+                              :description="'Checks that the provided login info is correct. This is done by first checking the basic http authentication info, and then
+                              passing the username nad password hash as parameters to the endpoint to retrieve the user information. The endpoint will return a null response
+                              if the basic auth. and url parameters do not match the same user.'"
                               :response-description="'Successful response will contain the logged in users info.'"
                               :query-params="[getPHashParam()]"
                               :path-params="[getUNameParam()]"
                               :endpoint-url-base="'users/%%%1'"
-                              :auth-access="true">
+                              :auth-access="true"
+                              :hide-params="true">
                     </endpoint>
 
                     <div class="alert alert-warning">

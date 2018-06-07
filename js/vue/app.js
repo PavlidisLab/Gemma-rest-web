@@ -47,7 +47,6 @@ Vue.component('endpoint', {
             dots: 0
         }
     },
-
     methods: {
         computeUrl: function () {
             var url = this.apiUrlBase + this.endpointUrlBase;
@@ -65,6 +64,7 @@ Vue.component('endpoint', {
         },
 
         getResponse: function () {
+            this.computeUrl();
             var vm = this;
             this.status = null;
             this.showLoading = true;
@@ -126,7 +126,6 @@ Vue.component('endpoint', {
 
         keyMonitor: function (event) {
             if (event.key === "Enter") {
-                this.computeUrl();
                 this.getResponse();
             }
         }
