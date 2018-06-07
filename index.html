@@ -436,9 +436,7 @@
 
 
                     <endpoint :name="'Test login'"
-                              :description="'Checks that the provided login info is correct. This is done by first checking the basic http authentication info, and then
-                              passing the username nad password hash as parameters to the endpoint to retrieve the user information. The endpoint will return a null response
-                              if the basic auth. and url parameters do not match the same user.'"
+                              :description="'Checks that the provided login info is correct. This is done by first checking the basic http authentication info, and then passing the username nad password hash as parameters to the endpoint to retrieve the user information. The endpoint will return a null response if the basic auth. and url parameters do not match the same user.'"
                               :response-description="'Successful response will contain the logged in users info.'"
                               :query-params="[getPHashParam()]"
                               :path-params="[getUNameParam()]"
