@@ -462,20 +462,12 @@ var apiApp = new Vue({
                 description: consolidateDescription
             };
         },
-        getPHashParam: function () {
-            return {
-                name: "phash",
-                value: CryptoJS.SHA256(this.authPass),
-                required: true,
-                description: "User password"
-            }
-        },
         getUNameParam: function () {
             return {
                 name: "uname",
                 value: this.authUser,
                 required: true,
-                description: "Username"
+                description: "Username of the user logging in via the basic authentication."
             }
         }
 

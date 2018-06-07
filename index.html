@@ -436,13 +436,12 @@
 
 
                     <endpoint :name="'Test login'"
-                              :description="'Checks that the provided login info is correct. This is done by first checking the basic http authentication info, and then passing the username nad password hash as parameters to the endpoint to retrieve the user information. The endpoint will return a null response if the basic auth. and url parameters do not match the same user.'"
-                              :response-description="'Successful response will contain the logged in users info.'"
-                              :query-params="[getPHashParam()]"
+                              :description="'Checks that the provided login info is correct. This is done by first checking the basic http authentication info, and then passing the username as a parameter to the endpoint to retrieve the user information.'"
+                              :response-description="'Successful response will contain the logged in users info. If the provided username does not match the login info in the basic authentication, a <code>403 error</code> will be given.'"
+                              :query-params="[]"
                               :path-params="[getUNameParam()]"
                               :endpoint-url-base="'users/%%%1'"
-                              :auth-access="true"
-                              :hide-params="true">
+                              :auth-access="true">
                     </endpoint>
 
                     <div class="alert alert-warning">
