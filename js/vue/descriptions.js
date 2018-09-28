@@ -209,7 +209,6 @@ var taxaDescription = "" +
     "       <li>taxon ID</li>" +
     "       <li>scientific name</li>" +
     "       <li>common name</li>" +
-    "       <li>abbreviation</li>" +
     "    </ul>" +
     "   Retrieval by ID is more efficient." +
     "</p>" +
@@ -221,7 +220,7 @@ var taxonDescription = "" +
     "<p class='description-frow'>Required, part of the URL path.</p>" +
     "<p>" +
     "   can either be Taxon ID, Taxon NCBI ID, or one of its string identifiers:" +
-    "   scientific name, common name, abbreviation." +
+    "   scientific name, common name" +
     "</p>" +
     "<p>It is recommended to use Taxon ID for efficiency.</p>" +
     "<p>Please note, that not all taxa have all the possible identifiers available.</p>" +
