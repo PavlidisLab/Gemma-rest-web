@@ -275,6 +275,7 @@ var searchDescription = "" +
     "<p class='description-frow'>Required, defaults to <code>empty</code>.</p>" +
     "<p>" +
     "   The search query. Either plain text ('traumatic'), or an ontology term URI ('http://purl.obolibrary.org/obo/UBERON_0002048'). " +
+    "   Datasets that contain the given string in their short of full name will also be matched ('GSE201', 'Bronchoalveolar lavage samples'." +
     "</p>" +
     "<p>" +
     "   Can be multiple identifiers separated by commas." +
