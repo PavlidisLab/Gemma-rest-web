@@ -219,8 +219,19 @@ var taxaDescription = "" +
     "<p>For convenience, below is a list of officially supported taxa</p>" +
     taxaTable;
 
-var taxonDescription = "" +
+var taxonReqDescription = "" +
     "<p class='description-frow'>Required, part of the URL path.</p>" +
+    "<p>" +
+    "   can either be Taxon ID, Taxon NCBI ID, or one of its string identifiers:" +
+    "   scientific name, common name" +
+    "</p>" +
+    "<p>It is recommended to use Taxon ID for efficiency.</p>" +
+    "<p>Please note, that not all taxa have all the possible identifiers available.</p>" +
+    "<p>Use the 'All Taxa' endpoint to retrieve the necessary information. For convenience, below is a list of officially supported taxa: </p>" +
+    taxaTable;
+
+var taxonDescription = "" +
+    "<p class='description-frow'>Not required, part of the URL path.</p>" +
     "<p>" +
     "   can either be Taxon ID, Taxon NCBI ID, or one of its string identifiers:" +
     "   scientific name, common name" +

@@ -506,8 +506,8 @@
                               :description="'Does a search for datasets containing annotations, short name or full name matching the given string'"
                               :response-description="RDDatasetSearch"
                               :query-params="getDatasetsAllQueryParams(0)"
-                              :path-params="[getSearchParam()]"
-                              :endpoint-url-base="'annotations/search/%%%1/datasets'">
+                              :path-params="[getTaxonParam0(),getSearchParam()]"
+                              :endpoint-url-base="'annotations/%%%1/search/%%%2/datasets'">
                     </endpoint>
 
                     <endpoint :name="'Dataset platforms'"

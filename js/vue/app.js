@@ -51,7 +51,11 @@ Vue.component('endpoint', {
         computeUrl: function () {
             var url = this.apiUrlBase + this.endpointUrlBase;
             this.pathParams.forEach(function (pParam) {
-                url = url.replace(/%%%\d+/, encodeURIComponent(pParam.value));
+                if(pParam.value || pParam.required){
+                    url = url.replace(/%%%\d+/, encodeURIComponent(pParam.value));
+                }else{
+                    url = url.replace(/%%%\d+\//, "");
+                }
             });
             var first = true;
             this.queryParams.forEach(function (qParam) {
@@ -331,6 +335,14 @@ var apiApp = new Vue({
                 name: "taxon",
                 value: "human",
                 required: true,
+                description: taxonReqDescription
+            };
+        },
+        getTaxonParam0: function () {
+            return {
+                name: "taxon",
+                value: "human",
+                required: false,
                 description: taxonDescription
             };
         },
