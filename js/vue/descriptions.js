@@ -93,6 +93,9 @@ var limitDescriptionBase = "" +
 var limitDescription = "" +
     "<p class='description-frow'>Optional, defaults to <code>20</code>.</p>" + limitDescriptionBase;
 
+var limitDescription0 = "" +
+    "<p class='description-frow'>Optional, defaults to <code>0</code>.</p>" + limitDescriptionBase;
+
 var sortDescription = "" +
     "<p class='description-frow'>Optional, defaults to <code>+id</code>.</p>" +
     "<p>Sets the ordering property and direction.</p>" +

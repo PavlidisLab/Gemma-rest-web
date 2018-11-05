@@ -169,8 +169,8 @@ var apiApp = new Vue({
     },
     methods: {
         // Parameter bundles getters
-        getDatasetsAllQueryParams: function () {
-            return [this.getFilterParam(), this.getOffsetParam(), this.getLimitParam(), this.getSortParam()];
+        getDatasetsAllQueryParams: function (val) {
+            return [this.getFilterParam(), this.getOffsetParam(), this.getLimitParam(val), this.getSortParam()];
         },
         getDatasetsDiffAnalQueryParams: function () {
             return [
@@ -250,8 +250,8 @@ var apiApp = new Vue({
         getOffsetParam: function () {
             return {name: "offset", value: "0", required: false, description: offsetDescription};
         },
-        getLimitParam: function () {
-            return {name: "limit", value: "20", required: false, description: limitDescription};
+        getLimitParam: function (val) {
+            return {name: "limit", value: val !== undefined ? val.toString() : "20", required: false, description: val !== undefined ? limitDescription0 : limitDescription};
         },
         getSortParam: function () {
             return {name: "sort", value: "+id", required: false, description: sortDescription};

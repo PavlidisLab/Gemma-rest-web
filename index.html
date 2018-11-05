@@ -73,10 +73,16 @@
                     <h2>Updates</h2>
 
                     <div>
-                        <h3>Update 2.3.1</h3>
-                        <span class="date">October 25th, 2018</span>
+                        <h3>Update 2.3.3</h3>
+                        <span class="date">November 5th, 2018</span>
                         <p>
-                            October 25th [2.3.1] Changed behavior of the dataset search endpoint to more closely match the Gemma web interface.
+                            November 5th [2.3.3] Added filtering parameters to dataset search.
+                        </p>
+                        <p>
+                            October 25th [2.3.2] Changed behavior of the dataset search endpoint to more closely match the Gemma web interface.
+                        </p>
+                        <p>
+                            October 2nd [2.3.1] Added group information to the User value object.
                         </p>
                         <p>
                             September 27th [2.3.0] Breaking change in Taxa: Abbreviation property has been removed and is therefore no longer an accepted identifier.
@@ -499,7 +505,7 @@
                     <endpoint :name="'Dataset search'"
                               :description="'Does a search for datasets containing annotations, short name or full name matching the given string'"
                               :response-description="RDDatasetSearch"
-                              :query-params="[]"
+                              :query-params="getDatasetsAllQueryParams(0)"
                               :path-params="[getSearchParam()]"
                               :endpoint-url-base="'annotations/search/%%%1/datasets'">
                     </endpoint>
